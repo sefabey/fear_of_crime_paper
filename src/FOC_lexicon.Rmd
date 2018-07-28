@@ -1,0 +1,46 @@
+---
+title: "Lexicon of Crime and Police Words"
+author: "Sefa Ozalp"
+date: "26/07/2018"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(rhymer)
+```
+
+
+We compiled a list of 51 seeding words which includes epressions related fear of crime, different crime types and British slangs referring to police and criminal activity (this list can listed in the article attachments). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying semantically similar or contextually related words using multiple contraints such as synonyms, antonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried the Datamuse API for the first 100 words that are related to the words in the seed list. After removing duplicate words and manually removing clearly out of context results (such as query:coppers, Datamuse result:atomic number 29), we created a lexicon consisting of NNNN words.
+
+```{r}
+
+seed_list <- read_csv("../data/FOC_seed_words.csv")
+seed_list %>% distinct(words) #51 distinct words
+```
+
+```{r}
+
+query_datamuse <- function(x, ...){
+    rhymer::get_means_like(word = x, ...)
+}
+
+crime_fear_lexicon <- seed_list %>% 
+    select(words) %>%
+    pull() %>%  
+    map_df(query_datamuse, limit=100, .id = "id") %>% #5030 results
+    mutate(id=as.integer(id)) %>% 
+    distinct(word, .keep_all = T) %>% # drops to 3687
+    left_join( select(seed_list, c(id, query_word=words)), by="id") %>% 
+    select(id, query_word, everything()) %>% 
+    mutate(tags=as.character(tags)) %>% 
+    separate(tags, sep = ",", into = c("tag1", "tag2", "tag3", "tag4")) %>% 
+    mutate_at(vars(tag1,tag2,tag3,tag4), .funs = function(x){
+              str_extract(string=x, pattern =  regex("(?<=\")[[:alnum:]]+(?=\")"))})
+
+
+write_csv(crime_fear_lexicon,"../data/FOC_lexicon_001.csv")
+
+# read locke data some web api package development lessons 
+```
+
