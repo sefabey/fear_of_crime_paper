@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/408327/837179d12ce340c48920eca96e3c35a4
+bundleId: https://api.rpubs.com/api/v1/document/408327/837179d12ce340c48920eca96e3c35a4
+url: http://rpubs.com/sefaozalp/408327
+when: 1532885052.51422

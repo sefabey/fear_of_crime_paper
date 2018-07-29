@@ -138,7 +138,10 @@ $(document).ready(function () {
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(rhymer)</code></pre>
-<p>We compiled a list of 51 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv</a>]. The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we collated a lexicon consisting of 3096 words. This lexicon was used to filter the 20m tweets in the dataset (amir)</p>
+<div id="lexicon-paragraph" class="section level1">
+<h1>Lexicon Paragraph</h1>
+<p>We compiled a list of 51 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv</a>]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we collated a lexicon consisting of 3096 words (find this file online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_001_manual_edited.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_001_manual_edited.csv</a>]).</p>
+<p>This lexicon was used to filter the 20m tweets in the dataset… (amir)</p>
 <pre class="r"><code>seed_list &lt;- read_csv(&quot;../data/FOC_seed_words.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -185,7 +188,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 
 # read locke data some web api package development lessons </code></pre>
 <pre class="r"><code>lexicon_filtered &lt;- read_csv(&quot;../data/FOC_lexicon_001_manual.csv&quot;) %&gt;% 
-    filter(remove==0)</code></pre>
+    filter(remove==0) # rows to be removed was labelled as 1, rest was 0</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   id = col_integer(),
@@ -214,6 +217,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 ## 10     1 afraid     cowed        38611 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
 ## # ... with 3,086 more rows</code></pre>
 <pre class="r"><code>write_csv(lexicon_filtered, &quot;../data/FOC_lexicon_001_manual_edited.csv&quot;)</code></pre>
+</div>
 
 
 
