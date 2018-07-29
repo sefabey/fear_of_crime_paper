@@ -77,33 +77,33 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 1,afraid,freaky,7195,NA,NA,NA,NA,0
 1,afraid,fright,7055,NA,NA,NA,NA,0
 1,afraid,creepy,6932,NA,NA,NA,NA,0
-1,afraid,blink,6596,v,n,NA,NA,0
-1,afraid,subject,6503,NA,NA,NA,NA,0
+1,afraid,blink,6596,v,n,NA,NA,1
+1,afraid,subject,6503,NA,NA,NA,NA,1
 1,afraid,daunting,6494,NA,NA,NA,NA,0
-1,afraid,out,6294,NA,NA,NA,NA,0
+1,afraid,out,6294,NA,NA,NA,NA,1
 1,afraid,anxiety,6212,NA,NA,NA,NA,0
 1,afraid,shock,6209,NA,NA,NA,NA,0
-1,afraid,mince,6056,n,v,NA,NA,0
+1,afraid,mince,6056,n,v,NA,NA,1
 1,afraid,bang,5995,NA,NA,NA,NA,0
 1,afraid,regrettably,5759,NA,NA,NA,NA,0
 1,afraid,sweat,5607,NA,NA,NA,NA,0
-1,afraid,flip,5465,NA,NA,NA,NA,0
-1,afraid,chicken,5243,NA,NA,NA,NA,0
+1,afraid,flip,5465,NA,NA,NA,NA,1
+1,afraid,chicken,5243,NA,NA,NA,NA,1
 1,afraid,creep,5129,n,v,NA,NA,0
-1,afraid,pocket,5080,NA,NA,NA,NA,0
+1,afraid,pocket,5080,NA,NA,NA,NA,1
 1,afraid,hassle,4926,NA,NA,NA,NA,0
 1,afraid,spooky,4467,NA,NA,NA,NA,0
 1,afraid,alarm,3687,NA,NA,NA,NA,0
-1,afraid,phillip,3184,n,prop,NA,NA,0
+1,afraid,phillip,3184,n,prop,NA,NA,1
 1,afraid,cabin,1166,NA,NA,NA,NA,1
 1,afraid,scaredy-cat,1,NA,NA,NA,NA,1
-1,afraid,timide,1,NA,NA,NA,NA,0
-1,afraid,lease,NA,NA,NA,NA,NA,0
-2,alone,only,25911,syn,adv,NA,NA,0
-2,alone,solely,23196,syn,adv,NA,NA,0
+1,afraid,timide,1,NA,NA,NA,NA,1
+1,afraid,lease,NA,NA,NA,NA,NA,1
+2,alone,only,25911,syn,adv,NA,NA,1
+2,alone,solely,23196,syn,adv,NA,NA,1
 2,alone,lonely,23161,syn,adj,NA,NA,0
 2,alone,unaccompanied,22358,syn,adj,NA,NA,0
-2,alone,entirely,21982,syn,adv,NA,NA,0
+2,alone,entirely,21982,syn,adv,NA,NA,1
 2,alone,solitary,20471,syn,adj,NA,NA,0
 2,alone,uncomparable,19296,syn,adj,NA,NA,0
 2,alone,unequaled,19207,syn,adj,NA,NA,0
@@ -111,23 +111,23 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 2,alone,exclusively,18689,syn,adv,NA,NA,0
 2,alone,unsocial,18396,syn,adj,NA,NA,0
 2,alone,incomparable,18343,syn,adj,NA,NA,0
-2,alone,unparalleled,17774,syn,adj,NA,NA,0
-2,alone,unique,17752,syn,adj,NA,NA,0
+2,alone,unparalleled,17774,syn,adj,NA,NA,1
+2,alone,unique,17752,syn,adj,NA,NA,1
 2,alone,unequalled,16966,syn,adj,NA,NA,0
 2,alone,exclusive,15137,syn,adj,NA,NA,0
-2,alone,just,13153,NA,NA,NA,NA,0
+2,alone,just,13153,NA,NA,NA,NA,1
 2,alone,not,12346,NA,NA,NA,NA,1
 2,alone,one,11435,n,adj,NA,NA,1
-2,alone,simply,10945,NA,NA,NA,NA,0
+2,alone,simply,10945,NA,NA,NA,NA,1
 2,alone,mere,10621,NA,NA,NA,NA,1
-2,alone,own,10482,NA,NA,NA,NA,0
-2,alone,even,10456,NA,NA,NA,NA,0
-2,alone,same,10304,NA,NA,NA,NA,0
+2,alone,own,10482,NA,NA,NA,NA,1
+2,alone,even,10456,NA,NA,NA,NA,1
+2,alone,same,10304,NA,NA,NA,NA,1
 2,alone,isolated,10284,NA,NA,NA,NA,0
 2,alone,still,10276,NA,NA,NA,NA,0
 2,alone,hardly,9956,NA,NA,NA,NA,1
-2,alone,single,9791,NA,NA,NA,NA,0
-2,alone,independently,9654,NA,NA,NA,NA,0
+2,alone,single,9791,NA,NA,NA,NA,1
+2,alone,independently,9654,NA,NA,NA,NA,1
 2,alone,barely,9553,NA,NA,NA,NA,0
 2,alone,unescorted,9198,adj,v,NA,NA,0
 2,alone,less,9168,NA,NA,NA,NA,1
@@ -135,14 +135,14 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 2,alone,all,8912,NA,NA,NA,NA,1
 2,alone,rather,8612,NA,NA,NA,NA,0
 2,alone,separate,8564,adj,v,NA,NA,0
-2,alone,nothing,8318,NA,NA,NA,NA,0
+2,alone,nothing,8318,NA,NA,NA,NA,1
 2,alone,quietly,8318,NA,NA,NA,NA,0
-2,alone,deserted,8267,NA,NA,NA,NA,0
+2,alone,deserted,8267,NA,NA,NA,NA,1
 2,alone,each,8160,NA,NA,NA,NA,1
 2,alone,scarcely,7974,NA,NA,NA,NA,0
-2,alone,singly,7762,NA,NA,NA,NA,0
-2,alone,lonesome,7685,NA,NA,NA,NA,0
-2,alone,individually,7611,NA,NA,NA,NA,0
+2,alone,singly,7762,NA,NA,NA,NA,1
+2,alone,lonesome,7685,NA,NA,NA,NA,1
+2,alone,individually,7611,NA,NA,NA,NA,1
 2,alone,sheer,7531,NA,NA,NA,NA,1
 2,alone,least,7510,NA,NA,NA,NA,1
 2,alone,safe,7501,NA,NA,NA,NA,0
@@ -155,7 +155,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 2,alone,separated,6844,NA,NA,NA,NA,0
 2,alone,solitude,6830,NA,NA,NA,NA,0
 2,alone,isolation,6816,NA,NA,NA,NA,0
-2,alone,myself,6533,NA,NA,NA,NA,0
+2,alone,myself,6533,NA,NA,NA,NA,1
 2,alone,sole,6469,NA,NA,NA,NA,0
 2,alone,incommunicado,6458,NA,NA,NA,NA,0
 2,alone,already,6231,NA,NA,NA,NA,1
@@ -477,7 +477,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 6,CCTV,television,24986,NA,NA,NA,NA,1
 6,CCTV,surveillance,24985,NA,NA,NA,NA,0
 6,CCTV,camera,24984,NA,NA,NA,NA,0
-6,CCTV,reflex camera,24983,NA,NA,NA,NA,0
+6,CCTV,reflex camera,24983,NA,NA,NA,NA,1
 6,CCTV,dvr,24982,NA,NA,NA,NA,0
 6,CCTV,cine camera,24981,NA,NA,NA,NA,1
 6,CCTV,intercommunication system,24980,NA,NA,NA,NA,1
@@ -801,11 +801,11 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 9,crime,breaches,59009,NA,NA,NA,NA,0
 9,crime,violations,58838,NA,NA,NA,NA,0
 9,crime,infractions,58698,NA,NA,NA,NA,0
-9,crime,transnational,58318,NA,NA,NA,NA,0
+9,crime,transnational,58318,NA,NA,NA,NA,1
 9,crime,charge,57971,n,v,NA,NA,0
 9,crime,misdemeanour,57785,NA,NA,NA,NA,0
 9,crime,offences,57581,NA,NA,NA,NA,0
-9,crime,act,57452,NA,NA,NA,NA,0
+9,crime,act,57452,NA,NA,NA,NA,1
 9,crime,guilty,57067,NA,NA,NA,NA,0
 9,crime,tort,56188,NA,NA,NA,NA,0
 9,crime,actus,55989,NA,NA,NA,NA,1
@@ -999,10 +999,10 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 11,detain,impeach,58932,NA,NA,NA,NA,0
 11,detain,disperse,58931,NA,NA,NA,NA,0
 11,detain,incriminate,58930,NA,NA,NA,NA,0
-11,detain,engaol,58929,NA,NA,NA,NA,0
+11,detain,engaol,58929,NA,NA,NA,NA,1
 11,detain,detention centre,58928,NA,NA,NA,NA,0
-11,detain,naturalise,58927,NA,NA,NA,NA,0
-11,detain,eject,58926,NA,NA,NA,NA,0
+11,detain,naturalise,58927,NA,NA,NA,NA,1
+11,detain,eject,58926,NA,NA,NA,NA,1
 11,detain,brutalize,58925,NA,NA,NA,NA,0
 12,detention,detainment,21584,NA,NA,NA,NA,0
 12,detention,jail,19936,NA,NA,NA,NA,0
@@ -1112,11 +1112,11 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 13,drugs,poisonous,56372,NA,NA,NA,NA,0
 13,drugs,supplies,56081,NA,NA,NA,NA,0
 13,drugs,expensive,54965,NA,NA,NA,NA,0
-13,drugs,use,54743,NA,NA,NA,NA,0
+13,drugs,use,54743,NA,NA,NA,NA,1
 13,drugs,drogue,54336,NA,NA,NA,NA,0
 13,drugs,anti-drug,50807,NA,NA,NA,NA,0
 13,drugs,antimicrobials,50807,NA,NA,NA,NA,0
-13,drugs,cox-2,50807,NA,NA,NA,NA,0
+13,drugs,cox-2,50807,NA,NA,NA,NA,1
 13,drugs,drogues,50807,NA,NA,NA,NA,0
 13,drugs,drug-free,50807,NA,NA,NA,NA,0
 13,drugs,hopheads,50807,NA,NA,NA,NA,0
@@ -1267,7 +1267,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 15,fear,trepidation,73376,NA,NA,NA,NA,0
 15,fear,specter,73204,NA,NA,NA,NA,0
 15,fear,anguish,72520,NA,NA,NA,NA,0
-15,fear,believe,72404,NA,NA,NA,NA,0
+15,fear,believe,72404,NA,NA,NA,NA,1
 15,fear,angst,72400,NA,NA,NA,NA,0
 15,fear,phobia,71967,NA,NA,NA,NA,0
 15,fear,intimidation,71919,NA,NA,NA,NA,0
@@ -1276,9 +1276,9 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 15,fear,foreboding,70595,NA,NA,NA,NA,0
 15,fear,tremble,70511,NA,NA,NA,NA,0
 15,fear,suspicion,70255,NA,NA,NA,NA,0
-15,fear,feel,70193,NA,NA,NA,NA,0
+15,fear,feel,70193,NA,NA,NA,NA,1
 15,fear,horror,70189,NA,NA,NA,NA,0
-15,fear,think,68796,NA,NA,NA,NA,0
+15,fear,think,68796,NA,NA,NA,NA,1
 15,fear,stink,68422,NA,NA,NA,NA,0
 15,fear,suspect,67889,NA,NA,NA,NA,0
 15,fear,awe,67708,NA,NA,NA,NA,0
@@ -1293,8 +1293,8 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 15,fear,dizziness,62067,NA,NA,NA,NA,0
 15,fear,theme,62016,NA,NA,NA,NA,0
 15,fear,spectre,61544,NA,NA,NA,NA,0
-15,fear,teme,60978,NA,NA,NA,NA,0
-15,fear,gold,60651,NA,NA,NA,NA,0
+15,fear,teme,60978,NA,NA,NA,NA,1
+15,fear,gold,60651,NA,NA,NA,NA,1
 15,fear,redoubt,60442,NA,NA,NA,NA,0
 15,fear,bong,58344,NA,NA,NA,NA,0
 15,fear,anger,58341,n,adv,NA,NA,0
@@ -1339,7 +1339,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 16,forgery,tampering,66092,n,v,NA,NA,0
 16,forgery,fake,65984,NA,NA,NA,NA,0
 16,forgery,perjury,65565,NA,NA,NA,NA,0
-16,forgery,FALSE,64849,NA,NA,NA,NA,0
+16,forgery,false ,64849,NA,NA,NA,NA,0
 16,forgery,forging,64766,NA,NA,NA,NA,0
 16,forgery,dishonesty,64484,NA,NA,NA,NA,0
 16,forgery,phony,64025,NA,NA,NA,NA,0
@@ -1479,7 +1479,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 18,gang,band,58805,NA,NA,NA,NA,0
 18,gang,party,58567,NA,NA,NA,NA,0
 18,gang,group,58203,NA,NA,NA,NA,0
-18,gang,friends,57887,NA,NA,NA,NA,0
+18,gang,friends,57887,NA,NA,NA,NA,1
 18,gang,troupe,57811,NA,NA,NA,NA,0
 18,gang,team,57025,NA,NA,NA,NA,0
 18,gang,outfit,56199,NA,NA,NA,NA,0
@@ -1488,41 +1488,41 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 18,gang,collective,55488,NA,NA,NA,NA,0
 18,gang,strip,55140,NA,NA,NA,NA,0
 18,gang,jiang,54960,n,prop,NA,NA,0
-18,gang,everybody,54881,NA,NA,NA,NA,0
+18,gang,everybody,54881,NA,NA,NA,NA,1
 18,gang,fascia,54691,NA,NA,NA,NA,0
-18,gang,track,54496,n,v,NA,NA,0
+18,gang,track,54496,n,v,NA,NA,1
 18,gang,striping,54482,NA,NA,NA,NA,0
 18,gang,swath,54360,NA,NA,NA,NA,0
-18,gang,everyone,54343,NA,NA,NA,NA,0
-18,gang,train,54209,NA,NA,NA,NA,0
-18,gang,corridor,54145,NA,NA,NA,NA,0
+18,gang,everyone,54343,NA,NA,NA,NA,1
+18,gang,train,54209,NA,NA,NA,NA,1
+18,gang,corridor,54145,NA,NA,NA,NA,1
 18,gang,ginger,54121,NA,NA,NA,NA,0
 18,gang,tape,53829,NA,NA,NA,NA,0
 18,gang,flock,53813,NA,NA,NA,NA,0
-18,gang,gear,53790,NA,NA,NA,NA,0
+18,gang,gear,53790,NA,NA,NA,NA,1
 18,gang,stripe,53748,NA,NA,NA,NA,0
 18,gang,folks,53362,NA,NA,NA,NA,0
-18,gang,gar,53313,NA,NA,NA,NA,0
+18,gang,gar,53313,NA,NA,NA,NA,1
 18,gang,started,53290,NA,NA,NA,NA,0
-18,gang,way,53271,NA,NA,NA,NA,0
-18,gang,ribbon,53194,NA,NA,NA,NA,0
+18,gang,way,53271,NA,NA,NA,NA,1
+18,gang,ribbon,53194,NA,NA,NA,NA,1
 18,gang,affiliates,53078,NA,NA,NA,NA,0
 18,gang,ken,53026,n,prop,NA,NA,0
-18,gang,side,52961,NA,NA,NA,NA,0
+18,gang,side,52961,NA,NA,NA,NA,1
 18,gang,help,52803,NA,NA,NA,NA,0
 18,gang,swing,52775,NA,NA,NA,NA,0
 18,gang,affiliate,52718,NA,NA,NA,NA,0
 18,gang,steel,52543,NA,NA,NA,NA,0
 18,gang,helping,52520,NA,NA,NA,NA,0
 18,gang,start,52500,NA,NA,NA,NA,0
-18,gang,momentum,52494,NA,NA,NA,NA,0
+18,gang,momentum,52494,NA,NA,NA,NA,1
 18,gang,motion,52416,NA,NA,NA,NA,0
 18,gang,mass,52252,NA,NA,NA,NA,0
 18,gang,kong,52012,n,prop,NA,NA,0
-18,gang,state,51821,NA,NA,NA,NA,0
-18,gang,place,51770,NA,NA,NA,NA,0
-18,gang,belt,51348,NA,NA,NA,NA,0
-18,gang,progress,51230,NA,NA,NA,NA,0
+18,gang,state,51821,NA,NA,NA,NA,1
+18,gang,place,51770,NA,NA,NA,NA,1
+18,gang,belt,51348,NA,NA,NA,NA,1
+18,gang,progress,51230,NA,NA,NA,NA,1
 18,gang,telegraph,51059,NA,NA,NA,NA,0
 18,gang,launch,51004,NA,NA,NA,NA,0
 18,gang,chiang,50993,n,prop,NA,NA,0
@@ -1556,10 +1556,10 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 19,gun,gas pedal,31783,syn,n,NA,NA,0
 19,gun,hired gun,30489,syn,n,NA,NA,0
 19,gun,heavy weapon,30215,syn,n,NA,NA,0
-19,gun,gas,30101,syn,n,NA,NA,0
-19,gun,accelerator pedal,30056,syn,n,NA,NA,0
-19,gun,accelerator,29421,syn,n,NA,NA,0
-19,gun,grease-gun,26219,syn,n,NA,NA,0
+19,gun,gas,30101,syn,n,NA,NA,1
+19,gun,accelerator pedal,30056,syn,n,NA,NA,1
+19,gun,accelerator,29421,syn,n,NA,NA,1
+19,gun,grease-gun,26219,syn,n,NA,NA,1
 19,gun,hit man,26219,syn,n,NA,NA,0
 19,gun,handgun,26218,NA,NA,NA,NA,0
 19,gun,pistol,24941,NA,NA,NA,NA,0
@@ -1633,7 +1633,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 19,gun,canon,4267,NA,NA,NA,NA,0
 19,gun,colt,4071,NA,NA,NA,NA,0
 19,gun,lug,4052,NA,NA,NA,NA,0
-19,gun,down,3884,NA,NA,NA,NA,0
+19,gun,down,3884,NA,NA,NA,NA,1
 19,gun,rev,3854,NA,NA,NA,NA,0
 19,gun,injector,3794,NA,NA,NA,NA,0
 19,gun,defender,3372,NA,NA,NA,NA,0
@@ -1737,7 +1737,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 21,harrassment,continual,14996,NA,NA,NA,NA,0
 21,harrassment,racial,14994,NA,NA,NA,NA,0
 21,harrassment,verbal,14993,NA,NA,NA,NA,0
-21,harrassment,unnecessary,14992,NA,NA,NA,NA,0
+21,harrassment,unnecessary,14992,NA,NA,NA,NA,1
 21,harrassment,subjected,14991,NA,NA,NA,NA,0
 21,harrassment,continued,14990,NA,NA,NA,NA,0
 21,harrassment,suffered,14988,NA,NA,NA,NA,0
@@ -1796,7 +1796,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 22,homophobia,extremism,51159,NA,NA,NA,NA,0
 22,homophobia,heterosexuality,51158,NA,NA,NA,NA,0
 22,homophobia,feminism,51157,NA,NA,NA,NA,0
-22,homophobia,immorality,51156,NA,NA,NA,NA,0
+22,homophobia,immorality,51156,NA,NA,NA,NA,1
 22,homophobia,elitism,51155,NA,NA,NA,NA,0
 22,homophobia,asexuality,51154,NA,NA,NA,NA,0
 22,homophobia,fundamentalism,51153,NA,NA,NA,NA,0
@@ -1953,7 +1953,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 24,injury,shame,55048,NA,NA,NA,NA,0
 24,injury,mischief,54850,NA,NA,NA,NA,0
 24,injury,dysfunction,54732,NA,NA,NA,NA,0
-24,injury,cases,54394,NA,NA,NA,NA,0
+24,injury,cases,54394,NA,NA,NA,NA,1
 24,injury,harming,54268,NA,NA,NA,NA,0
 24,injury,cut,53853,NA,NA,NA,NA,0
 24,injury,victims,53828,NA,NA,NA,NA,0
@@ -1964,7 +1964,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 24,injury,affected,52754,NA,NA,NA,NA,0
 24,injury,attainment,52603,NA,NA,NA,NA,0
 24,injury,disservice,52422,NA,NA,NA,NA,0
-24,injury,discount,52120,NA,NA,NA,NA,0
+24,injury,discount,52120,NA,NA,NA,NA,1
 24,injury,dumping,51963,n,v,NA,NA,0
 24,injury,judice,51724,NA,NA,NA,NA,0
 24,injury,concussion,50882,NA,NA,NA,NA,0
@@ -1972,20 +1972,20 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 24,injury,illness,50880,NA,NA,NA,NA,0
 24,injury,ailment,50879,NA,NA,NA,NA,0
 24,injury,contusion,50877,NA,NA,NA,NA,0
-24,injury,knee,50876,NA,NA,NA,NA,0
-24,injury,soreness,50875,NA,NA,NA,NA,0
-24,injury,charley horse,50874,n,prop,NA,NA,0
+24,injury,knee,50876,NA,NA,NA,NA,1
+24,injury,soreness,50875,NA,NA,NA,NA,1
+24,injury,charley horse,50874,n,prop,NA,NA,1
 24,injury,fracture,50872,NA,NA,NA,NA,0
 24,injury,ligament,50871,NA,NA,NA,NA,0
 24,injury,whiplash,50870,n,adj,NA,NA,0
 24,injury,stress fracture,50868,NA,NA,NA,NA,0
-24,injury,groin,50867,NA,NA,NA,NA,0
-24,injury,ankle,50866,NA,NA,NA,NA,0
-24,injury,tendonitis,50865,NA,NA,NA,NA,0
-24,injury,herniated disc,50864,NA,NA,NA,NA,0
-24,injury,hamstring,50863,NA,NA,NA,NA,0
-24,injury,hernia,50862,NA,NA,NA,NA,0
-25,knife,tongue,85327,syn,n,NA,NA,0
+24,injury,groin,50867,NA,NA,NA,NA,1
+24,injury,ankle,50866,NA,NA,NA,NA,1
+24,injury,tendonitis,50865,NA,NA,NA,NA,1
+24,injury,herniated disc,50864,NA,NA,NA,NA,1
+24,injury,hamstring,50863,NA,NA,NA,NA,1
+24,injury,hernia,50862,NA,NA,NA,NA,1
+25,knife,tongue,85327,syn,n,NA,NA,1
 25,knife,gun,69061,NA,NA,NA,NA,0
 25,knife,blade,68921,NA,NA,NA,NA,0
 25,knife,stabbed,68761,adj,v,NA,NA,0
@@ -2006,10 +2006,10 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 25,knife,thread,56823,NA,NA,NA,NA,0
 25,knife,snee,56221,n,prop,NA,NA,0
 25,knife,wire,56190,NA,NA,NA,NA,0
-25,knife,surgery,56115,NA,NA,NA,NA,0
-25,knife,slide,55372,n,v,NA,NA,0
+25,knife,surgery,56115,NA,NA,NA,NA,1
+25,knife,slide,55372,n,v,NA,NA,1
 25,knife,ratchet,55031,NA,NA,NA,NA,0
-25,knife,platoon,54823,NA,NA,NA,NA,0
+25,knife,platoon,54823,NA,NA,NA,NA,1
 25,knife,iron,54584,NA,NA,NA,NA,0
 25,knife,yarn,53451,NA,NA,NA,NA,0
 25,knife,lamina,52959,NA,NA,NA,NA,0
@@ -2037,7 +2037,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 25,knife,pipe wrench,50783,NA,NA,NA,NA,0
 25,knife,utensil,50782,NA,NA,NA,NA,0
 25,knife,tongs,50781,NA,NA,NA,NA,0
-25,knife,spoon,50780,NA,NA,NA,NA,0
+25,knife,spoon,50780,NA,NA,NA,NA,1
 25,knife,butcher knife,50779,NA,NA,NA,NA,0
 25,knife,carving knife,50778,NA,NA,NA,NA,0
 25,knife,knife blade,50777,NA,NA,NA,NA,0
@@ -2297,125 +2297,125 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 29,offence,transgression,3494,NA,NA,NA,NA,0
 29,offence,contrary,3276,NA,NA,NA,NA,0
 29,offence,slur,3258,NA,NA,NA,NA,0
-29,offence,qualification,3142,NA,NA,NA,NA,0
+29,offence,qualification,3142,NA,NA,NA,NA,1
 29,offence,deed,3030,NA,NA,NA,NA,0
-29,offence,count,2988,NA,NA,NA,NA,0
+29,offence,count,2988,NA,NA,NA,NA,1
 29,offence,perpetration,2789,NA,NA,NA,NA,0
 29,offence,lack,2764,NA,NA,NA,NA,0
 29,offence,culpability,2637,NA,NA,NA,NA,0
 29,offence,offend,2354,NA,NA,NA,NA,0
 29,offence,criminalized,2352,NA,NA,NA,NA,0
 29,offence,fault,2284,NA,NA,NA,NA,0
-29,offence,action,2111,NA,NA,NA,NA,0
+29,offence,action,2111,NA,NA,NA,NA,1
 29,offence,failure,2025,NA,NA,NA,NA,0
 29,offence,unauthorized,1754,NA,NA,NA,NA,0
-29,offence,insider,1700,NA,NA,NA,NA,0
+29,offence,insider,1700,NA,NA,NA,NA,1
 29,offence,snub,1575,NA,NA,NA,NA,0
-29,offence,person,1527,NA,NA,NA,NA,0
+29,offence,person,1527,NA,NA,NA,NA,1
 29,offence,drift,1456,NA,NA,NA,NA,0
-29,offence,fact,1422,NA,NA,NA,NA,0
-29,offence,note,1348,NA,NA,NA,NA,0
+29,offence,fact,1422,NA,NA,NA,NA,1
+29,offence,note,1348,NA,NA,NA,NA,1
 29,offence,accusation,1177,NA,NA,NA,NA,0
 29,offence,absence,1044,NA,NA,NA,NA,0
-29,offence,acts,1024,NA,NA,NA,NA,0
-29,offence,type,687,NA,NA,NA,NA,0
+29,offence,acts,1024,NA,NA,NA,NA,1
+29,offence,type,687,NA,NA,NA,NA,1
 29,offence,criminalizing,1,NA,NA,NA,NA,0
 29,offence,delito,1,NA,NA,NA,NA,0
 29,offence,non-compliance,1,NA,NA,NA,NA,0
-29,offence,commission,NA,NA,NA,NA,NA,0
+29,offence,commission,NA,NA,NA,NA,NA,1
 30,pigs,hog,97663,syn,n,NA,NA,0
-30,pigs,farrow,89834,syn,n,prop,NA,0
-30,pigs,sus scrofa,88847,syn,n,NA,NA,0
+30,pigs,farrow,89834,syn,n,prop,NA,1
+30,pigs,sus scrofa,88847,syn,n,NA,NA,1
 30,pigs,slob,86990,syn,n,NA,NA,0
-30,pigs,raven,86056,syn,n,NA,NA,0
+30,pigs,raven,86056,syn,n,NA,NA,1
 30,pigs,devour,81932,syn,v,NA,NA,0
 30,pigs,copper,81723,syn,n,NA,NA,0
-30,pigs,gulp,81569,syn,n,NA,NA,0
-30,pigs,sloven,81041,syn,n,NA,NA,0
-30,pigs,guttle,76993,syn,v,NA,NA,0
-30,pigs,pig bed,76993,syn,n,NA,NA,0
-30,pigs,pig it,76993,syn,v,NA,NA,0
+30,pigs,gulp,81569,syn,n,NA,NA,1
+30,pigs,sloven,81041,syn,n,NA,NA,1
+30,pigs,guttle,76993,syn,v,NA,NA,1
+30,pigs,pig bed,76993,syn,n,NA,NA,1
+30,pigs,pig it,76993,syn,v,NA,NA,1
 30,pigs,slovenly person,76993,syn,n,NA,NA,0
 30,pigs,swine,73412,NA,NA,NA,NA,0
-30,pigs,piglets,73302,NA,NA,NA,NA,0
+30,pigs,piglets,73302,NA,NA,NA,NA,1
 30,pigs,hogs,72889,NA,NA,NA,NA,0
 30,pigs,animals,71391,NA,NA,NA,NA,0
 30,pigs,porkers,69880,NA,NA,NA,NA,0
 30,pigs,pork,68054,NA,NA,NA,NA,0
-30,pigs,carcasses,67409,NA,NA,NA,NA,0
-30,pigs,porcine,66649,adj,n,NA,NA,0
-30,pigs,hedgehogs,63854,NA,NA,NA,NA,0
-30,pigs,porc,59164,n,prop,NA,NA,0
-30,pigs,gluttons,58795,NA,NA,NA,NA,0
+30,pigs,carcasses,67409,NA,NA,NA,NA,1
+30,pigs,porcine,66649,adj,n,NA,NA,1
+30,pigs,hedgehogs,63854,NA,NA,NA,NA,1
+30,pigs,porc,59164,n,prop,NA,NA,1
+30,pigs,gluttons,58795,NA,NA,NA,NA,1
 30,pigs,slobs,58344,NA,NA,NA,NA,0
-30,pigs,streptococcus,57805,NA,NA,NA,NA,0
-30,pigs,heads,56540,NA,NA,NA,NA,0
-30,pigs,cows,50903,NA,NA,NA,NA,0
-30,pigs,rabbits,50898,NA,NA,NA,NA,0
-30,pigs,hens,50897,NA,NA,NA,NA,0
-30,pigs,ostriches,50896,NA,NA,NA,NA,0
-30,pigs,goats,50895,n,v,NA,NA,0
-30,pigs,sheep,50894,NA,NA,NA,NA,0
-30,pigs,cattle,50893,NA,NA,NA,NA,0
-30,pigs,fowl,50892,NA,NA,NA,NA,0
-30,pigs,bovines,50891,NA,NA,NA,NA,0
-30,pigs,livestock,50889,NA,NA,NA,NA,0
-30,pigs,calves,50888,NA,NA,NA,NA,0
-30,pigs,turkeys,50887,NA,NA,NA,NA,0
-30,pigs,dairy cattle,50886,NA,NA,NA,NA,0
-30,pigs,lambs,50885,NA,NA,NA,NA,0
-30,pigs,monkeys,50884,NA,NA,NA,NA,0
-30,pigs,poultry,50883,NA,NA,NA,NA,0
+30,pigs,streptococcus,57805,NA,NA,NA,NA,1
+30,pigs,heads,56540,NA,NA,NA,NA,1
+30,pigs,cows,50903,NA,NA,NA,NA,1
+30,pigs,rabbits,50898,NA,NA,NA,NA,1
+30,pigs,hens,50897,NA,NA,NA,NA,1
+30,pigs,ostriches,50896,NA,NA,NA,NA,1
+30,pigs,goats,50895,n,v,NA,NA,1
+30,pigs,sheep,50894,NA,NA,NA,NA,1
+30,pigs,cattle,50893,NA,NA,NA,NA,1
+30,pigs,fowl,50892,NA,NA,NA,NA,1
+30,pigs,bovines,50891,NA,NA,NA,NA,1
+30,pigs,livestock,50889,NA,NA,NA,NA,1
+30,pigs,calves,50888,NA,NA,NA,NA,1
+30,pigs,turkeys,50887,NA,NA,NA,NA,1
+30,pigs,dairy cattle,50886,NA,NA,NA,NA,1
+30,pigs,lambs,50885,NA,NA,NA,NA,1
+30,pigs,monkeys,50884,NA,NA,NA,NA,1
+30,pigs,poultry,50883,NA,NA,NA,NA,1
 30,pigs,piggies,50882,NA,NA,NA,NA,0
-30,pigs,roosters,50880,NA,NA,NA,NA,0
-30,pigs,cats,50879,NA,NA,NA,NA,0
-30,pigs,llamas,50877,NA,NA,NA,NA,0
-30,pigs,beef cattle,50876,NA,NA,NA,NA,0
-30,pigs,birds,50875,NA,NA,NA,NA,0
-30,pigs,heifers,50874,NA,NA,NA,NA,0
-30,pigs,sows,50873,NA,NA,NA,NA,0
+30,pigs,roosters,50880,NA,NA,NA,NA,1
+30,pigs,cats,50879,NA,NA,NA,NA,1
+30,pigs,llamas,50877,NA,NA,NA,NA,1
+30,pigs,beef cattle,50876,NA,NA,NA,NA,1
+30,pigs,birds,50875,NA,NA,NA,NA,1
+30,pigs,heifers,50874,NA,NA,NA,NA,1
+30,pigs,sows,50873,NA,NA,NA,NA,1
 30,pigs,boars,50872,NA,NA,NA,NA,0
-30,pigs,geese,50871,NA,NA,NA,NA,0
-30,pigs,barnyard,50870,NA,NA,NA,NA,0
-30,pigs,flocks,50869,NA,NA,NA,NA,0
-30,pigs,cavies,50868,NA,NA,NA,NA,0
-30,pigs,puppies,50867,NA,NA,NA,NA,0
-30,pigs,horses,50866,NA,NA,NA,NA,0
-30,pigs,coccidiosis,50864,NA,NA,NA,NA,0
-30,pigs,pullet,50863,NA,NA,NA,NA,0
-30,pigs,alpacas,50862,NA,NA,NA,NA,0
-30,pigs,slaughterhouse,50861,NA,NA,NA,NA,0
-30,pigs,zebu,50860,NA,NA,NA,NA,0
-30,pigs,capons,50859,NA,NA,NA,NA,0
-30,pigs,chinchillas,50858,NA,NA,NA,NA,0
-30,pigs,holstein,50857,n,prop,NA,NA,0
-30,pigs,ducks,50856,NA,NA,NA,NA,0
-30,pigs,emus,50855,NA,NA,NA,NA,0
-30,pigs,rheas,50854,NA,NA,NA,NA,0
-30,pigs,frogs,50853,NA,NA,NA,NA,0
-30,pigs,herds,50852,NA,NA,NA,NA,0
-30,pigs,felines,50851,NA,NA,NA,NA,0
-30,pigs,buffalo,50850,NA,NA,NA,NA,0
-30,pigs,manure,50848,NA,NA,NA,NA,0
-30,pigs,equines,50847,NA,NA,NA,NA,0
-30,pigs,ruminant,50846,NA,NA,NA,NA,0
-30,pigs,ewes,50845,NA,NA,NA,NA,0
-30,pigs,black angus,50844,n,prop,NA,NA,0
-30,pigs,foxes,50843,NA,NA,NA,NA,0
-30,pigs,dogs,50842,NA,NA,NA,NA,0
-30,pigs,ovine,50841,NA,NA,NA,NA,0
-30,pigs,bassets,50840,NA,NA,NA,NA,0
-30,pigs,donkeys,50839,NA,NA,NA,NA,0
-30,pigs,pigsties,50838,NA,NA,NA,NA,0
-30,pigs,farrowing,50837,NA,NA,NA,NA,0
-30,pigs,pigeons,50836,NA,NA,NA,NA,0
-30,pigs,piggeries,50835,NA,NA,NA,NA,0
-30,pigs,guinea fowl,50834,NA,NA,NA,NA,0
-30,pigs,swans,50833,NA,NA,NA,NA,0
-30,pigs,quails,50832,NA,NA,NA,NA,0
-30,pigs,gallus gallus,50831,n,prop,NA,NA,0
-30,pigs,civets,50830,NA,NA,NA,NA,0
-30,pigs,abattoir,50829,NA,NA,NA,NA,0
+30,pigs,geese,50871,NA,NA,NA,NA,1
+30,pigs,barnyard,50870,NA,NA,NA,NA,1
+30,pigs,flocks,50869,NA,NA,NA,NA,1
+30,pigs,cavies,50868,NA,NA,NA,NA,1
+30,pigs,puppies,50867,NA,NA,NA,NA,1
+30,pigs,horses,50866,NA,NA,NA,NA,1
+30,pigs,coccidiosis,50864,NA,NA,NA,NA,1
+30,pigs,pullet,50863,NA,NA,NA,NA,1
+30,pigs,alpacas,50862,NA,NA,NA,NA,1
+30,pigs,slaughterhouse,50861,NA,NA,NA,NA,1
+30,pigs,zebu,50860,NA,NA,NA,NA,1
+30,pigs,capons,50859,NA,NA,NA,NA,1
+30,pigs,chinchillas,50858,NA,NA,NA,NA,1
+30,pigs,holstein,50857,n,prop,NA,NA,1
+30,pigs,ducks,50856,NA,NA,NA,NA,1
+30,pigs,emus,50855,NA,NA,NA,NA,1
+30,pigs,rheas,50854,NA,NA,NA,NA,1
+30,pigs,frogs,50853,NA,NA,NA,NA,1
+30,pigs,herds,50852,NA,NA,NA,NA,1
+30,pigs,felines,50851,NA,NA,NA,NA,1
+30,pigs,buffalo,50850,NA,NA,NA,NA,1
+30,pigs,manure,50848,NA,NA,NA,NA,1
+30,pigs,equines,50847,NA,NA,NA,NA,1
+30,pigs,ruminant,50846,NA,NA,NA,NA,1
+30,pigs,ewes,50845,NA,NA,NA,NA,1
+30,pigs,black angus,50844,n,prop,NA,NA,1
+30,pigs,foxes,50843,NA,NA,NA,NA,1
+30,pigs,dogs,50842,NA,NA,NA,NA,1
+30,pigs,ovine,50841,NA,NA,NA,NA,1
+30,pigs,bassets,50840,NA,NA,NA,NA,1
+30,pigs,donkeys,50839,NA,NA,NA,NA,1
+30,pigs,pigsties,50838,NA,NA,NA,NA,1
+30,pigs,farrowing,50837,NA,NA,NA,NA,1
+30,pigs,pigeons,50836,NA,NA,NA,NA,1
+30,pigs,piggeries,50835,NA,NA,NA,NA,1
+30,pigs,guinea fowl,50834,NA,NA,NA,NA,1
+30,pigs,swans,50833,NA,NA,NA,NA,1
+30,pigs,quails,50832,NA,NA,NA,NA,1
+30,pigs,gallus gallus,50831,n,prop,NA,NA,1
+30,pigs,civets,50830,NA,NA,NA,NA,1
+30,pigs,abattoir,50829,NA,NA,NA,NA,1
 31,police,patrol,93643,syn,n,v,NA,0
 31,police,police force,81010,syn,n,NA,NA,0
 31,police,officers,74564,NA,NA,NA,NA,0
@@ -2477,23 +2477,23 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 31,police,polity,52213,NA,NA,NA,NA,0
 31,police,harv,51930,n,prop,NA,NA,0
 31,police,kps,51856,NA,NA,NA,NA,0
-31,police,fonts,50831,NA,NA,NA,NA,0
-31,police,font,50763,NA,NA,NA,NA,0
+31,police,fonts,50831,NA,NA,NA,NA,1
+31,police,font,50763,NA,NA,NA,NA,1
 31,police,carabinieri,50704,NA,NA,NA,NA,0
 31,police,gardai,50704,NA,NA,NA,NA,0
-31,police,hkp,50704,n,prop,NA,NA,0
-31,police,hnp,50704,n,prop,NA,NA,0
+31,police,hkp,50704,n,prop,NA,NA,1
+31,police,hnp,50704,n,prop,NA,NA,1
 31,police,hpd,50704,n,prop,NA,NA,0
 31,police,law-enforcement,50704,NA,NA,NA,NA,0
-31,police,lnp,50704,n,prop,NA,NA,0
-31,police,pnp,50704,NA,NA,NA,NA,0
-31,police,polizia,50704,NA,NA,NA,NA,0
-31,police,psni,50704,n,prop,NA,NA,0
-31,police,rbp,50704,n,prop,NA,NA,0
+31,police,lnp,50704,n,prop,NA,NA,1
+31,police,pnp,50704,NA,NA,NA,NA,1
+31,police,polizia,50704,NA,NA,NA,NA,1
+31,police,psni,50704,n,prop,NA,NA,1
+31,police,rbp,50704,n,prop,NA,NA,1
 31,police,plainclothes,50694,n,adj,NA,NA,0
 31,police,sergeant,50693,NA,NA,NA,NA,0
 31,police,antiriot,50690,NA,NA,NA,NA,0
-31,police,fire marshal,50688,NA,NA,NA,NA,0
+31,police,fire marshal,50688,NA,NA,NA,NA,1
 32,prison,prison house,79004,syn,n,NA,NA,0
 32,prison,penitentiaries,67886,NA,NA,NA,NA,0
 32,prison,reformatory,66751,n,adj,NA,NA,0
@@ -2512,8 +2512,8 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 32,prison,corrective,54906,NA,NA,NA,NA,0
 32,prison,inside,54886,n,adj,NA,NA,0
 32,prison,time,54862,NA,NA,NA,NA,0
-32,prison,industrial,54289,NA,NA,NA,NA,0
-32,prison,gets,54198,NA,NA,NA,NA,0
+32,prison,industrial,54289,NA,NA,NA,NA,1
+32,prison,gets,54198,NA,NA,NA,NA,1
 32,prison,attica,54165,n,prop,NA,NA,0
 32,prison,slam,53778,NA,NA,NA,NA,0
 32,prison,chino,53506,n,prop,NA,NA,0
@@ -2566,7 +2566,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 33,prostitute,blackmailer,51075,NA,NA,NA,NA,0
 33,prostitute,nymphomaniac,51073,NA,NA,NA,NA,0
 33,prostitute,paramour,51072,NA,NA,NA,NA,0
-33,prostitute,boyfriend,51071,NA,NA,NA,NA,0
+33,prostitute,boyfriend,51071,NA,NA,NA,NA,1
 33,prostitute,sexcapade,51070,NA,NA,NA,NA,0
 33,prostitute,demimondaine,51068,NA,NA,NA,NA,0
 33,prostitute,drifter,51067,NA,NA,NA,NA,0
@@ -2578,7 +2578,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 33,prostitute,temptress,51060,NA,NA,NA,NA,0
 33,prostitute,informant,51059,NA,NA,NA,NA,0
 33,prostitute,giant timber bamboo,51058,NA,NA,NA,NA,0
-33,prostitute,exboyfriend,51057,NA,NA,NA,NA,0
+33,prostitute,exboyfriend,51057,NA,NA,NA,NA,1
 33,prostitute,heroin addict,51056,NA,NA,NA,NA,0
 33,prostitute,transsexual,51055,n,adj,NA,NA,0
 33,prostitute,female impersonator,51054,NA,NA,NA,NA,0
@@ -2739,7 +2739,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 35,racist,coloureds,50922,NA,NA,NA,NA,0
 35,racist,racial profiling,50921,NA,NA,NA,NA,0
 35,racist,profane,50920,NA,NA,NA,NA,0
-36,rape,colza,87309,syn,n,NA,NA,0
+36,rape,colza,87309,syn,n,NA,NA,1
 36,rape,ravish,86254,syn,v,NA,NA,0
 36,rape,rapine,85160,syn,n,NA,NA,0
 36,rape,dishonour,84820,syn,n,NA,NA,0
@@ -2849,10 +2849,10 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 38,smuggle,contraband,66919,adj,n,NA,NA,0
 38,smuggle,bring,61787,NA,NA,NA,NA,0
 38,smuggle,introduce,60860,NA,NA,NA,NA,0
-38,smuggle,enter,60482,NA,NA,NA,NA,0
-38,smuggle,spend,58757,NA,NA,NA,NA,0
-38,smuggle,pass,56805,NA,NA,NA,NA,0
-38,smuggle,move,56467,NA,NA,NA,NA,0
+38,smuggle,enter,60482,NA,NA,NA,NA,1
+38,smuggle,spend,58757,NA,NA,NA,NA,1
+38,smuggle,pass,56805,NA,NA,NA,NA,1
+38,smuggle,move,56467,NA,NA,NA,NA,1
 38,smuggle,launder,51242,NA,NA,NA,NA,0
 38,smuggle,transship,51241,NA,NA,NA,NA,0
 38,smuggle,infiltrate,51239,NA,NA,NA,NA,0
@@ -2927,118 +2927,118 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 38,smuggle,misguide,51154,NA,NA,NA,NA,0
 38,smuggle,deceive,51153,NA,NA,NA,NA,0
 38,smuggle,highjack,51152,NA,NA,NA,NA,0
-39,shoplifting,display,54206,NA,NA,NA,NA,0
-39,shoplifting,condemned,51700,NA,NA,NA,NA,0
-39,shoplifting,ovis,51313,NA,NA,NA,NA,0
+39,shoplifting,display,54206,NA,NA,NA,NA,1
+39,shoplifting,condemned,51700,NA,NA,NA,NA,1
+39,shoplifting,ovis,51313,NA,NA,NA,NA,1
 39,shoplifting,drunkeness,51307,NA,NA,NA,NA,0
-39,shoplifting,store,51300,NA,NA,NA,NA,0
-39,shoplifting,pawning,51285,NA,NA,NA,NA,0
-39,shoplifting,ptl,51284,NA,NA,NA,NA,0
+39,shoplifting,store,51300,NA,NA,NA,NA,1
+39,shoplifting,pawning,51285,NA,NA,NA,NA,1
+39,shoplifting,ptl,51284,NA,NA,NA,NA,1
 39,shoplifting,prowlers,51283,NA,NA,NA,NA,0
 39,shoplifting,police blotter,51277,NA,NA,NA,NA,0
-39,shoplifting,shopper,51276,NA,NA,NA,NA,0
+39,shoplifting,shopper,51276,NA,NA,NA,NA,1
 39,shoplifting,robber,51273,NA,NA,NA,NA,0
 39,shoplifting,heists,51269,NA,NA,NA,NA,0
 39,shoplifting,convenience store,51268,NA,NA,NA,NA,0
 39,shoplifting,shopping cart,51257,NA,NA,NA,NA,0
-39,shoplifting,cartful,51254,NA,NA,NA,NA,0
-39,shoplifting,shopping,51253,NA,NA,NA,NA,0
+39,shoplifting,cartful,51254,NA,NA,NA,NA,1
+39,shoplifting,shopping,51253,NA,NA,NA,NA,1
 39,shoplifting,peeper,51252,NA,NA,NA,NA,0
 39,shoplifting,mugger,51251,NA,NA,NA,NA,0
 39,shoplifting,cashier,51248,NA,NA,NA,NA,0
 39,shoplifting,macys,51244,NA,NA,NA,NA,0
 39,shoplifting,indecency,51243,NA,NA,NA,NA,0
-39,shoplifting,retailer,51240,NA,NA,NA,NA,0
-40,stalk,husk,79394,syn,n,NA,NA,0
-40,stalk,stubble,77758,syn,n,NA,NA,0
+39,shoplifting,retailer,51240,NA,NA,NA,NA,1
+40,stalk,husk,79394,syn,n,NA,NA,1
+40,stalk,stubble,77758,syn,n,NA,NA,1
 40,stalk,haunt,77136,syn,n,NA,NA,0
 40,stalk,shuck,75975,syn,n,NA,NA,0
 40,stalk,chaff,75249,syn,n,NA,NA,0
-40,stalk,straw,73509,syn,n,NA,NA,0
-40,stalk,angry walk,67812,syn,n,NA,NA,0
-40,stalk,still hunt,67812,syn,n,NA,NA,0
+40,stalk,straw,73509,syn,n,NA,NA,1
+40,stalk,angry walk,67812,syn,n,NA,NA,1
+40,stalk,still hunt,67812,syn,n,NA,NA,1
 40,stalk,hunt,62032,n,v,NA,NA,0
-40,stalk,peduncle,61683,n,v,NA,NA,0
+40,stalk,peduncle,61683,n,v,NA,NA,1
 40,stalk,badger,61056,NA,NA,NA,NA,0
 40,stalk,shoot,60831,n,v,NA,NA,0
 40,stalk,besiege,60609,NA,NA,NA,NA,0
 40,stalk,cane,60571,NA,NA,NA,NA,0
 40,stalk,downy,59144,NA,NA,NA,NA,0
 40,stalk,stud,58910,NA,NA,NA,NA,0
-40,stalk,squirts,58572,NA,NA,NA,NA,0
-40,stalk,walk,58198,NA,NA,NA,NA,0
+40,stalk,squirts,58572,NA,NA,NA,NA,1
+40,stalk,walk,58198,NA,NA,NA,NA,1
 40,stalk,stems,56908,NA,NA,NA,NA,0
-40,stalk,foot,56741,NA,NA,NA,NA,0
+40,stalk,foot,56741,NA,NA,NA,NA,1
 40,stalk,tracking,56519,NA,NA,NA,NA,0
 40,stalk,pole,56236,NA,NA,NA,NA,0
 40,stalk,pin,56202,NA,NA,NA,NA,0
 40,stalk,pied,55968,adj,prop,NA,NA,0
 40,stalk,toe,55917,NA,NA,NA,NA,0
 40,stalk,bole,55295,NA,NA,NA,NA,0
-40,stalk,shaft,55041,NA,NA,NA,NA,0
+40,stalk,shaft,55041,NA,NA,NA,NA,1
 40,stalk,foothold,54439,NA,NA,NA,NA,0
-40,stalk,upper,54212,NA,NA,NA,NA,0
-40,stalk,boot,53643,NA,NA,NA,NA,0
-40,stalk,splint,53591,NA,NA,NA,NA,0
-40,stalk,pinch,53246,NA,NA,NA,NA,0
+40,stalk,upper,54212,NA,NA,NA,NA,1
+40,stalk,boot,53643,NA,NA,NA,NA,1
+40,stalk,splint,53591,NA,NA,NA,NA,1
+40,stalk,pinch,53246,NA,NA,NA,NA,1
 40,stalk,probe,52503,NA,NA,NA,NA,0
-40,stalk,footing,52426,NA,NA,NA,NA,0
+40,stalk,footing,52426,NA,NA,NA,NA,1
 40,stalk,crackdown,52173,NA,NA,NA,NA,0
-40,stalk,staff,51020,NA,NA,NA,NA,0
-40,stalk,pedicel,50802,n,v,NA,NA,0
-40,stalk,prey,50801,NA,NA,NA,NA,0
-40,stalk,prowl,50800,NA,NA,NA,NA,0
-40,stalk,cauliculus,50799,NA,NA,NA,NA,0
-40,stalk,gynophore,50798,NA,NA,NA,NA,0
-40,stalk,deerstalking,50797,NA,NA,NA,NA,0
-40,stalk,haystalk,50796,NA,NA,NA,NA,0
-40,stalk,carpophore,50795,NA,NA,NA,NA,0
+40,stalk,staff,51020,NA,NA,NA,NA,1
+40,stalk,pedicel,50802,n,v,NA,NA,1
+40,stalk,prey,50801,NA,NA,NA,NA,1
+40,stalk,prowl,50800,NA,NA,NA,NA,1
+40,stalk,cauliculus,50799,NA,NA,NA,NA,1
+40,stalk,gynophore,50798,NA,NA,NA,NA,1
+40,stalk,deerstalking,50797,NA,NA,NA,NA,1
+40,stalk,haystalk,50796,NA,NA,NA,NA,1
+40,stalk,carpophore,50795,NA,NA,NA,NA,1
 40,stalk,stalkers,50794,NA,NA,NA,NA,0
-40,stalk,chomp,50793,NA,NA,NA,NA,0
-40,stalk,hornworm,50792,NA,NA,NA,NA,0
-40,stalk,tomato hornworm,50791,NA,NA,NA,NA,0
-40,stalk,axils,50790,NA,NA,NA,NA,0
-40,stalk,podosperm,50789,NA,NA,NA,NA,0
-40,stalk,webworms,50788,NA,NA,NA,NA,0
-40,stalk,quack grass,50787,NA,NA,NA,NA,0
-40,stalk,pokeweed,50786,NA,NA,NA,NA,0
-40,stalk,ferulaceous,50785,NA,NA,NA,NA,0
-40,stalk,sawflies,50784,NA,NA,NA,NA,0
-40,stalk,footstalk,50783,NA,NA,NA,NA,0
-40,stalk,holdfast,50782,NA,NA,NA,NA,0
-40,stalk,petiolule,50781,NA,NA,NA,NA,0
-40,stalk,popple,50780,NA,NA,NA,NA,0
-40,stalk,nutlets,50779,NA,NA,NA,NA,0
-40,stalk,ligustrum,50778,NA,NA,NA,NA,0
-40,stalk,tobacco hornworm,50777,NA,NA,NA,NA,0
-40,stalk,flower stalk,50776,NA,NA,NA,NA,0
-40,stalk,awns,50775,NA,NA,NA,NA,0
-40,stalk,snuffle,50774,NA,NA,NA,NA,0
-40,stalk,catkin,50773,NA,NA,NA,NA,0
-40,stalk,quackgrass,50772,NA,NA,NA,NA,0
-40,stalk,leafhoppers,50771,NA,NA,NA,NA,0
-40,stalk,spathe,50770,NA,NA,NA,NA,0
-40,stalk,slugs,50769,NA,NA,NA,NA,0
-40,stalk,mow,50768,NA,NA,NA,NA,0
-40,stalk,bulbils,50767,NA,NA,NA,NA,0
-40,stalk,internode,50766,NA,NA,NA,NA,0
-40,stalk,stolons,50765,NA,NA,NA,NA,0
-40,stalk,germinates,50764,NA,NA,NA,NA,0
-40,stalk,beechnuts,50763,NA,NA,NA,NA,0
-40,stalk,culms,50762,NA,NA,NA,NA,0
-40,stalk,sprout,50761,NA,NA,NA,NA,0
-40,stalk,briers,50760,NA,NA,NA,NA,0
-40,stalk,highbush cranberry,50759,NA,NA,NA,NA,0
-40,stalk,seedpods,50758,NA,NA,NA,NA,0
-40,stalk,panicles,50757,NA,NA,NA,NA,0
-40,stalk,buttonbush,50756,NA,NA,NA,NA,0
-40,stalk,mud dauber,50755,NA,NA,NA,NA,0
-40,stalk,drupes,50754,NA,NA,NA,NA,0
-40,stalk,june bug,50753,n,prop,NA,NA,0
-40,stalk,hackberries,50752,NA,NA,NA,NA,0
-40,stalk,caulicle,50751,NA,NA,NA,NA,0
-40,stalk,cholla,50750,NA,NA,NA,NA,0
-40,stalk,torment,50749,NA,NA,NA,NA,0
+40,stalk,chomp,50793,NA,NA,NA,NA,1
+40,stalk,hornworm,50792,NA,NA,NA,NA,1
+40,stalk,tomato hornworm,50791,NA,NA,NA,NA,1
+40,stalk,axils,50790,NA,NA,NA,NA,1
+40,stalk,podosperm,50789,NA,NA,NA,NA,1
+40,stalk,webworms,50788,NA,NA,NA,NA,1
+40,stalk,quack grass,50787,NA,NA,NA,NA,1
+40,stalk,pokeweed,50786,NA,NA,NA,NA,1
+40,stalk,ferulaceous,50785,NA,NA,NA,NA,1
+40,stalk,sawflies,50784,NA,NA,NA,NA,1
+40,stalk,footstalk,50783,NA,NA,NA,NA,1
+40,stalk,holdfast,50782,NA,NA,NA,NA,1
+40,stalk,petiolule,50781,NA,NA,NA,NA,1
+40,stalk,popple,50780,NA,NA,NA,NA,1
+40,stalk,nutlets,50779,NA,NA,NA,NA,1
+40,stalk,ligustrum,50778,NA,NA,NA,NA,1
+40,stalk,tobacco hornworm,50777,NA,NA,NA,NA,1
+40,stalk,flower stalk,50776,NA,NA,NA,NA,1
+40,stalk,awns,50775,NA,NA,NA,NA,1
+40,stalk,snuffle,50774,NA,NA,NA,NA,1
+40,stalk,catkin,50773,NA,NA,NA,NA,1
+40,stalk,quackgrass,50772,NA,NA,NA,NA,1
+40,stalk,leafhoppers,50771,NA,NA,NA,NA,1
+40,stalk,spathe,50770,NA,NA,NA,NA,1
+40,stalk,slugs,50769,NA,NA,NA,NA,1
+40,stalk,mow,50768,NA,NA,NA,NA,1
+40,stalk,bulbils,50767,NA,NA,NA,NA,1
+40,stalk,internode,50766,NA,NA,NA,NA,1
+40,stalk,stolons,50765,NA,NA,NA,NA,1
+40,stalk,germinates,50764,NA,NA,NA,NA,1
+40,stalk,beechnuts,50763,NA,NA,NA,NA,1
+40,stalk,culms,50762,NA,NA,NA,NA,1
+40,stalk,sprout,50761,NA,NA,NA,NA,1
+40,stalk,briers,50760,NA,NA,NA,NA,1
+40,stalk,highbush cranberry,50759,NA,NA,NA,NA,1
+40,stalk,seedpods,50758,NA,NA,NA,NA,1
+40,stalk,panicles,50757,NA,NA,NA,NA,1
+40,stalk,buttonbush,50756,NA,NA,NA,NA,1
+40,stalk,mud dauber,50755,NA,NA,NA,NA,1
+40,stalk,drupes,50754,NA,NA,NA,NA,1
+40,stalk,june bug,50753,n,prop,NA,NA,1
+40,stalk,hackberries,50752,NA,NA,NA,NA,1
+40,stalk,caulicle,50751,NA,NA,NA,NA,1
+40,stalk,cholla,50750,NA,NA,NA,NA,1
+40,stalk,torment,50749,NA,NA,NA,NA,1
 41,stolen,purloined,93702,syn,adj,v,prop,0
 41,stolen,taken,83784,syn,adj,NA,NA,0
 41,stolen,pilfered,72712,NA,NA,NA,NA,0
@@ -3056,7 +3056,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 41,stolen,cheated,59832,NA,NA,NA,NA,0
 41,stolen,getaway,58984,NA,NA,NA,NA,0
 41,stolen,poached,58540,NA,NA,NA,NA,0
-41,stolen,gone,58191,NA,NA,NA,NA,0
+41,stolen,gone,58191,NA,NA,NA,NA,1
 41,stolen,flown,57714,NA,NA,NA,NA,0
 41,stolen,boosted,56158,NA,NA,NA,NA,0
 41,stolen,rustled,55557,NA,NA,NA,NA,0
@@ -3067,7 +3067,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 41,stolen,robo,53389,n,adj,prop,NA,0
 41,stolen,piqued,53116,NA,NA,NA,NA,0
 41,stolen,vols,52666,NA,NA,NA,NA,0
-41,stolen,training,52265,NA,NA,NA,NA,0
+41,stolen,training,52265,NA,NA,NA,NA,1
 41,stolen,cora,51333,n,prop,NA,NA,0
 41,stolen,pawned,50884,NA,NA,NA,NA,0
 41,stolen,confiscated,50882,NA,NA,NA,NA,0
@@ -3115,8 +3115,8 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 42,terror,tiger,57021,NA,NA,NA,NA,0
 42,terror,terrorise,55100,NA,NA,NA,NA,0
 42,terror,slugger,53748,NA,NA,NA,NA,0
-42,terror,woods,51411,NA,NA,NA,NA,0
-42,terror,ctc,51202,n,prop,NA,NA,0
+42,terror,woods,51411,NA,NA,NA,NA,1
+42,terror,ctc,51202,n,prop,NA,NA,1
 42,terror,anti-terrorist,50874,NA,NA,NA,NA,0
 42,terror,antiterrorism,50874,NA,NA,NA,NA,0
 42,terror,antiterrorist,50874,NA,NA,NA,NA,0
@@ -3180,14 +3180,14 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 43,theft,removal,55115,NA,NA,NA,NA,0
 43,theft,alienation,54405,NA,NA,NA,NA,0
 43,theft,subtraction,53610,NA,NA,NA,NA,0
-43,theft,bride,52968,NA,NA,NA,NA,0
-43,theft,flights,52849,NA,NA,NA,NA,0
-43,theft,travel,52562,NA,NA,NA,NA,0
-43,theft,volume,52435,NA,NA,NA,NA,0
-43,theft,aircraft,52093,NA,NA,NA,NA,0
-43,theft,plane,51498,NA,NA,NA,NA,0
-43,theft,in-flight,50947,NA,NA,NA,NA,0
-43,theft,air,50946,NA,NA,NA,NA,0
+43,theft,bride,52968,NA,NA,NA,NA,1
+43,theft,flights,52849,NA,NA,NA,NA,1
+43,theft,travel,52562,NA,NA,NA,NA,1
+43,theft,volume,52435,NA,NA,NA,NA,1
+43,theft,aircraft,52093,NA,NA,NA,NA,1
+43,theft,plane,51498,NA,NA,NA,NA,1
+43,theft,in-flight,50947,NA,NA,NA,NA,1
+43,theft,air,50946,NA,NA,NA,NA,1
 43,theft,antitheft,50925,NA,NA,NA,NA,0
 43,theft,thieves,50912,NA,NA,NA,NA,0
 43,theft,theftuous,50903,NA,NA,NA,NA,0
@@ -3202,67 +3202,67 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 44,trafficking,peddling,61455,NA,NA,NA,NA,0
 44,trafficking,narco,60806,NA,NA,NA,NA,0
 44,trafficking,transport,59442,NA,NA,NA,NA,0
-44,trafficking,trade,58867,NA,NA,NA,NA,0
-44,trafficking,dealing,58503,n,v,NA,NA,0
+44,trafficking,trade,58867,NA,NA,NA,NA,1
+44,trafficking,dealing,58503,n,v,NA,NA,1
 44,trafficking,flow,58361,NA,NA,NA,NA,0
 44,trafficking,selling,58318,NA,NA,NA,NA,0
 44,trafficking,transit,57966,NA,NA,NA,NA,0
-44,trafficking,commerce,57551,NA,NA,NA,NA,0
-44,trafficking,treaty,57476,NA,NA,NA,NA,0
-44,trafficking,movement,57465,NA,NA,NA,NA,0
+44,trafficking,commerce,57551,NA,NA,NA,NA,1
+44,trafficking,treaty,57476,NA,NA,NA,NA,1
+44,trafficking,movement,57465,NA,NA,NA,NA,1
 44,trafficking,congestion,57462,NA,NA,NA,NA,0
-44,trafficking,movements,57078,NA,NA,NA,NA,0
+44,trafficking,movements,57078,NA,NA,NA,NA,1
 44,trafficking,circulation,56906,NA,NA,NA,NA,0
-44,trafficking,merchants,56740,NA,NA,NA,NA,0
-44,trafficking,discussed,56588,NA,NA,NA,NA,0
-44,trafficking,sale,56587,NA,NA,NA,NA,0
+44,trafficking,merchants,56740,NA,NA,NA,NA,1
+44,trafficking,discussed,56588,NA,NA,NA,NA,1
+44,trafficking,sale,56587,NA,NA,NA,NA,1
 44,trafficking,hawking,56462,NA,NA,NA,NA,0
-44,trafficking,tackles,55820,NA,NA,NA,NA,0
-44,trafficking,addresses,55817,NA,NA,NA,NA,0
-44,trafficking,marketing,55777,NA,NA,NA,NA,0
-44,trafficking,traders,55690,NA,NA,NA,NA,0
-44,trafficking,involved,55512,adj,v,NA,NA,0
-44,trafficking,deals,55415,NA,NA,NA,NA,0
-44,trafficking,examines,55365,NA,NA,NA,NA,0
-44,trafficking,explores,55363,NA,NA,NA,NA,0
-44,trafficking,endeavours,55327,NA,NA,NA,NA,0
-44,trafficking,dealt,55256,NA,NA,NA,NA,0
-44,trafficking,business,55241,NA,NA,NA,NA,0
-44,trafficking,relates,55119,NA,NA,NA,NA,0
-44,trafficking,focuses,55111,NA,NA,NA,NA,0
-44,trafficking,addressed,55102,NA,NA,NA,NA,0
-44,trafficking,pertains,55068,NA,NA,NA,NA,0
-44,trafficking,trading,54881,NA,NA,NA,NA,0
-44,trafficking,transacts,54818,NA,NA,NA,NA,0
-44,trafficking,processed,54815,NA,NA,NA,NA,0
-44,trafficking,seeks,54629,NA,NA,NA,NA,0
-44,trafficking,thb,54592,n,prop,NA,NA,0
-44,trafficking,outlines,54563,NA,NA,NA,NA,0
-44,trafficking,milking,54456,NA,NA,NA,NA,0
-44,trafficking,processes,54191,NA,NA,NA,NA,0
-44,trafficking,discusses,54104,NA,NA,NA,NA,0
-44,trafficking,sought,53803,NA,NA,NA,NA,0
-44,trafficking,treating,53689,NA,NA,NA,NA,0
-44,trafficking,aims,53677,NA,NA,NA,NA,0
-44,trafficking,speaks,53587,NA,NA,NA,NA,0
-44,trafficking,handles,53470,NA,NA,NA,NA,0
-44,trafficking,volumes,53453,NA,NA,NA,NA,0
-44,trafficking,refers,53393,NA,NA,NA,NA,0
-44,trafficking,deal,53216,n,v,NA,NA,0
-44,trafficking,describes,53208,NA,NA,NA,NA,0
-44,trafficking,treated,53050,NA,NA,NA,NA,0
-44,trafficking,handel,53029,n,prop,NA,NA,0
-44,trafficking,treat,52450,NA,NA,NA,NA,0
-44,trafficking,treats,52247,NA,NA,NA,NA,0
-44,trafficking,hawk,52061,NA,NA,NA,NA,0
-44,trafficking,covers,52057,NA,NA,NA,NA,0
-44,trafficking,looks,52009,NA,NA,NA,NA,0
-44,trafficking,comes,51957,NA,NA,NA,NA,0
-44,trafficking,strives,51831,NA,NA,NA,NA,0
-44,trafficking,tries,51808,NA,NA,NA,NA,0
-44,trafficking,attempts,51673,NA,NA,NA,NA,0
-44,trafficking,covered,51254,NA,NA,NA,NA,0
-44,trafficking,question,51200,NA,NA,NA,NA,0
+44,trafficking,tackles,55820,NA,NA,NA,NA,1
+44,trafficking,addresses,55817,NA,NA,NA,NA,1
+44,trafficking,marketing,55777,NA,NA,NA,NA,1
+44,trafficking,traders,55690,NA,NA,NA,NA,1
+44,trafficking,involved,55512,adj,v,NA,NA,1
+44,trafficking,deals,55415,NA,NA,NA,NA,1
+44,trafficking,examines,55365,NA,NA,NA,NA,1
+44,trafficking,explores,55363,NA,NA,NA,NA,1
+44,trafficking,endeavours,55327,NA,NA,NA,NA,1
+44,trafficking,dealt,55256,NA,NA,NA,NA,1
+44,trafficking,business,55241,NA,NA,NA,NA,1
+44,trafficking,relates,55119,NA,NA,NA,NA,1
+44,trafficking,focuses,55111,NA,NA,NA,NA,1
+44,trafficking,addressed,55102,NA,NA,NA,NA,1
+44,trafficking,pertains,55068,NA,NA,NA,NA,1
+44,trafficking,trading,54881,NA,NA,NA,NA,1
+44,trafficking,transacts,54818,NA,NA,NA,NA,1
+44,trafficking,processed,54815,NA,NA,NA,NA,1
+44,trafficking,seeks,54629,NA,NA,NA,NA,1
+44,trafficking,thb,54592,n,prop,NA,NA,1
+44,trafficking,outlines,54563,NA,NA,NA,NA,1
+44,trafficking,milking,54456,NA,NA,NA,NA,1
+44,trafficking,processes,54191,NA,NA,NA,NA,1
+44,trafficking,discusses,54104,NA,NA,NA,NA,1
+44,trafficking,sought,53803,NA,NA,NA,NA,1
+44,trafficking,treating,53689,NA,NA,NA,NA,1
+44,trafficking,aims,53677,NA,NA,NA,NA,1
+44,trafficking,speaks,53587,NA,NA,NA,NA,1
+44,trafficking,handles,53470,NA,NA,NA,NA,1
+44,trafficking,volumes,53453,NA,NA,NA,NA,1
+44,trafficking,refers,53393,NA,NA,NA,NA,1
+44,trafficking,deal,53216,n,v,NA,NA,1
+44,trafficking,describes,53208,NA,NA,NA,NA,1
+44,trafficking,treated,53050,NA,NA,NA,NA,1
+44,trafficking,handel,53029,n,prop,NA,NA,1
+44,trafficking,treat,52450,NA,NA,NA,NA,1
+44,trafficking,treats,52247,NA,NA,NA,NA,1
+44,trafficking,hawk,52061,NA,NA,NA,NA,1
+44,trafficking,covers,52057,NA,NA,NA,NA,1
+44,trafficking,looks,52009,NA,NA,NA,NA,1
+44,trafficking,comes,51957,NA,NA,NA,NA,1
+44,trafficking,strives,51831,NA,NA,NA,NA,1
+44,trafficking,tries,51808,NA,NA,NA,NA,1
+44,trafficking,attempts,51673,NA,NA,NA,NA,1
+44,trafficking,covered,51254,NA,NA,NA,NA,1
+44,trafficking,question,51200,NA,NA,NA,NA,1
 44,trafficking,gunrunning,51072,NA,NA,NA,NA,0
 44,trafficking,poaching,51068,NA,NA,NA,NA,0
 45,trespass,intrude,88336,syn,v,NA,NA,0
@@ -3291,21 +3291,21 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 45,trespass,disturbance,51131,NA,NA,NA,NA,0
 45,trespass,curtilage,51126,NA,NA,NA,NA,0
 45,trespass,encroacher,51124,NA,NA,NA,NA,0
-45,trespass,citations,51123,NA,NA,NA,NA,0
-45,trespass,summons,51122,NA,NA,NA,NA,0
-45,trespass,unextinguished,51116,NA,NA,NA,NA,0
-45,trespass,infractor,51115,NA,NA,NA,NA,0
-45,trespass,infernal machine,51113,NA,NA,NA,NA,0
+45,trespass,citations,51123,NA,NA,NA,NA,1
+45,trespass,summons,51122,NA,NA,NA,NA,1
+45,trespass,unextinguished,51116,NA,NA,NA,NA,1
+45,trespass,infractor,51115,NA,NA,NA,NA,1
+45,trespass,infernal machine,51113,NA,NA,NA,NA,1
 45,trespass,property,51111,NA,NA,NA,NA,0
 45,trespass,landowner,51107,NA,NA,NA,NA,0
-45,trespass,depredation,51106,NA,NA,NA,NA,0
-45,trespass,permittee,51105,NA,NA,NA,NA,0
+45,trespass,depredation,51106,NA,NA,NA,NA,1
+45,trespass,permittee,51105,NA,NA,NA,NA,1
 45,trespass,sault,51098,n,prop,NA,NA,0
 45,trespass,expunction,51097,NA,NA,NA,NA,0
 45,trespass,barratry,51096,NA,NA,NA,NA,0
 45,trespass,avos,51095,NA,NA,NA,NA,0
 45,trespass,squatters,51094,NA,NA,NA,NA,0
-45,trespass,lis pendens,51093,NA,NA,NA,NA,0
+45,trespass,lis pendens,51093,NA,NA,NA,NA,1
 45,trespass,graffiti,51092,NA,NA,NA,NA,0
 45,trespass,nolle,51091,NA,NA,NA,NA,0
 45,trespass,spray painting,51089,NA,NA,NA,NA,0
@@ -3328,10 +3328,10 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 46,vandal,vandalize,51334,NA,NA,NA,NA,0
 46,vandal,jemmy,51332,n,prop,NA,NA,0
 46,vandal,litterbugs,51328,NA,NA,NA,NA,0
-46,vandal,firestarter,51324,NA,NA,NA,NA,0
+46,vandal,firestarter,51324,NA,NA,NA,NA,1
 46,vandal,litter lout,51322,NA,NA,NA,NA,0
-46,vandal,window pane,51316,NA,NA,NA,NA,0
-46,vandal,glassing,51315,NA,NA,NA,NA,0
+46,vandal,window pane,51316,NA,NA,NA,NA,1
+46,vandal,glassing,51315,NA,NA,NA,NA,1
 46,vandal,vandalise,51314,NA,NA,NA,NA,0
 46,vandal,groper,51312,NA,NA,NA,NA,0
 46,vandal,prank,51311,NA,NA,NA,NA,0
@@ -3341,7 +3341,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 46,vandal,hoaxer,51304,NA,NA,NA,NA,0
 46,vandal,daubing,51303,NA,NA,NA,NA,0
 46,vandal,vigilantes,51302,NA,NA,NA,NA,0
-46,vandal,cat burglar,51300,NA,NA,NA,NA,0
+46,vandal,cat burglar,51300,NA,NA,NA,NA,1
 46,vandal,telegraph pole,51299,NA,NA,NA,NA,0
 46,vandal,jaywalker,51298,NA,NA,NA,NA,0
 46,vandal,snatcher,51297,NA,NA,NA,NA,0
@@ -3402,7 +3402,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 47,violence,digladiation,50899,NA,NA,NA,NA,0
 47,violence,vigilantism,50896,NA,NA,NA,NA,0
 47,violence,factionalism,50895,NA,NA,NA,NA,0
-47,violence,clashes,50894,NA,NA,NA,NA,0
+47,violence,clashes,50894,NA,NA,NA,NA,1
 48,weapon,weapon system,85891,syn,n,NA,NA,0
 48,weapon,guns,69190,NA,NA,NA,NA,0
 48,weapon,arsenal,68014,NA,NA,NA,NA,0
@@ -3423,17 +3423,17 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 48,weapon,means,56937,NA,NA,NA,NA,0
 48,weapon,piece,56783,NA,NA,NA,NA,0
 48,weapon,sten,54672,NA,NA,NA,NA,0
-48,weapon,opener,54062,NA,NA,NA,NA,0
+48,weapon,opener,54062,NA,NA,NA,NA,1
 48,weapon,corps,53643,NA,NA,NA,NA,0
-48,weapon,free,53237,NA,NA,NA,NA,0
+48,weapon,free,53237,NA,NA,NA,NA,1
 48,weapon,booby,53117,NA,NA,NA,NA,0
 48,weapon,poorer,52325,NA,NA,NA,NA,0
 48,weapon,achilles,52272,NA,NA,NA,NA,0
 48,weapon,arma,51565,NA,NA,NA,NA,0
 48,weapon,tir,51477,NA,NA,NA,NA,0
 48,weapon,demilitarization,51018,NA,NA,NA,NA,0
-48,weapon,nws,51018,NA,NA,NA,NA,0
-48,weapon,uxo,51018,n,prop,NA,NA,0
+48,weapon,nws,51018,NA,NA,NA,NA,1
+48,weapon,uxo,51018,n,prop,NA,NA,1
 48,weapon,weaponization,51018,NA,NA,NA,NA,0
 48,weapon,poor,51017,NA,NA,NA,NA,0
 48,weapon,roh,51017,n,prop,NA,NA,0
@@ -3452,24 +3452,24 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 48,weapon,breechloader,50991,NA,NA,NA,NA,0
 48,weapon,fire ship,50990,NA,NA,NA,NA,0
 48,weapon,armisonant,50989,NA,NA,NA,NA,0
-48,weapon,wapinschaw,50988,NA,NA,NA,NA,0
+48,weapon,wapinschaw,50988,NA,NA,NA,NA,1
 48,weapon,assault rifle,50987,NA,NA,NA,NA,0
-48,weapon,arquebuse,50986,NA,NA,NA,NA,0
+48,weapon,arquebuse,50986,NA,NA,NA,NA,1
 48,weapon,rocket launcher,50984,NA,NA,NA,NA,0
 48,weapon,mitrailleur,50982,NA,NA,NA,NA,0
 48,weapon,spear gun,50981,NA,NA,NA,NA,0
 48,weapon,semiautomatic firearm,50979,NA,NA,NA,NA,0
 48,weapon,colt pistol,50978,NA,NA,NA,NA,0
 48,weapon,escopet,50977,NA,NA,NA,NA,0
-48,weapon,rerebrace,50976,NA,NA,NA,NA,0
-48,weapon,hoplology,50975,NA,NA,NA,NA,0
+48,weapon,rerebrace,50976,NA,NA,NA,NA,1
+48,weapon,hoplology,50975,NA,NA,NA,NA,1
 48,weapon,semiautomatic pistol,50974,NA,NA,NA,NA,0
-48,weapon,hagbut,50973,NA,NA,NA,NA,0
-48,weapon,martel de fer,50971,n,prop,NA,NA,0
-48,weapon,armiferous,50970,NA,NA,NA,NA,0
-48,weapon,lochaber ax,50969,n,prop,NA,NA,0
-48,weapon,quaker gun,50967,NA,NA,NA,NA,0
-48,weapon,gunnage,50965,NA,NA,NA,NA,0
+48,weapon,hagbut,50973,NA,NA,NA,NA,1
+48,weapon,martel de fer,50971,n,prop,NA,NA,1
+48,weapon,armiferous,50970,NA,NA,NA,NA,1
+48,weapon,lochaber ax,50969,n,prop,NA,NA,1
+48,weapon,quaker gun,50967,NA,NA,NA,NA,1
+48,weapon,gunnage,50965,NA,NA,NA,NA,1
 49,worried,disturbed,92967,syn,adj,v,NA,0
 49,worried,disquieted,90605,syn,adj,NA,NA,0
 49,worried,distressed,87719,syn,adj,NA,NA,0
@@ -3482,7 +3482,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 49,worried,bothered,66176,adj,v,NA,NA,0
 49,worried,preoccupied,66135,adj,v,NA,NA,0
 49,worried,disconcerted,65555,adj,v,NA,NA,0
-49,worried,sure,64461,NA,NA,NA,NA,0
+49,worried,sure,64461,NA,NA,NA,NA,1
 49,worried,unsettled,63995,NA,NA,NA,NA,0
 49,worried,restless,60697,NA,NA,NA,NA,0
 49,worried,doing,60293,NA,NA,NA,NA,0
@@ -3502,7 +3502,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 49,worried,disheartened,51183,NA,NA,NA,NA,0
 49,worried,frustrated,51181,NA,NA,NA,NA,0
 49,worried,wondering,51179,NA,NA,NA,NA,0
-49,worried,convinced,51178,NA,NA,NA,NA,0
+49,worried,convinced,51178,NA,NA,NA,NA,1
 49,worried,livid,51176,NA,NA,NA,NA,0
 49,worried,miffed,51174,NA,NA,NA,NA,0
 49,worried,disappointed,51173,NA,NA,NA,NA,0
@@ -3534,7 +3534,7 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 49,worried,anticipating,51134,NA,NA,NA,NA,0
 50,hate,detest,112454,syn,v,adj,NA,0
 50,hate,despise,92363,NA,NA,NA,NA,0
-50,hate,love,90000,n,v,ant,NA,0
+50,hate,love,90000,n,v,ant,NA,1
 50,hate,dislike,89721,n,v,NA,NA,0
 50,hate,loathe,89635,NA,NA,NA,NA,0
 50,hate,abhor,86755,NA,NA,NA,NA,0
@@ -3617,72 +3617,72 @@ id,query_word,word,score,tag1,tag2,tag3,tag4,remove
 51,shank,shin,60472,NA,NA,NA,NA,0
 51,shank,stalk,60430,NA,NA,NA,NA,0
 51,shank,leg,60047,NA,NA,NA,NA,0
-51,shank,tibia,59644,NA,NA,NA,NA,0
-51,shank,tail,58643,NA,NA,NA,NA,0
-51,shank,stick,58637,NA,NA,NA,NA,0
-51,shank,crus,55308,NA,NA,NA,NA,0
-51,shank,handle,54756,NA,NA,NA,NA,0
-51,shank,mango,54676,NA,NA,NA,NA,0
+51,shank,tibia,59644,NA,NA,NA,NA,1
+51,shank,tail,58643,NA,NA,NA,NA,1
+51,shank,stick,58637,NA,NA,NA,NA,1
+51,shank,crus,55308,NA,NA,NA,NA,1
+51,shank,handle,54756,NA,NA,NA,NA,1
+51,shank,mango,54676,NA,NA,NA,NA,1
 51,shank,escaped,54135,NA,NA,NA,NA,0
-51,shank,queue,51701,NA,NA,NA,NA,0
-51,shank,plant,51690,NA,NA,NA,NA,0
-51,shank,film,51374,NA,NA,NA,NA,0
-51,shank,movie,51204,NA,NA,NA,NA,0
-51,shank,countersink,51203,NA,NA,NA,NA,0
-51,shank,chamfer,51202,NA,NA,NA,NA,0
-51,shank,dowel,51201,NA,NA,NA,NA,0
-51,shank,wood screw,51200,NA,NA,NA,NA,0
-51,shank,tines,51199,NA,NA,NA,NA,0
-51,shank,hosel,51198,NA,NA,NA,NA,0
-51,shank,foreshank,51197,NA,NA,NA,NA,0
-51,shank,broadhead,51195,NA,NA,NA,NA,0
-51,shank,fletching,51194,NA,NA,NA,NA,0
-51,shank,flank steak,51192,NA,NA,NA,NA,0
-51,shank,mandoline,51190,NA,NA,NA,NA,0
-51,shank,reamer,51189,NA,NA,NA,NA,0
-51,shank,niblick,51188,NA,NA,NA,NA,0
-51,shank,snell,51186,n,prop,NA,NA,0
-51,shank,spindleshanks,51185,NA,NA,NA,NA,0
-51,shank,awl,51183,NA,NA,NA,NA,0
-51,shank,pritchel,51182,NA,NA,NA,NA,0
-51,shank,needlenose pliers,51181,NA,NA,NA,NA,0
-51,shank,serrations,51180,NA,NA,NA,NA,0
-51,shank,butteris,51179,NA,NA,NA,NA,0
-51,shank,allen wrench,51178,n,prop,NA,NA,0
-51,shank,peeler,51177,NA,NA,NA,NA,0
-51,shank,darning needle,51176,NA,NA,NA,NA,0
-51,shank,julienne,51174,NA,NA,NA,NA,0
-51,shank,crochet hook,51173,NA,NA,NA,NA,0
-51,shank,stirrup,51172,NA,NA,NA,NA,0
-51,shank,plier,51171,NA,NA,NA,NA,0
-51,shank,epipodialia,51170,NA,NA,NA,NA,0
-51,shank,patty,51169,n,prop,NA,NA,0
-51,shank,lopper,51168,NA,NA,NA,NA,0
-51,shank,toecap,51167,NA,NA,NA,NA,0
-51,shank,hex nut,51166,NA,NA,NA,NA,0
-51,shank,deckle,51165,NA,NA,NA,NA,0
-51,shank,tube sock,51164,NA,NA,NA,NA,0
-51,shank,pinking shears,51163,NA,NA,NA,NA,0
-51,shank,wedges,51162,NA,NA,NA,NA,0
-51,shank,pancake turner,51161,n,prop,NA,NA,0
-51,shank,rump roast,51160,NA,NA,NA,NA,0
-51,shank,canon bone,51159,NA,NA,NA,NA,0
-51,shank,cut of beef,51158,NA,NA,NA,NA,0
-51,shank,mallet,51157,NA,NA,NA,NA,0
-51,shank,grater,51156,NA,NA,NA,NA,0
-51,shank,cleat,51155,NA,NA,NA,NA,0
-51,shank,sidespin,51153,NA,NA,NA,NA,0
-51,shank,paillard,51151,n,prop,NA,NA,0
-51,shank,kitchen utensil,51150,NA,NA,NA,NA,0
-51,shank,plumb bob,51149,n,prop,NA,NA,0
-51,shank,adz,51148,NA,NA,NA,NA,0
-51,shank,ramekin,51147,NA,NA,NA,NA,0
-51,shank,garlic clove,51146,NA,NA,NA,NA,0
-51,shank,gooseneck,51143,NA,NA,NA,NA,0
-51,shank,shoelace,51142,NA,NA,NA,NA,0
-51,shank,bevel,51141,NA,NA,NA,NA,0
-51,shank,piecrust,51140,NA,NA,NA,NA,0
-51,shank,pitching wedge,51139,NA,NA,NA,NA,0
-51,shank,soup spoon,51138,NA,NA,NA,NA,0
-51,shank,torque wrench,51137,NA,NA,NA,NA,0
-51,shank,clove hitch,51136,NA,NA,NA,NA,0
+51,shank,queue,51701,NA,NA,NA,NA,1
+51,shank,plant,51690,NA,NA,NA,NA,1
+51,shank,film,51374,NA,NA,NA,NA,1
+51,shank,movie,51204,NA,NA,NA,NA,1
+51,shank,countersink,51203,NA,NA,NA,NA,1
+51,shank,chamfer,51202,NA,NA,NA,NA,1
+51,shank,dowel,51201,NA,NA,NA,NA,1
+51,shank,wood screw,51200,NA,NA,NA,NA,1
+51,shank,tines,51199,NA,NA,NA,NA,1
+51,shank,hosel,51198,NA,NA,NA,NA,1
+51,shank,foreshank,51197,NA,NA,NA,NA,1
+51,shank,broadhead,51195,NA,NA,NA,NA,1
+51,shank,fletching,51194,NA,NA,NA,NA,1
+51,shank,flank steak,51192,NA,NA,NA,NA,1
+51,shank,mandoline,51190,NA,NA,NA,NA,1
+51,shank,reamer,51189,NA,NA,NA,NA,1
+51,shank,niblick,51188,NA,NA,NA,NA,1
+51,shank,snell,51186,n,prop,NA,NA,1
+51,shank,spindleshanks,51185,NA,NA,NA,NA,1
+51,shank,awl,51183,NA,NA,NA,NA,1
+51,shank,pritchel,51182,NA,NA,NA,NA,1
+51,shank,needlenose pliers,51181,NA,NA,NA,NA,1
+51,shank,serrations,51180,NA,NA,NA,NA,1
+51,shank,butteris,51179,NA,NA,NA,NA,1
+51,shank,allen wrench,51178,n,prop,NA,NA,1
+51,shank,peeler,51177,NA,NA,NA,NA,1
+51,shank,darning needle,51176,NA,NA,NA,NA,1
+51,shank,julienne,51174,NA,NA,NA,NA,1
+51,shank,crochet hook,51173,NA,NA,NA,NA,1
+51,shank,stirrup,51172,NA,NA,NA,NA,1
+51,shank,plier,51171,NA,NA,NA,NA,1
+51,shank,epipodialia,51170,NA,NA,NA,NA,1
+51,shank,patty,51169,n,prop,NA,NA,1
+51,shank,lopper,51168,NA,NA,NA,NA,1
+51,shank,toecap,51167,NA,NA,NA,NA,1
+51,shank,hex nut,51166,NA,NA,NA,NA,1
+51,shank,deckle,51165,NA,NA,NA,NA,1
+51,shank,tube sock,51164,NA,NA,NA,NA,1
+51,shank,pinking shears,51163,NA,NA,NA,NA,1
+51,shank,wedges,51162,NA,NA,NA,NA,1
+51,shank,pancake turner,51161,n,prop,NA,NA,1
+51,shank,rump roast,51160,NA,NA,NA,NA,1
+51,shank,canon bone,51159,NA,NA,NA,NA,1
+51,shank,cut of beef,51158,NA,NA,NA,NA,1
+51,shank,mallet,51157,NA,NA,NA,NA,1
+51,shank,grater,51156,NA,NA,NA,NA,1
+51,shank,cleat,51155,NA,NA,NA,NA,1
+51,shank,sidespin,51153,NA,NA,NA,NA,1
+51,shank,paillard,51151,n,prop,NA,NA,1
+51,shank,kitchen utensil,51150,NA,NA,NA,NA,1
+51,shank,plumb bob,51149,n,prop,NA,NA,1
+51,shank,adz,51148,NA,NA,NA,NA,1
+51,shank,ramekin,51147,NA,NA,NA,NA,1
+51,shank,garlic clove,51146,NA,NA,NA,NA,1
+51,shank,gooseneck,51143,NA,NA,NA,NA,1
+51,shank,shoelace,51142,NA,NA,NA,NA,1
+51,shank,bevel,51141,NA,NA,NA,NA,1
+51,shank,piecrust,51140,NA,NA,NA,NA,1
+51,shank,pitching wedge,51139,NA,NA,NA,NA,1
+51,shank,soup spoon,51138,NA,NA,NA,NA,1
+51,shank,torque wrench,51137,NA,NA,NA,NA,1
+51,shank,clove hitch,51136,NA,NA,NA,NA,1
