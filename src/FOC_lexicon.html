@@ -138,7 +138,7 @@ $(document).ready(function () {
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(rhymer)</code></pre>
-<p>We compiled a list of 51 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv</a>]. The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying semantically similar or contextually related words using multiple contraints such as synonyms, antonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried the Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we collated a lexicon consisting of NNNN words. This lexicon was used to filter the 20m tweets in the dataset</p>
+<p>We compiled a list of 51 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv</a>]. The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we collated a lexicon consisting of 3096 words. This lexicon was used to filter the 20m tweets in the dataset (amir)</p>
 <pre class="r"><code>seed_list &lt;- read_csv(&quot;../data/FOC_seed_words.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -181,9 +181,39 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 <pre><code>## Warning: Expected 4 pieces. Missing pieces filled with `NA` in 3686
 ## rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 ## 20, ...].</code></pre>
-<pre class="r"><code>write_csv(crime_fear_lexicon,&quot;../data/FOC_lexicon_001.csv&quot;)
+<pre class="r"><code># write_csv(crime_fear_lexicon,&quot;../data/FOC_lexicon_001.csv&quot;)
 
 # read locke data some web api package development lessons </code></pre>
+<pre class="r"><code>lexicon_filtered &lt;- read_csv(&quot;../data/FOC_lexicon_001_manual.csv&quot;) %&gt;% 
+    filter(remove==0)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   query_word = col_character(),
+##   word = col_character(),
+##   score = col_integer(),
+##   tag1 = col_character(),
+##   tag2 = col_character(),
+##   tag3 = col_character(),
+##   tag4 = col_character(),
+##   remove = col_integer()
+## )</code></pre>
+<pre class="r"><code>lexicon_filtered</code></pre>
+<pre><code>## # A tibble: 3,096 x 9
+##       id query_word word         score tag1  tag2  tag3  tag4  remove
+##    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;int&gt;
+##  1     1 afraid     scared       50038 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  2     1 afraid     fearful      47652 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  3     1 afraid     frightened   45532 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  4     1 afraid     terrified    44729 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  5     1 afraid     petrified    42958 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  6     1 afraid     intimidated  42315 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  7     1 afraid     apprehensive 41740 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  8     1 afraid     concerned    40893 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+##  9     1 afraid     alarmed      39542 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+## 10     1 afraid     cowed        38611 syn   adj   &lt;NA&gt;  &lt;NA&gt;       0
+## # ... with 3,086 more rows</code></pre>
+<pre class="r"><code>write_csv(lexicon_filtered, &quot;../data/FOC_lexicon_001_manual_edited.csv&quot;)</code></pre>
 
 
 
