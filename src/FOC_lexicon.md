@@ -19,28 +19,29 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
-## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.8.0     ✔ stringr 1.3.1
+## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
 
 ```r
 library(rhymer)
+# install.packages('rhymer')
 ```
 
 # Lexicon Paragraph
-We compiled a list of 51 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words.csv]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that 'means like' -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as query:coppers, Datamuse result:atomic number 29), we collated a lexicon consisting of 3096 words (find this file online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_001_manual_edited.csv]). 
+We compiled a list of 44 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that 'means like' -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as query:coppers, Datamuse result:atomic number 29), we collated a lexicon consisting of 2538 words (find this file online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_002_manual_edited.csv]). 
 
 This lexicon was used to filter the 20m tweets in the dataset... (amir)
 
@@ -243,4 +244,52 @@ lexicon_2 <- read_csv("../data/FOC_lexicon_001_manual_edited.csv") %>%
 ### 2.1. Revisit and remove irrelevant words
 
 This is going to be done manually and outside R. 
+
+Removing manually identified words
+
+
+```r
+lexicon_filtered_02 <- read_csv("../data/FOC_lexicon_002_manual.csv") %>% 
+    filter(remove==0) # rows to be removed was labelled as 1, rest was 0
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   query_word = col_character(),
+##   word = col_character(),
+##   score = col_integer(),
+##   tag1 = col_character(),
+##   tag2 = col_character(),
+##   tag3 = col_character(),
+##   tag4 = col_character(),
+##   remove = col_integer()
+## )
+```
+
+```r
+lexicon_filtered_02
+```
+
+```
+## # A tibble: 2,538 x 9
+##       id query_word word           score tag1  tag2  tag3  tag4  remove
+##    <int> <chr>      <chr>          <int> <chr> <chr> <chr> <chr>  <int>
+##  1     1 assault    attack         93835 syn   n     <NA>  <NA>       0
+##  2     1 assault    sexual assault 93573 syn   n     <NA>  <NA>       0
+##  3     1 assault    rape           92281 syn   n     <NA>  <NA>       0
+##  4     1 assault    battery        85324 syn   n     <NA>  <NA>       0
+##  5     1 assault    violation      85044 syn   n     <NA>  <NA>       0
+##  6     1 assault    offensive      84266 syn   n     <NA>  <NA>       0
+##  7     1 assault    ravishment     80402 syn   n     <NA>  <NA>       0
+##  8     1 assault    assail         79614 syn   v     <NA>  <NA>       0
+##  9     1 assault    round          79435 syn   n     <NA>  <NA>       0
+## 10     1 assault    snipe          79399 syn   n     <NA>  <NA>       0
+## # ... with 2,528 more rows
+```
+
+```r
+write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
+```
 
