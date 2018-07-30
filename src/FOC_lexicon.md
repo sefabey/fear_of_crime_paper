@@ -7,13 +7,19 @@ output:
         keep_md: true
 ---
 
+```r
+knitr::opts_chunk$set(warning = F)
+```
+
+
+
 
 ```r
 library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -24,7 +30,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -92,20 +98,16 @@ crime_fear_lexicon <- seed_list %>%
     separate(tags, sep = ",", into = c("tag1", "tag2", "tag3", "tag4")) %>% 
     mutate_at(vars(tag1,tag2,tag3,tag4), .funs = function(x){
               str_extract(string=x, pattern =  regex("(?<=\")[[:alnum:]]+(?=\")"))})
-```
 
-```
-## Warning: Expected 4 pieces. Missing pieces filled with `NA` in 3686
-## rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-## 20, ...].
-```
 
-```r
 # write_csv(crime_fear_lexicon,"../data/FOC_lexicon_001.csv")
 
-# read locke data some web api package development lessons 
+# 
 ```
+Not memoising above because no need as wrote to csv file once and using that.
 
+
+Below removing words to remove identified manually. Again wrote once and commented oit write function.
 
 ```r
 lexicon_filtered <- read_csv("../data/FOC_lexicon_001_manual.csv") %>% 
@@ -149,6 +151,96 @@ lexicon_filtered
 ```
 
 ```r
-write_csv(lexicon_filtered, "../data/FOC_lexicon_001_manual_edited.csv")
+# write_csv(lexicon_filtered, "../data/FOC_lexicon_001_manual_edited.csv")
 ```
+
+## Take 2
+
+New comments from the PI, need to do the following.
+
+1) Remove fear related words from the seed list and lexicon
+2) Revisit the final version of the lexicon and remove irrelevant words (such as drugs ~ prescription, charlatan)
+
+
+### 2.1. Removing fear related words from the seed list and then from the lexicon.
+
+```r
+read_csv("../data/FOC_seed_words.csv") %>% 
+    filter(context %in% c("fear")) # print fear related words
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   words = col_character(),
+##   context = col_character(),
+##   explanation = col_character()
+## )
+```
+
+```
+## # A tibble: 6 x 4
+##      id words   context explanation                                       
+##   <int> <chr>   <chr>   <chr>                                             
+## 1     1 afraid  fear    http://criminology.oxfordre.com/view/10.1093/acre…
+## 2     2 alone   fear    http://criminology.oxfordre.com/view/10.1093/acre…
+## 3     4 avoid   fear    http://criminology.oxfordre.com/view/10.1093/acre…
+## 4    15 fear    fear    http://criminology.oxfordre.com/view/10.1093/acre…
+## 5    37 scary   fear    http://criminology.oxfordre.com/view/10.1093/acre…
+## 6    49 worried fear    https://www.met.police.uk/sd/stats-and-data/met/c…
+```
+
+```r
+seed_list_002 <- read_csv("../data/FOC_seed_words.csv") %>% 
+    filter(!context %in% c("fear")) %>% # glad that i added context var previously
+    filter(!words=="shank") %>% # not that related
+    mutate(id=seq.int(nrow(.)))
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   words = col_character(),
+##   context = col_character(),
+##   explanation = col_character()
+## )
+```
+
+```r
+# write_csv(seed_list_002, "../data/FOC_seed_words_002.csv")
+```
+
+
+```r
+lexicon_2 <- read_csv("../data/FOC_lexicon_001_manual_edited.csv") %>% 
+    filter(!query_word %in% c("afraid","alone", "avoid", "fear", "scary", "worried")) %>% 
+    select(-id) %>% 
+    left_join(seed_list_002, by = c("query_word"="words")) %>% 
+    select(id, -context, everything()) # decrease to 
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   query_word = col_character(),
+##   word = col_character(),
+##   score = col_integer(),
+##   tag1 = col_character(),
+##   tag2 = col_character(),
+##   tag3 = col_character(),
+##   tag4 = col_character(),
+##   remove = col_integer()
+## )
+```
+
+```r
+# write_csv(lexicon_2, "../data/FOC_lexicon_002.csv")    
+```
+
+### 2.1. Revisit and remove irrelevant words
+
+This is going to be done manually and outside R. 
 
