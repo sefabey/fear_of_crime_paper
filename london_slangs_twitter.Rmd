@@ -1,0 +1,30 @@
+---
+title: "London gang slangs on Twitter"
+author: "Sefa Ozalp"
+date: "30/07/2018"
+output:
+      html_document:
+        keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = F)
+```
+
+# Intro
+
+A quick markdown file to search London gang slang on Twitter. 
+
+
+Rationale: 
+
+
+Involves:
+    1. Data scraping from multiple sources (one html one pdf)
+    2. Data wrangling (duh)
+    3. Querying from Twitter search API
+    4. Memoise API call
+
+Sources: 
+    
+# 1. Data Scraping
