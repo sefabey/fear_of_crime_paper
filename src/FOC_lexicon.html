@@ -262,7 +262,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
     filter(!query_word %in% c(&quot;afraid&quot;,&quot;alone&quot;, &quot;avoid&quot;, &quot;fear&quot;, &quot;scary&quot;, &quot;worried&quot;)) %&gt;% 
     select(-id) %&gt;% 
     left_join(seed_list_002, by = c(&quot;query_word&quot;=&quot;words&quot;)) %&gt;% 
-    select(id, -context, everything()) # decrease to </code></pre>
+    select(id, everything(),-context, -explanation) # decrease to </code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   id = col_integer(),
@@ -275,7 +275,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 ##   tag4 = col_character(),
 ##   remove = col_integer()
 ## )</code></pre>
-<pre class="r"><code># write_csv(lexicon_2, &quot;../data/FOC_lexicon_002.csv&quot;)    </code></pre>
+<pre class="r"><code># write_csv(lexicon_2, &quot;../data/FOC_lexicon_002.csv&quot;)</code></pre>
 </div>
 <div id="revisit-and-remove-irrelevant-words" class="section level3">
 <h3>2.1. Revisit and remove irrelevant words</h3>

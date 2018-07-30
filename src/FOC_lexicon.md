@@ -218,7 +218,7 @@ lexicon_2 <- read_csv("../data/FOC_lexicon_001_manual_edited.csv") %>%
     filter(!query_word %in% c("afraid","alone", "avoid", "fear", "scary", "worried")) %>% 
     select(-id) %>% 
     left_join(seed_list_002, by = c("query_word"="words")) %>% 
-    select(id, -context, everything()) # decrease to 
+    select(id, everything(),-context, -explanation) # decrease to 
 ```
 
 ```
@@ -237,7 +237,7 @@ lexicon_2 <- read_csv("../data/FOC_lexicon_001_manual_edited.csv") %>%
 ```
 
 ```r
-# write_csv(lexicon_2, "../data/FOC_lexicon_002.csv")    
+# write_csv(lexicon_2, "../data/FOC_lexicon_002.csv")
 ```
 
 ### 2.1. Revisit and remove irrelevant words
