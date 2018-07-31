@@ -312,11 +312,28 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 ## 10     1 assault    snipe          79399 syn   n     &lt;NA&gt;  &lt;NA&gt;       0
 ## # ... with 2,528 more rows</code></pre>
 <pre class="r"><code>write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
-<p>As words in English can take many forms, suffixes and prefixes, I’ll add lemmas and stems of words as seperate columns.</p>
+<p>As words in English can take many forms, suffixes and prefixes, I’ll add lemmas and stems of words in seperate columns.</p>
 <pre class="r"><code>lexicon_filtered_02 &lt;- lexicon_filtered_02 %&gt;% 
-mutate(lemmas=textstem::lemmatize_strings(word)) %&gt;% 
-mutate(stems= textstem::stem_strings(word))
-write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
+    mutate(lemmas=textstem::lemmatize_strings(word)) %&gt;% 
+    mutate(stems= textstem::stem_strings(word)) %&gt;% 
+    select(everything(),-remove, remove)
+
+lexicon_filtered_02</code></pre>
+<pre><code>## # A tibble: 2,538 x 11
+##       id query_word word     score tag1  tag2  tag3  tag4  lemmas  stems  
+##    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1     1 assault    attack   93835 syn   n     &lt;NA&gt;  &lt;NA&gt;  attack  attack 
+##  2     1 assault    sexual … 93573 syn   n     &lt;NA&gt;  &lt;NA&gt;  sexual… sexual…
+##  3     1 assault    rape     92281 syn   n     &lt;NA&gt;  &lt;NA&gt;  rape    rape   
+##  4     1 assault    battery  85324 syn   n     &lt;NA&gt;  &lt;NA&gt;  battery batteri
+##  5     1 assault    violati… 85044 syn   n     &lt;NA&gt;  &lt;NA&gt;  violat… violat 
+##  6     1 assault    offensi… 84266 syn   n     &lt;NA&gt;  &lt;NA&gt;  offens… offens 
+##  7     1 assault    ravishm… 80402 syn   n     &lt;NA&gt;  &lt;NA&gt;  ravish… ravish 
+##  8     1 assault    assail   79614 syn   v     &lt;NA&gt;  &lt;NA&gt;  assail  assail 
+##  9     1 assault    round    79435 syn   n     &lt;NA&gt;  &lt;NA&gt;  round   round  
+## 10     1 assault    snipe    79399 syn   n     &lt;NA&gt;  &lt;NA&gt;  snipe   snipe  
+## # ... with 2,528 more rows, and 1 more variable: remove &lt;int&gt;</code></pre>
+<pre class="r"><code>write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
 </div>
 </div>
 </div>

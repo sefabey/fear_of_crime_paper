@@ -294,13 +294,36 @@ write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
 ```
 
 
-As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words as seperate columns.
+As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words in seperate columns. 
 
 
 ```r
 lexicon_filtered_02 <- lexicon_filtered_02 %>% 
-mutate(lemmas=textstem::lemmatize_strings(word)) %>% 
-mutate(stems= textstem::stem_strings(word))
+    mutate(lemmas=textstem::lemmatize_strings(word)) %>% 
+    mutate(stems= textstem::stem_strings(word)) %>% 
+    select(everything(),-remove, remove)
+
+lexicon_filtered_02
+```
+
+```
+## # A tibble: 2,538 x 11
+##       id query_word word     score tag1  tag2  tag3  tag4  lemmas  stems  
+##    <int> <chr>      <chr>    <int> <chr> <chr> <chr> <chr> <chr>   <chr>  
+##  1     1 assault    attack   93835 syn   n     <NA>  <NA>  attack  attack 
+##  2     1 assault    sexual … 93573 syn   n     <NA>  <NA>  sexual… sexual…
+##  3     1 assault    rape     92281 syn   n     <NA>  <NA>  rape    rape   
+##  4     1 assault    battery  85324 syn   n     <NA>  <NA>  battery batteri
+##  5     1 assault    violati… 85044 syn   n     <NA>  <NA>  violat… violat 
+##  6     1 assault    offensi… 84266 syn   n     <NA>  <NA>  offens… offens 
+##  7     1 assault    ravishm… 80402 syn   n     <NA>  <NA>  ravish… ravish 
+##  8     1 assault    assail   79614 syn   v     <NA>  <NA>  assail  assail 
+##  9     1 assault    round    79435 syn   n     <NA>  <NA>  round   round  
+## 10     1 assault    snipe    79399 syn   n     <NA>  <NA>  snipe   snipe  
+## # ... with 2,528 more rows, and 1 more variable: remove <int>
+```
+
+```r
 write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
 ```
 
