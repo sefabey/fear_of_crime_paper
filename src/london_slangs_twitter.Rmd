@@ -29,3 +29,26 @@ Sources:    https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
             https://www.shinobilifeonline.com/index.php?topic=2973.0
     
 # 1. Data Scraping
+
+
+First, scaping data from here: https://www.shinobilifeonline.com/index.php?topic=2973.0
+
+```{r}
+html01 <- "https://www.shinobilifeonline.com/index.php?topic=2973.0"
+
+
+slangs <- rvest::html(html01) %>% 
+    rvest::html_nodes( xpath = '//*[contains(concat( " ", @class, " " ), concat( " ", "inner", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "bbc_size", " " ))]') %>% 
+    rvest::html_text() %>% 
+    as.tibble() %>% 
+    mutate(slang_term=value) %>% 
+    mutate(letter_count=str_count(slang_term)) %>% 
+    filter(letter_count>1) %>% 
+    # mutate(double_words= case_when( str_detect(slang_term, "/") ~ "yes",TRUE ~ "no")) %>% #no need to do this, separate_rows works as expected
+    separate_rows(slang_term, sep = "/") %>% 
+    distinct(slang_term,.keep_all = T) %>% 
+    filter(!row_number()==1) %>% #drop the first row which was a header 
+    mutate(slang_term_lower= str_to_lower(slang_term)) %>% 
+    select(slang_term,slang_term_lower)
+
+```
