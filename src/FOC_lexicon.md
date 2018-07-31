@@ -19,7 +19,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -30,7 +30,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -290,6 +290,17 @@ lexicon_filtered_02
 ```
 
 ```r
+write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
+```
+
+
+As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words as seperate columns.
+
+
+```r
+lexicon_filtered_02 <- lexicon_filtered_02 %>% 
+mutate(lemmas=textstem::lemmatize_strings(word)) %>% 
+mutate(stems= textstem::stem_strings(word))
 write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
 ```
 

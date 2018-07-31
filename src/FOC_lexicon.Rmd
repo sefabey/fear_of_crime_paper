@@ -112,3 +112,14 @@ lexicon_filtered_02
 write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
 ```
 
+
+As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words in seperate columns. 
+
+```{r}
+
+lexicon_filtered_02 <- lexicon_filtered_02 %>% 
+mutate(lemmas=textstem::lemmatize_strings(word)) %>% 
+mutate(stems= textstem::stem_strings(word))
+write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
+```
+

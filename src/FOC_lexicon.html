@@ -130,12 +130,12 @@ $(document).ready(function () {
 
 <pre class="r"><code>knitr::opts_chunk$set(warning = F)</code></pre>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(rhymer)
@@ -312,6 +312,11 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 ## 10     1 assault    snipe          79399 syn   n     &lt;NA&gt;  &lt;NA&gt;       0
 ## # ... with 2,528 more rows</code></pre>
 <pre class="r"><code>write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
+<p>As words in English can take many forms, suffixes and prefixes, I’ll add lemmas and stems of words as seperate columns.</p>
+<pre class="r"><code>lexicon_filtered_02 &lt;- lexicon_filtered_02 %&gt;% 
+mutate(lemmas=textstem::lemmatize_strings(word)) %&gt;% 
+mutate(stems= textstem::stem_strings(word))
+write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
 </div>
 </div>
 </div>
