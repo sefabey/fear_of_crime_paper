@@ -133,10 +133,292 @@ $(document).ready(function () {
 <p>A quick markdown file to search London gang slang on Twitter.</p>
 <p>Rationale:</p>
 <p>Involves: 1. Data scraping from multiple sources (one html one pdf) 2. Data wrangling (duh) 3. Querying from Twitter search API 4. Memoise API call</p>
-<p>Sources: <a href="https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf" class="uri">https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf</a> <a href="https://www.shinobilifeonline.com/index.php?topic=2973.0" class="uri">https://www.shinobilifeonline.com/index.php?topic=2973.0</a></p>
+<p>Sources: <a href="https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf" class="uri">https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf</a></p>
+<p><a href="https://www.shinobilifeonline.com/index.php?topic=2973.0" class="uri">https://www.shinobilifeonline.com/index.php?topic=2973.0</a></p>
 </div>
 <div id="data-scraping" class="section level1">
 <h1>1. Data Scraping</h1>
+<p>First, scaping data from here: <a href="https://www.shinobilifeonline.com/index.php?topic=2973.0" class="uri">https://www.shinobilifeonline.com/index.php?topic=2973.0</a></p>
+<pre class="r"><code>html01 &lt;- &quot;https://www.shinobilifeonline.com/index.php?topic=2973.0&quot;
+
+
+slangs &lt;- rvest::html(html01) %&gt;% 
+    rvest::html_nodes( xpath = '//*[contains(concat( &quot; &quot;, @class, &quot; &quot; ), concat( &quot; &quot;, &quot;inner&quot;, &quot; &quot; ))]//*[contains(concat( &quot; &quot;, @class, &quot; &quot; ), concat( &quot; &quot;, &quot;bbc_size&quot;, &quot; &quot; ))]') %&gt;% 
+    rvest::html_text() %&gt;% 
+    as.tibble() %&gt;% 
+    mutate(slang_term=value) %&gt;% 
+    mutate(letter_count=str_count(slang_term)) %&gt;% 
+    filter(letter_count&gt;1) %&gt;% 
+    # mutate(double_words= case_when( str_detect(slang_term, &quot;/&quot;) ~ &quot;yes&quot;,TRUE ~ &quot;no&quot;)) %&gt;% #no need to do this, separate_rows works as expected
+    separate_rows(slang_term, sep = &quot;/&quot;) %&gt;% 
+    distinct(slang_term,.keep_all = T) %&gt;% 
+    filter(!row_number()==1) %&gt;% #drop the first row which was a header 
+    mutate(slang_term_lower= str_to_lower(slang_term)) %&gt;% 
+    select(slang_term,slang_term_lower)</code></pre>
+<pre class="r"><code>slangs &lt;- slangs %&gt;% 
+    mutate(slang_term_query= paste0('\&quot;',slangs$slang_term_lower,'\&quot;'))
+
+slang_tweets &lt;- purrr::map_df(.x = slangs$slang_term_query, .f =  rtweet::search_tweets, 
+                              n = 50, include_rts=F)</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre><code>## Searching for tweets...</code></pre>
+<pre><code>## Finished collecting tweets!</code></pre>
+<pre class="r"><code>rate_limit() %&gt;% 
+    arrange(reset)</code></pre>
+<pre><code>## # A tibble: 140 x 7
+##    query    limit remaining reset  reset_at            timestamp          
+##    &lt;chr&gt;    &lt;int&gt;     &lt;int&gt; &lt;time&gt; &lt;dttm&gt;              &lt;dttm&gt;             
+##  1 search/…   180        60 13.91… 2018-08-01 20:31:54 2018-08-01 20:18:00
+##  2 lists/l…    15        15 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  3 lists/m…    75        75 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  4 lists/s…    15        15 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  5 lists/m…   900       900 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  6 lists/s…    15        15 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  7 lists/s…    75        75 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  8 lists/o…    15        15 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+##  9 lists/s…   180       180 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+## 10 lists/m…    15        15 15.01… 2018-08-01 20:33:00 2018-08-01 20:18:00
+## # ... with 130 more rows, and 1 more variable: app &lt;chr&gt;</code></pre>
+<pre class="r"><code>slang_tweets %&gt;% rtweet::write_as_csv(&quot;slang_tweets.csv&quot;)</code></pre>
+<p>read slang tweets</p>
+<pre class="r"><code>slang_tweets &lt;- rtweet::read_twitter_csv(&quot;../data/slang_tweets.csv&quot;)</code></pre>
 </div>
 
 

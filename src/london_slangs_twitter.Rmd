@@ -9,6 +9,10 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = F)
+library(tidyverse)
+library(rtweet)
+library(xml2)
+library(memoise)
 ```
 
 # Intro
@@ -26,7 +30,8 @@ Involves:
     4. Memoise API call
 
 Sources:    https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
-            https://www.shinobilifeonline.com/index.php?topic=2973.0
+
+https://www.shinobilifeonline.com/index.php?topic=2973.0
     
 # 1. Data Scraping
 
@@ -52,3 +57,29 @@ slangs <- rvest::html(html01) %>%
     select(slang_term,slang_term_lower)
 
 ```
+
+
+```{r, cache=TRUE}
+
+slangs <- slangs %>% 
+    mutate(slang_term_query= paste0('\"',slangs$slang_term_lower,'\"'))
+
+slang_tweets <- purrr::map_df(.x = slangs$slang_term_query, .f =  rtweet::search_tweets, 
+                              n = 50, include_rts=F)
+
+rate_limit() %>% 
+    arrange(reset)
+
+slang_tweets %>% rtweet::write_as_csv("slang_tweets.csv")
+```
+
+
+read slang tweets
+```{r}
+slang_tweets <- rtweet::read_twitter_csv("../data/slang_tweets.csv")
+```
+
+```{r}
+
+```
+
