@@ -1,121 +1,121 @@
-slang_term,slang_term_lower
-Jump Out Gang,jump out gang
-67,67
-86,86
-Harlem Spartans,harlem spartans
-Ounto Nation,ounto nation
-Aggy,aggy
-Aggro,aggro
-Amm,amm
-Ahlie,ahlie
-Allow it,allow it
-Aired,aired
-Bare,bare
-Bands,bands
-Bando,bando
-Bredrins,bredrins
-Bells,bells
-Bun,bun
-Bruck,bruck
-Brukk,brukk
-Body,body
-Bait,bait
-Block,block
-Bird,bird
-Batty,batty
-Bossman,bossman
-Beef,beef
-Blanked,blanked
-Beg ,beg 
-Bumbaclart,bumbaclart
-Bludclart,bludclart
-Bloodclart,bloodclart
-Bally,bally
-Ballie ,ballie 
-Corn,corn
-Crash,crash
-Creps,creps
-Case ,case 
-Chunky,chunky
-Chase,chase
-Cah,cah
-Can,can
-Clip,clip
-Crud,crud
-Cats,cats
-Cheffed ,cheffed 
-Clapped,clapped
-'Chete,'chete
-Driller,driller
-Dotty,dotty
-Ding-dong,ding-dong
-Dash,dash
-Dough,dough
-Dead up,dead up
-Dip,dip
-Dashed ,dashed 
-Dun Know!,dun know!
-Dead,dead
-Fry,fry
-Fields,fields
-Fam,fam
-Gyaldem ,gyaldem 
-Grub,grub
-Head,head
-Hench,hench
-Hollow tips,hollow tips
-Iron,iron
-JOG,jog
-Lurk,lurk
-Likkle,likkle
-Lickle,lickle
-MAC,mac
-Mandem,mandem
-Man-like!,man-like!
-Myth,myth
-Merk,merk
-Murk,murk
-Mazza,mazza
-Mash,mash
-Masha,masha
-Noddy ,noddy 
-Opps ,opps 
-On my ones,on my ones
-Ounto,ounto
-Peng ,peng 
-Pum,pum
-Pagan,pagan
-Paigon ,paigon 
-Pole ,pole 
-Qwengerz,qwengerz
-Racks,racks
-Rushed,rushed
-Rambizzy,rambizzy
-Roadman,roadman
-Skrr,skrr
-Spinner,spinner
-Smoke,smoke
-Scoreboard,scoreboard
-Splash,splash
-Sprayed,sprayed
-Skeng,skeng
-Sket,sket
-Slag,slag
-Shook,shook
-Shank,shank
-Skududu ,skududu 
-Tum-tum,tum-tum
-Ten-toes,ten-toes
-Trapping,trapping
-Traphouse ,traphouse 
-T-Side,t-side
-Tops,tops
-Trek,trek
-Uck,uck
-Uckers ,uckers 
-Whip,whip
-Wagwarn,wagwarn
-Wahgwan ,wahgwan 
-Yute(s),yute(s)
-Yard,yard
-nigga,nigga
+slang_term,slang_term_lower,useful_for_further_inspection,comment1,comment2
+Jump Out Gang,jump out gang,no,References to an artist called jump out  gang,
+67,67,no,"vague, could be anything",
+86,86,no,"vague, could be anything",
+Harlem Spartans,harlem spartans,maybe,refences to a uk band called harlem spartans,HS are apparently banned for references to violence an uk gang culture in their music
+Ounto Nation,ounto nation,no,references to youtube video of a song called ounto nation,Returns 3-4 tweets
+Aggy,aggy,maybe,no mention of crime but used to express negative sentiments,refers to agressiveness
+Aggro,aggro,maybe,no mention of crime but used to express negative sentiments,refers to agressiveness
+Amm,amm,no,lots of foreign language tweets,
+Ahlie,ahlie,no,random topics,
+Allow it,allow it,maybe,interestingly observed two instances of counter-speech but hard to discriminate normal use from slang use.,
+Aired,aired,no,Hard to discriminate whether slang or literal.,Slang usage not observed.
+Bare,bare,no,Hard to discriminate whether slang or literal.,Slang usage not observed.
+Bands,bands,no,Hard to discriminate whether slang or literal.,Slang usage not observed.
+Bando,bando,no,all tweets are in foreign language. Slang usage not observed. not suitable.,
+Bredrins,bredrins,yes,some referral to gang and mandem culture. some unrelated tweets. Most tweets contain references to UK so better geolocation. may be useful.,
+Bells,bells,no,Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.,
+Bun,bun,no,Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.,
+Bruck,bruck,no,Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.,
+Brukk,brukk,no,Hard to discriminate whether slang or literal. Slang usage not observed. almost all tweets in foreign lang. not suitable.,
+Body,body,no,Slang usage not observed. not suitable.,
+Bait,bait,no,Slang usage not observed. not suitable.,
+Block,block,no,Almost all tweets refer to 'blocking action'. Slang usage not observed. not suitable.,
+Bird,bird,no,Slang usage not observed. not suitable.,
+Batty,batty,,,
+Bossman,bossman,,,
+Beef,beef,,,
+Blanked,blanked,,,
+Beg ,beg ,,,
+Bumbaclart,bumbaclart,,,
+Bludclart,bludclart,,,
+Bloodclart,bloodclart,,,
+Bally,bally,,,
+Ballie ,ballie ,,,
+Corn,corn,,,
+Crash,crash,,,
+Creps,creps,,,
+Case ,case ,,,
+Chunky,chunky,,,
+Chase,chase,,,
+Cah,cah,,,
+Can,can,,,
+Clip,clip,,,
+Crud,crud,,,
+Cats,cats,,,
+Cheffed ,cheffed ,,,
+Clapped,clapped,,,
+'Chete,'chete,,,
+Driller,driller,,,
+Dotty,dotty,,,
+Ding-dong,ding-dong,,,
+Dash,dash,,,
+Dough,dough,,,
+Dead up,dead up,,,
+Dip,dip,,,
+Dashed ,dashed ,,,
+Dun Know!,dun know!,,,
+Dead,dead,,,
+Fry,fry,,,
+Fields,fields,,,
+Fam,fam,,,
+Gyaldem ,gyaldem ,,,
+Grub,grub,,,
+Head,head,,,
+Hench,hench,,,
+Hollow tips,hollow tips,,,
+Iron,iron,,,
+JOG,jog,,,
+Lurk,lurk,,,
+Likkle,likkle,,,
+Lickle,lickle,,,
+MAC,mac,,,
+Mandem,mandem,,,
+Man-like!,man-like!,,,
+Myth,myth,,,
+Merk,merk,,,
+Murk,murk,,,
+Mazza,mazza,,,
+Mash,mash,,,
+Masha,masha,,,
+Noddy ,noddy ,,,
+Opps ,opps ,,,
+On my ones,on my ones,,,
+Ounto,ounto,,,
+Peng ,peng ,,,
+Pum,pum,,,
+Pagan,pagan,,,
+Paigon ,paigon ,,,
+Pole ,pole ,,,
+Qwengerz,qwengerz,,,
+Racks,racks,,,
+Rushed,rushed,,,
+Rambizzy,rambizzy,,,
+Roadman,roadman,,,
+Skrr,skrr,,,
+Spinner,spinner,,,
+Smoke,smoke,,,
+Scoreboard,scoreboard,,,
+Splash,splash,,,
+Sprayed,sprayed,,,
+Skeng,skeng,,,
+Sket,sket,,,
+Slag,slag,,,
+Shook,shook,,,
+Shank,shank,,,
+Skududu ,skududu ,,,
+Tum-tum,tum-tum,,,
+Ten-toes,ten-toes,,,
+Trapping,trapping,,,
+Traphouse ,traphouse ,,,
+T-Side,t-side,,,
+Tops,tops,,,
+Trek,trek,,,
+Uck,uck,,,
+Uckers ,uckers ,,,
+Whip,whip,,,
+Wagwarn,wagwarn,,,
+Wahgwan ,wahgwan ,,,
+Yute(s),yute(s),,,
+Yard,yard,,,
+nigga,nigga,,,
