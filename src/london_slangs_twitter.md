@@ -3,8 +3,9 @@ title: "London gang slangs on Twitter"
 author: "Sefa Ozalp"
 date: "30/07/2018"
 output:
-      html_document:
-        keep_md: true
+  html_document:
+    keep_md: yes
+  pdf_document: default
 ---
 
 
@@ -23,18 +24,22 @@ knitr::opts_chunk$set( warning = FALSE, message = FALSE)
 A quick markdown file to search London gang slang on Twitter. 
 
 
-Rationale: 
+**Rationale**: The idea is to see whether these gang slang words produce sensible results from a simple twitter search in terms of references to crime and violent gang culture.
+
+**Involves:**
 
 
-Involves:
-    1. Data scraping from multiple sources (one html one pdf)
-    2. Data wrangling (duh)
-    3. Querying from Twitter search API
-    4. Memoise API call
+1. Data scraping from multiple sources (one html, one pdf)
+2. Data wrangling (duh)
+3. Querying from Twitter search API
+4. Memoise API call (not implemented, using manual caching)
 
-Sources:    https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
+**Sources:** Gang slang terms used in this document are taken from.
 
-https://www.shinobilifeonline.com/index.php?topic=2973.0
+1. https://www.shinobilifeonline.com/index.php?topic=2973.0
+
+2. https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
+
     
 # 1. Data Scraping
 
@@ -72,7 +77,7 @@ slangs <- slangs %>%
 Using SEARCH API, I queried 50 tweets for each term in the slang list. Apparently, not every slang term returned 50 tweets (some are really obscure and uncommon terms/spellings). Ultimately, this query resulted in a dataframe consisting of 5604 rows.
 
 
-I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API everytime I knit the rmd. This is impractical as it 1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
+I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API everytime I knit the rmd. This is impractical as it (1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
 
 
 
@@ -101,7 +106,10 @@ slang_tweets <- rtweet::read_twitter_csv("../data/slang_tweets.csv")
 
 Below, I will define and use a function that (1)finds tweets (scraped previously) which match nth term from the slangs list, (2) randomly sample 20 tweets matching nth term, (3) print tweet text.
 
-Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments
+Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments. 
+
+
+*Note for the persons with a keen eye:* The reason for using double distinct in the chunk below is, some slang terms returned less than 20 results so the chunk was throwing an error when using `sample_n(20)`. Thus had to do `distinct`, sample 20 with replacement and then do `distinct` again (for cases where unique n<20). I could have tackled this more elegantly (by dropping first `distinct` and using `sample_n` with replacement and then `disctinct`after that) but since I was using cache=T the some chunks, I was in too deep and I opted to carry on with not so elegant code. 
 
 
 ```r
@@ -449,4 +457,305 @@ print_slang_tweets(23) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bird**. Slang usage not observed. Not suitable even when slang. not suitable.
+**Comments:** term used to query twitter api was **Bird**. Slang usage not observed. Even slang meaning is mild. not suitable.
+
+
+### 24) Term: **Batty**
+
+```r
+print_slang_tweets(24) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Dan Batty ready to prove Leeds United wrong as he steps into Hull City spotlight #hcafc https://t.co/610blHUwft"},{"1":"@batty_betty_98 ファーーーン！！(矛盾を感じた音)"},{"1":"@denisebatters Hey Batty Batters,  try actually running for office"},{"1":"@5yrs_late Lard mi #migarn nah seriously tho from lickle bass in the voice to bih ass. #🍆💦 #yambattygal #ffsinternet #yallwrongforthis #😉😉😉😉 #🤦🏾‍♂️🤦🏾‍♂️🤦🏾‍♂️🤦🏾‍♂️ #😂😂😂 #AfroRoxWorldwide https://t.co/Fxlj0Ujjkh"},{"1":"@sEc_SPN @BuckeyeGirrl @CoachHalejr @FoAmZ_X @SEC_Exposed U want me to take a pic of yalls batty games because they weren’t even close. How many times y’all get beat by 30"},{"1":"Instagram really went and took the novelty of batty pics away dinnit"},{"1":"@LorDefiance @Hidasan @shortyart Lucky dragon! Love that big batty booty! X3"},{"1":"Excited to share this item from my #etsy shop: Orange felt bat halloween decor, felt batty ornament, glow in the dark bat fang, felt fruit bat gift, spooky bat decor, pumpin kawaii bat. https://t.co/WoWqJxLEcX\\n#etsy #etsyshop #EtsyTMT #MakingIt #MakingItNBC https://t.co/c2yuyFxWxy"},{"1":"@batty_betty_98 いやごめん普通に酒じゃなくて100円のりんごの炭酸でええ"},{"1":"@batty_betty_98 『もしかしてホワイトステージ整地してくれた辻本メンバーですか？？』って聞かれんねんで\\n誕生日おめでとう酒たのしみにしてるわ"},{"1":"Siguiendo mi tradición, viñeta de hoy dedicada a l@s nuev@s seguidor@s @Zoe_Soler @JMRubenJM @tieneperejiles @RosaRufo @efrainreiser1 @Otro_Periodismo @acasadobufo @angelestesting @jmrtnsa @MariaTe20532675 @vidushi_i @Roy_Batty_Reply @vieyra_joe @Jgarrid25453818 @mercheroncero"},{"1":"@_alexgstone Meyler not good enough either in reality. Henriksen, Irvine, Batty all surpassed him much as I love him. Winston Churchill was a good leader, he can also move as well as Dawson. Abel is a real loss. The big loss. Best in the league. He wanted 100k wanted   week though 😂😳"},{"1":"@Sharessan That big bugbeaar boy is batty about that bitter bubbly brew!"},{"1":"@DefenderMothman A huge wind passed by, ruffling Batty's hair. A wind whipped up and a portal shot out, forming right in front of them."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Batty**. Slang usage observed but no reference to crime. not suitable.
+
+
+### 25) Term: **Bossman**
+
+```r
+print_slang_tweets(25) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@BossMan_Riq yeah u just talking"},{"1":"I liked a @YouTube video https://t.co/v8p5ZDunX4 Bossman watches AUS BattleRap - Creepy J vs NES (Round 2)"},{"1":"@HarveyEJAustin Absolute bossman! Why?"},{"1":"I liked a @YouTube video https://t.co/A79zOzxc1i Bossman watches AUS BattleRap - Creepy J vs NES (Round 1)"},{"1":"@LucasDigne Welcome bossman. 🤙🏻"},{"1":"@zachswon @venetianfest @TheSwonBrothers #ZachOfAllTrades #MultiTasking #Bossman #Smooth #NeverGetsOld #OkiesRock 🎶🎤🎸🥁🎹👍💖🤘 https://t.co/GGkiX4Vz6Y"},{"1":"This dude dead ass lied staright up, comfronted him with BossMan, nigga locked himself up in his crib... what a bitch bruh"},{"1":"@SkylarR_Darker @MGrey_Darker &lt; in deep water with Mr. Bossman himself."},{"1":"@LucasDigne Welcome to Everton Bossman 🔵"},{"1":"@SkylarR_Darker @MGrey_Darker &lt; pocket to start making calls, waving to Skylar and the bossman as I do."},{"1":"I liked a @YouTube video https://t.co/4d9wlzfzqg Bossman watches AUS BattleRap - Billz vs Carlos the Jackl (Round 2A)"},{"1":"@gayboyrari @lilrolex_ebooks in like 30 bossman"},{"1":"I liked a @YouTube video https://t.co/9JTakpR4Ms Bossman watches AUS BattleRap - Billz vs Carlos the Jackl (Round 1)"},{"1":"I liked a @YouTube video https://t.co/geSBXZrr7z Bossman watches N.E.R.D vs DirtWorm (UBL Battle) Round 1"},{"1":"Jerry says: Get Back to Work!\\n.\\n.\\n#bossman #shopbird #direstashop #shoplife #birdlife #beakbeak https://t.co/e16BQPPTgH"},{"1":"I liked a @YouTube video https://t.co/LLtUvv3tSh Bossman watches AUS BattleRap - Creepy J vs NES (Round 3)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Bossman**. Slang usage observed but slang usage carries a positive sentiment. many references to youtube music videos. not suitable.
+
+### 26) Term: **Beef**
+
+```r
+print_slang_tweets(26) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"...Got a couple racks of beef ribs on deck! Just finished putting my secret dry rub on, now I'ma slow bake these bad boys in the oven for a few hours, then finish 'em off on that charcoal… https://t.co/ZQ6dmK8XsK"},{"1":"@OeauxMar @ItchyDropEmOff If you see a person you have real beef with 9 out of 10 they taking that shot because if the roles reverse they prolly not gonna let u slide"},{"1":"@john_setzler @TraegerGrills Beef chuck ribs?"},{"1":"@CanSpice @rwittstock @PJNewWest @laureljeanine @Obrassor @bikesnobnyc @jonathanxcote @stephenoshea Maybe you're right, but maybe commercial is not the destination it used to be. I have a beef with poor transit access to parks and beaches throughout the region. This ties in with low density around said parks and beaches..."},{"1":"Anyone have time to explain to me how this Booba &amp; Kaaris beef started? 😁"},{"1":"Fam say wallah Kaaris and Booba got into beef https://t.co/XLNtrhlzhg"},{"1":"@GOP is complicit. They are not even hiding it any more. Senate rejects effort to beef up states' election security spending  https://t.co/MVBD2gn69T"},{"1":"Primitive Technology Cooking skill BBQ Beef recipe Cooking skill https://t.co/BgyCvQYn9P https://t.co/lSRjJjt9Gt"},{"1":"#BREAKING: Senate #GOP rejects #Democrats effort to beef up #electionsecurity funding https://t.co/JCESeoMZtp  https://t.co/yAouRQKAov"},{"1":"Let that hurt go ... but you ain’t lettin yo weak ass beef towards me go ... you taking it out on Our baby &amp; that’s Wrong !"},{"1":"@ETDEUMPURITAS corned beef hash transcends being gross on just the vegan level, it should be universally disgusting"},{"1":"It’s Beef den where da biscuits at cuz we ready to eat 🤘🏾💪🏾"},{"1":"@eddiemarsan Was the 99% figure researched or is it just a nice number you`ve made up to beef up your predictable attack."},{"1":"@__56426__ @stevewallwork Any beef with @NewcastleGoals should be taken up with him, but I think the two letters will have exactly the same impact. None. Also, one was done in jest, and one was written in all seriousness, yet they were both somehow hilarious."},{"1":"@ryanlouvie22 @HunterMisse Happy Birthday to one of my other brothers😂 aka, the one who eats all my beef jerky"},{"1":"@_mykaila_ thought you wanted to get your nails done without beef 🤷🏼‍♀️ oh well. and i’ve been enjoying it, thanks :)"},{"1":"A wagyu beef burger on white bread with jack cheese and fried onions"},{"1":"Like bruh clearly went back to that album and made some changes after the Pusha beef but he left that one line alone lmaoooo"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Beef**. Slang usage observed but adopted by a wider population so the sample does not include gang reference. also has has a non-slang meaning that is commonly used. not suitable. 
+
+
+### 27) Term: **Blanked**
+
+```r
+print_slang_tweets(27) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"\"The teleprompter's screen blanked out. A second later, a single line of text appears.\\n\\nSOMEONE IS HERE TO KILL YOU\" https://t.co/ZeaQgqCick"},{"1":"me, no more than 5min into any shift: NOTHING TO LOSE BUT YOUR CHAINS, COMRADES!\\n\\nme, no more than 5min after my weighted blanked with minky cover finally arrived: CAPITALMISM IS GOOD THO"},{"1":"the fact that we get to do this together 🙌🏾🙌🏾🙌🏾\\n///\\nyooooo @j_hairston_jr you blanked on this cover for @mycitycharlotte! thank you for the feature! 🙏🏾🙏🏾🙏🏾\\n///\\n///\\n#duppandswat #cltisdope… https://t.co/OmngMzdFPS"},{"1":"While we don't endorse Sharkey for reasons previously stated, his intention to run should at least be acknowledged by the authorities instead of blanked which is what they are currently doing https://t.co/FECuwXavRu"},{"1":"Completely mind-blanked. Couldn't remember the word 'speckled'. I'm just like 'spettled' doesn't sound right. 😂"},{"1":"Blanked Thoughts"},{"1":"whose fanbase was called melody i completely blanked out was it btob my brain is glitching pls"},{"1":"G herbo blanked on letter that might be my favorite song of 2018"},{"1":"@VapeMasterZero of course i have an offline copy, i am just alarmed that whej you try to reaccess them they are all blanked out"},{"1":"Tommy Robinson blanked on BBC 6 o clock news. Top story is elections in Zimbabwe.  Who gives a f#ck about Zimbabwe?  They kicked us out of there and the place has gone to shit. Why is this top news in my country?"},{"1":"I knew new computer setup was going suspiciously smoothly. It just blanked out, sent a pop-up saying 'check HDMI cable'. There's no HDMI cable. Had to TOATOA. Humph."},{"1":"@steffanwatkins I had an awesome response &amp; ive blanked out.  I promise it was good 😂😂😂"},{"1":"@JusAnothaCritiK @Caclifton35 @colemcdowell2 @Woj__Bombs @espn Kinda sounds like the exact same way Ohio state made it to the playoffs in 2016🤔   but the difference is bama didn't get blanked by clemson"},{"1":"Do you know the difference between a debit card vs. credit card? At first, this kid blanked. When I gave him a chance to think about it, he knew the answer. So many young Americans don’t… https://t.co/bpHeRVh4Qk"},{"1":"FINAL: Bullfrogs blanked by the Fond du Lac Dock Spiders in game one...\\n\\nWP - Austin Wagner (6-1)\\nLP - Ryan Gowens (1-2)\\n\\n➡️ UP NEXT: Bullfrogs play game two in Fond du Lac at 6:35 p.m. from Herr-Baker Field! #GoFrogs 🐸 https://t.co/ekPvIebmds"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Blanked**. Slang usage observed. No reference to crime. not suitable.
+
+### 28) Term: **Beg **
+
+```r
+print_slang_tweets(28) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Kerry Katona’s Fans Beg Her To Tidy Her Filthy Bedroom After Posting Sexy Selfie https://t.co/nQm00L3SiM"},{"1":"Dear future daughter, \\ndon’t ever beg for someone’s time. don’t ever beg for someone’s attention. and don’t ever beg for someone’s love."},{"1":"please don't disappoint us.. i beg you https://t.co/f5Fzln7wws"},{"1":"Lynn Anderson - I Beg Your Pardon, I Never Promised You A Rose Garden (B... https://t.co/SuUtypEgRk via @YouTube"},{"1":"@NewHopeBlake I beg for paper hearts or stay"},{"1":"@GovnarAli I beg all be lie"},{"1":"@ms_ting_ I beg to differ !!"},{"1":"@miss_isioma @olulagos @OgbeniDipo 😲Not today please. I beg you You, wait until Baba returns from his working holiday in London.😭 https://t.co/oUZJd14Qq9"},{"1":"Realtor friends. Please. I beg you. I know an “exclusive listing” might be novel for a couple of days, but if it’s been 2+ weeks and the house hasn’t sold, for the love of goodness put it on MLS."},{"1":"@amirkhanmma 3/3 sir please do it I beg u 🙏 these movie will change many life sir trust me. I assure you movie budget it not more then 10 CR but I believe it can break all records. I beg u to listen a story once pls..."},{"1":"THEY COST LIKE $20 AND I HAD TO BEG MY DAD FOR A SOLID 4 MONTHS UNTIL HE AGREED TO BUY ONE FOR ME AND I NEVER GOT IT IT'S BEEN 10 YEARS"},{"1":"@Perel1984 @hotdiggedydemon @wacom please, please I beg of you two, reunite… bring peace to the wisenverse"},{"1":"Ma boss I beg wer u Dey watch the game for !! https://t.co/N4WqJecnwB"},{"1":"never beg a person \\nto stay in your life ⚠️"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Beg **. slang usage is using this term as a noun, rather than a verb. need to use NLP to distinguish. not suitable.
+
+
+### 29) Term: **Bumbaclart**
+
+```r
+print_slang_tweets(29) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@roomshamblez He takes two days to reply to me but he’s always active on insta I send him three messages and he replies to one about a bumbaclart cat like I have penis written on my forehead?"},{"1":"Jeff Sessions Did Another Bad Thing - Splinter - Separation of Church and State is going great right now, Jeffy. No need for your ‘stinkin’ task force. Bumbaclart. SAD. https://t.co/HiBmZFr3Ul"},{"1":"Wow. Car loans and loans when my name is not RBS. Bumbaclart. Juju is real. I bet the man is not working, init? https://t.co/QpSWUXHQCm"},{"1":"@conrjoe_ @rishh96 @callumhoeyy Rasclart bumbaclart eeedjat"},{"1":"been battling one episode for days now, and i’m glad to announce that i’m finally making this bumbaclart script my bitch."},{"1":"I just want to know why kojo funds thought it was acceptable to randomly say bumbaclart in check. That’s all"},{"1":"I’m using “I do say to you sir, I am no rarseclart bumbaclart, fucking eeeedait” everyday from now https://t.co/hIKRhHj113"},{"1":"@Conservative_JA Bumbaclart!!!"},{"1":"Walk &amp; live , Talk &amp; bumbaclart dead."},{"1":"How’s levi just asked me do I reckon jerk chicken and roast chicken come from the same sort of chickens, like theres a chicken in a coop somewhere shouting bumbaclart 😩"},{"1":"@Miss_Zelda_Zonk @mrichardshost Recently he's been proper bumbaclart, but his early stuff... phwoar. Jesus Walks is a BANGER"},{"1":"@beckyjaneryan Bumbaclart"},{"1":"my 6yo daughter was just overheard calling someone a bumbaclart, I'm not sure what it means &amp; I have no idea where she heard it.. was pretty funny hearing her Jamaican accent 😂"},{"1":"I mean them weed seed bumbaclart different hoes"},{"1":"Bumbaclart https://t.co/kdaU8byxmT"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Bumbaclart**. Jamaican origin. slang usage observed. used to refer to negative things or persons. possibly many tweets from the UK. not many refences to crime.
+
+
+### 30) Term: **Bludclart**
+
+```r
+print_slang_tweets(30) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@LeeGunner82 'Bludclart' 😂😂😂😂 easy wid dat g"},{"1":"pinch punch first bludclart day of the month, no raascleet returns 💕"},{"1":"Believe in your bludclart barber 😂👌 https://t.co/pgmjhaxAe6"},{"1":"WHAT A BLUDCLART WOW https://t.co/FgW9JBabrC"},{"1":"gwarn ah yuh bludclart? https://t.co/A1WbDa8cbD"},{"1":"ANNOUNCE THE BLUDCLART CONTRACT https://t.co/pWD7ucmluA"},{"1":"@Lzison BLUDCLART !!!!!!"},{"1":"Bludclart Paul he ain’t even relevant \\U0001f9d0\\U0001f928 https://t.co/xFagIMn2v7"},{"1":"That Tommie and Spice tune is fiiiiiire tu bludclart 😩😩🔥🔥 https://t.co/izhHgjJWv0"},{"1":"In Cape Verde. How can i order a meal with plantain and they bring me FUCKING BANANA. What kind of bludclart mockery. I’m disappointed in Africa."},{"1":"@alhan ayo blud...come tru wid dat next gasworks ep. now ah wah di bludclart ya ah deal wid"},{"1":"FIAT FUCKING 500 BLUDCLART FUCKING TWITTER"},{"1":"WHAT THE BLUDCLART"},{"1":"I am not the bludclart one."},{"1":"Ahlie, every bludclart second ad break 😒 https://t.co/bAAkCevpiy"},{"1":"What a finished club , a man can’t even spend time with his new born ????? Fam this isn’t even competitive games , it’s the bludclart pre seasons , these man lack any empathy https://t.co/epb8OKromG"},{"1":"@NorthBankJay Do you the think word ‘bludclart’ was uttered?"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Bludclart**. slang usage observed. very informal spelling. used to refer to extremely negative things or persons. many tweets from the UK but not many refences to crime.
+
+
+### 31) Term: **Bloodclart**
+
+```r
+print_slang_tweets(31) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Hey Siri WHEEL UP THE BLOODCLART https://t.co/wMl2gJqxI6"},{"1":"eczema fi bloodclart dead"},{"1":"pull up the bloodclart"},{"1":"So you’re telling me a brother is dying and you wanna pull out your phone to record it? You see you ppl that records every and anything one day someone gonna lick your head off. \\n\\nNinja man is right unuh wicked bloodclart help deh people dem"},{"1":"Must be nice being asian in the summer ini, bloodclart weddings everyday kmt"},{"1":"@raymonddelauney MR Chucka bloodclart Umunna!\\nDoes NOT have any care for the young children.\\nActually! \\nHe's the worse of them all."},{"1":"How many bloodclart sponsored posts do you want to put on my feed @instagram"},{"1":"⁦@shenseea20⁩ bloodclart 💛🤘🏽❤️ https://t.co/GH8vGmv75T"},{"1":"Me ha gustado un vídeo de @YouTube (https://t.co/BkWewXXr4c - Monss Ft. TheNameIsIsh - Bloodclart)."},{"1":"@linkuptv @bignarstie Big up b nasty Hadouken fi dem bloodclart"},{"1":"More time me sidung an ah wonder is like a disease some people hah mek dem cyar Lou out yo bloodclart name duh."},{"1":"Believe in your Bloodclart Self 🏆🏆"},{"1":"#MusicBreak #NowPlaying \\nEBR - Bloodclart Mix Vol II - w/ tunes from @6blocc @Kromestar7 @CHIMPOMCR @ruskoofficial et al - https://t.co/cGKQ6oDy7h https://t.co/aZO1fwVtTn"},{"1":"@tiatsim dont expect that from me im sending a zip and u have to dl yhe whole bloodclart lol"},{"1":"Trash show. Fire bun that bloodclart whole island."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Bloodclart**. slang usage observed. used to refer to extremely negative things or persons. many tweets from the UK, and some refences to crime or violence.
+
+
+### 32) Term: **Bally**
+
+```r
+print_slang_tweets(32) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@VitalVegas I got 11 nights in 4 separate places for $120 total \\nFirst 8 nights and last night are free only hotel that's cost me anything was Bally's"},{"1":"I'm at Bally's Casino &amp; Hotel - @ballysac in Atlantic City, NJ https://t.co/nA8JXAZGwz"},{"1":"Mohran bally Ty Lawan Gy Ch Amir Sultan Cheema and Ch Faisal Farooq Cheema PTi Song YouTube: https://t.co/xFVdylsFr7 via @YouTube"},{"1":"Jamaican Culture is positioned Globally now, we need the Artists/Performers/Promoters to think that way, we can’t only be catering to the yute’s pon the corner, it’s a business, which means you can’t approach it like a hustle..."},{"1":"@jlgolson @elonmusk @atari ms pac was not atari :) Bally-Midway"},{"1":"@that_ali_tho Bally bally😂"},{"1":"@ImranKhanPTI  @PTIofficial @ImranIsmailPTI  balochistan ka msg sir Ik k lye...sir ham ny thappa lgaya bally pr..nahi dekha candidate kn hy kesa hy..ap ny electables lye party me vo b manzoor..lekin CM balochistan k lye khuda k lye sardar rind jesy qatilo ko select na kren plz"},{"1":"I added a video to a @YouTube playlist https://t.co/4B7ZuPIg80 Mera Laung Gawacha HQ - Bally Sagoo"},{"1":"Hey @BSlickComposer I joined the B-squad, too! You can call me “Bally” lol"},{"1":"Kagaguhan talks with my bally!😂💙"},{"1":"@aajtak Jis ko Sone ki jagah nhi..\\nOh dusre ki chinta karte he...\\n\\nJo ak din Rahne kelia Ram-Rahim ke Dhera me Bally Dance karti he oh dusre ki chinta karte he....@Taslimarif"},{"1":"@howey_lee Just finished the book, cracking read and on the whole, hilarious... especially the bits about Bally...😄 Brought back some good memories... great read🔴⚪️🔴⚪️"},{"1":"@DreddByDawn Yeah, it's not like there's an 'political side' that THEY SIDED WITH that is so anti-sexy clothes that they made Bally produce 'boob cover panels' to give the arcade owners an option to make the backglass art 'less racy' for pinball machines in the 80's and 90's (Elvira games)"},{"1":"Model Town Daska\\n•\\n#Bally_Bally #Dahi_Bhally #Gool_Gappy \\n#Daska #Model_Town_Daska #Pani_Puri \\n#Tasty #Crispy #Amazing #Delicious #Hungry #Fast_Food #Halal_Food #Food #FoodPorn #ohfoodstagram #Snack @ballybally_db \\n\\n#معیار #ذائقہ #نفاست https://t.co/qozdwyPD0S"},{"1":"Model Town Daska\\n•\\n#Bally_Bally #Dahi_Bhally #Gool_Gappy \\n#Daska #Model_Town_Daska #Pani_Puri \\n#Tasty #Crispy #Amazing #Delicious #Hungry #Fast_Food #Halal_Food #Food #FoodPorn #ohfoodstagram #Snack\\n•\\n@ballybally_db \\n#معیار #ذائقہ #نفاست https://t.co/bIC0eUeQ5m"},{"1":"Mohran bally Ty Lawan Gy Ch Amir Sultan Cheema and Ch Faisal Farooq Chee... https://t.co/YgdIWslJoC via @YouTube"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Bally**. slang usage not observed. not suitable.
+
+
+### 33) Term: **Ballie **
+
+```r
+print_slang_tweets(33) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@NicdaSilvaFans @Wentworth @Foxtel @showcaseaus I'm still not over ballie 😭"},{"1":"@Angel_ballie The devil is a liar! 😱😱😱"},{"1":"@calliebo_ballie Oh shoot, I already have those flavors for herbalife and I don't drink Shakeology :( sorry!!"},{"1":"@KelsoJenkins @calliebo_ballie Yaaassss"},{"1":"ball up @ Ballie Ballerson https://t.co/Fj55R3mtSJ"},{"1":"“If you’re falling for someone then fuck the labels.” They deserved a better ending 😭😭😭 #ballie https://t.co/PSJEod2nqv"},{"1":"Ik heb zin in het nieuwe ballie seizoen"},{"1":"Meet the co-sponsors of the @CMA_Docs  #IndigenousHealth #communityofinterest @drsusanshaw  @DKimmaliardjuk Dr. Ballie Redfern @KirlewMichael @lexy_regush, mix of Indigenous and non-Indigenous physicians, learners and fellows.  Reach out through DM to #joinus #MDnotrequired!"},{"1":"@calliebo_ballie About time 🙌🏻"},{"1":"| Si te digo que pensé en el Ballie con el bofetón y ni recuerdo si Bea golpeó a Allie en algún momento"},{"1":"@Angel_ballie 😂😂😂 yangu tell me more ... did we twerk ? #Zfw"},{"1":"Happy birthday to this beautiful, bold, overhand-serving, peace-making 7-year old! Love you so much Allie bo ballie ❤️ @ Disneyland https://t.co/wtOlrFNOa1"},{"1":"@MarlanSoliar How the ballie used to raise his hand to you 😹"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Ballie **. slang usage not observed. not suitable.
+
+
+
+### 34) Term: **Corn**
+
+```r
+print_slang_tweets(34) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Whenever something is extremely cheesy or corny I just call it elote. It's literally corn covered in cheese."},{"1":"@seanmdav I used to go there a lot, ever since the first scare a few years ago I have not been back. My go to was rare steak, black bean, light on the rice and I love the corn stuff (and of course the guac)"},{"1":"We’re attending the John Deere LEAD conference this week, gathering agronomic and economic insights to share with you in upcoming stories. Sizing and Positioning Residue from harvest thru planting for best emergence, early growth and ear count in corn-on-corn. #corn #grow18 https://t.co/h8VNfSsLRY"},{"1":"I hope when @Nitascornerr makes a coffee it tastes like Bun https://t.co/WMz0G2sI11"},{"1":"girl virgin the best site for free porn lesbiean fucking soft corn porn syrian erotic film sex positions  https://t.co/1k7CXwAJGH"},{"1":"@jack_of_wands I've got my bread and corn, I'm ready."},{"1":"Can you recommend anyone for this #job? Store Associate, Part-time, Winners, Bells Corners - https://t.co/nbVdpHnhpj #Retail #Ottawa, ON #Hiring #CareerArc"},{"1":"@ItsMeTinaD I have to say... I was sitting having a beer about 50 metres away when a crowd came around the corner (I knew he was here due to searching about the police presence earlier) and I dashed down to see, never thought I would get that close (250mm away). I could have been anyone..."},{"1":"RAGA MA VI RENDETE CONTO CHE FRA POCO VEDREMO IL CONFRONTO FRA LARA E MICHAEL\\n\\nVOGLIO I POP CORN\\n#TemptationIsland"},{"1":"As long as the hail stays away, we will be putting these eggplant on tonight’s #burgernight, along with kimchi aioli &amp; a smoky corn &amp; black bean relish. https://t.co/uIOxepyUuZ"},{"1":"Great day at pottery painting camp 🎨 today at Ardcarne Garden Centre....the kids painted unicorns 🦄, dogs 🐕 &amp; cats🐱... And we even had time to decoupage 🌈 some pots. 😍😍"},{"1":"@pocusdorcus @PottsAndPlum Bless you, Ebbie. We were given a very thorough check over after our corn field wander - paws, ears, eyes, even unmentionables. We send gentle leans and lots of love. 💕 xx"},{"1":"Did you hear that, “Anobika sadza pa corner” a hard working man in this difficult economy left for dead. Itai henyu inguva chete. https://t.co/p0WTnCdAa2"},{"1":"I saw a whoooooole lot of corn today and it made me think of @Goobers515. #🌽"},{"1":"Meal: L.I.T, JC Fries, Chilled corn chowder soup, Roasted Pork over pimento cheese grits and German chocolate cake. #2018restaurantweek #dudleys #foodie #foodporn @ Lexington, Kentucky https://t.co/w7HYK8sWPe"},{"1":"@WMP_Myth United Corn of Wall when"},{"1":"Hey @CornwallHour I want to give a shout out to Jim at @Jimagination1 He makes fabulous bespoke wooden items, anything from coasters to chairs and also rather fabulous wooden signs which he laser cuts. I can't wait to get mine painted and put together. #cornwallhour"},{"1":"@Coolflare3 1) https://t.co/gYbqOxO7Zw\\nCan also use assists to meaty and not press anything for 10f DPs(j.A adds landing recov) can also swap to the assist to bait DP as well\\n\\n2) don't really need it for the corner, but it'll still work\\n\\n3) once you have the timing, it'll beat everything"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Corn**. slang usage not observed. not suitable.
+
+
+### 35) Term: **Crash**
+
+```r
+print_slang_tweets(35) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"I don't have the patience for games like I use to, back in the day I completed the first crash bandicoot, now I look at it and I'm on literally the road to fucking nowhere. What happened to me. Lol"},{"1":"Video from Aeroméxico passenger shows plane crash and aftermath https://t.co/DfTdIlvAAA"},{"1":"#AeroMexico #Durango #Crash #POV #Landing #CrashLanding #Mexico https://t.co/ZUT5VJZ0ZP"},{"1":"New post (Bubba Wallace on his Pocono crash: 'I didn't know if I was going die or not') has been published on Nascar Fans - https://t.co/4vM0ENVWnW - https://t.co/mB2bFaQDJS https://t.co/FG7N9nTCtz"},{"1":"@NewsDayZimbabwe So we can conclude by saying chihuri was  far much better than matanga he never called the army to crash protestors. Ayidealer navo ega. Huori chete"},{"1":"Updated: Crash in Walton on I-10 west at MM 77, left lane blocked. Last updated at 03:14:16PM. https://t.co/5FadGyLJny"},{"1":"A 39-year-old Fort Payne, Alabama, woman was killed and two others were injured early Wednesday in a two-vehicle crash in neighboring Jackson County. https://t.co/IPWtxEXFsH"},{"1":"What I thought was lingering conference crud seems to actually be a delayed exertion crash, so please excuse my flakiness for a few weeks until my brain is fully functional again &lt;3"},{"1":"Updated: Crash in Walton on I-10 west at MM 77, left lane blocked. Last updated at 03:15:21PM. https://t.co/PbQyTk2bGF"},{"1":"I picked up a college girl my 20 year old little brother met on Tinder and let her crash at my house (my brother lives in another state) and she's such a cool woman I think I like my BROTHER  more as a person just for surrounding himself with cool independent women"},{"1":"We had this big fella crash our lunch. He took some tacos to go. https://t.co/9PQVCS4k4I"},{"1":"another great day with #startstaygrow☀️ thank you to to @gopuff and @vanguard innovation studio for letting us crash your Wednesday!! 😎 https://t.co/aA1jHwB1L4"},{"1":"Sternly Launching and Walking Edie Falco and Mario Crashes Paper Mario: Color Splash"},{"1":"@Singapore_crash アロンチョいないし💢💢💢💢💢💢💢"},{"1":"Driver flees deadly Volusia crash scene after getting out to look at victim, FHP says https://t.co/L9nMxsZ9I3 https://t.co/EzCkVvsAM9"},{"1":"Mexico plane crash: No deaths at Durango airport https://t.co/e9oKDca9tD"},{"1":"No fatalities in Mexican plane crash https://t.co/fCl4DYlyXR via @Global-Update-News"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Crash**. slang usage not observed. not suitable.
+
+
+
+### 36) Term: **Creps**
+
+```r
+print_slang_tweets(36) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@jovan697 Bro sturdy creps on smart pants is awfullll LOOOOLL, and I agree with you. Can’t believe what these man make waves"},{"1":"Gofres hechos con amor y eso se nota, no sólo en su sabor sino también en su presentación, un poco artista es cada uno de nuestros Gofres \"chulos\"\\n#gofres #creps #muffins #gofrespresentacion #gofresrellenos https://t.co/Ott0nzZMO5"},{"1":"Sarsour gives me the creps https://t.co/Tg3aUXtfly"},{"1":"j’ai tellement hâte de commencer les creps là"},{"1":"Let me step into your shoes: You quit your job and let me run a building.\\n\\nWhat do you mean 'no'? I thought we were swapping creps?"},{"1":"What's worse black socks with white creps or white socks with black creps?"},{"1":"@adidasUK Hi there I’m ready to receive my free creps"},{"1":"@marinacisa Fer molt d'exercici aquesta setmana perque t'espera un finde de menjar gofres, patates fregides i creps 😛"},{"1":"Hmmm. What's that smell? It smells like a new IKEA Season #footfetish #creps #shoes #ikea @IKEAUK https://t.co/kUAYBMY9od"},{"1":"Ngl I'm proud I stopped buying creps"},{"1":"Séance matinale (7h) au CREPS PACA site d’Antibes pour Isaïa CORDINIER, Thomas DURAND  (Shark’s Antibes) et Kilian TILLIE (Gonzaga University - USA) 🏀 https://t.co/UklcaraU3E"},{"1":"might have to commit a fashionable crime and wear nike joggers with adidas creps today I cba x"},{"1":"I don’t wanna be famous I just want companies to send me creps"},{"1":"I guess it’s a god send no where in town had the creps I wanted because that would of set my back another 2 bills but im  pissed about that too tbh 😒"},{"1":"@tylerrayprosper wants some new summer creps and he needs your advice!\\n\\nTweet us some trainer suggestions? What's your favourite summer crep to wear with a White Tee?\\n\\nHit up the studio WhatsApp 07376 199 688 \\n\\n#MidMorningWithTy 10AM-1PM \\n\\nLISTEN LIVE:\\nhttps://t.co/Ns5XZs7xO8"},{"1":"Gotta shoot my shot to get some creps ykno https://t.co/gToYKDtWLR"},{"1":"Ya tenemos las tapas ganadoras de esta 7ª edición #Tapeando por #Bogarra en la #Sierradelsegura, y el diploma a la mejor tapa y la mejor presentación ha sido para Hotel Val de Pinares con su tapa: \"Creps de rabo de toro y boletus con crujiente de pistacho\". Enhorabuena!!! https://t.co/2RVUkpRitS"},{"1":"All what people know on this app is Alexandra McQueen creps, doesn’t your shoe game expand from those clown creps ? Lool"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Creps**. slang usage observed but not related to crime. not suitable
+
+### 37) Term: **Case **
+
+```r
+print_slang_tweets(37) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"T2: functional and physiologic imaging often complements structural. Use it early and often This is a nice review of multimodal integration with case examples. #NeuroRad #PediNeuroRad #Epilepsy #AJNR\\nhttps://t.co/sAvhGmiYy6"},{"1":"@AngieBlimkie86 @BootsandHearts I will try and be at the merch area after the show if they’ll allow it! I’ll announce on stage if that’s the case :)"},{"1":"SOLD! Thank You! #Baby #SeaTurtleFabricToy #GalaxyS9 #case &gt; https://t.co/T5IZ8ln16m https://t.co/nyq5MRxUVd"},{"1":"That tweet has my tongue firmly in my cheek, just in case anyone thinks I am really being a whiny twat! 😉"},{"1":"@AppleSupport - ipad silicone pro case is tearing at corners, apple is saying its common wear and tear...case is under a year old."},{"1":"In case you missed today’s pick https://t.co/33b26H1IHc"},{"1":"My   application  //\\n  is   under   a   false   name   just  //\\n  in   case   they   hold   grudges  //\\n\\n- TimothyDaw"},{"1":"@jaiprakashshah2 @AmitShah @AmitShahOffice If WB say \"Nay\" That would call for a case of \" Administration can't be run I.A.W law... Calls for Prez rule' it's not healthy for any provincial Govt. @NSA_AjitDoval @rajnathsingh  one must know how Law is flexible @Swamy39 @sagenaradamuni strike the iron when red hot."},{"1":"Steve Madden Luggage 3 Piece Softside Spinner Suitcase Set Collection (One Size, Harlo Gray) -  USD - 249.99\\nhttps://t.co/x5Z2b1C0Og #new #newluggage #luggage #travel https://t.co/pWoQS2HYz4"},{"1":"❄️FROZEN YOGHURT BITES❄️🍓\\n\\nI whip these little mouthfuls of frozen yoghurt out for the kids as a dessert! They call them ‘yoghurt cakes’.\\nYoghurt in a silicone case topped with frozen berries of your choice, then freeze! boom! #yoghurt #kidssnacks #frozenyoghurt #dessert https://t.co/6XVrCLnkj1"},{"1":"The trims that loud I might go Angelica’s for cocktails on my ones, showcase the ting"},{"1":"Add a sterling silver Bow or Flower charm to a charm bracelet or chunky necklace to showcase your favorite charming memories. #VintageCostumeJewelry \\nhttps://t.co/3Tfb2yxgLH\\n(Tweeted via https://t.co/UgyBb8Ecem) https://t.co/wAywBX7tTa"},{"1":"@zachpettet Hello Zach, we'res sorry for the delay. We trust that our staff are working diligently to ensure safety is prioritize at all times. We invite you to review this link for a better insight on our re-protection policy in case of a flight disruption: https://t.co/h5AMcRh0ka . /Harry"},{"1":"#RoseanneBarr is a very bright person. She thinks, she teaches and she knows more than she is given credit for. We need to start listening to the many things she has told us over the years. In case you haven’t noticed, @therealroseanne keeps being proven right!"},{"1":"Indefinite detention of FAMILIES potentially for years, merely for crossing a border - which in any case except tribal territory denotes  land stolen by colonies/USA anyway. Disgusting in sooo many ways! https://t.co/Rk8Q2nRJDJ"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Case **. slang usage not observed. not suitable.
+
+
+### 38) Term: **Chunky**
+
+```r
+print_slang_tweets(38) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Have you heard ‘Chunky Money ft. Chucke Gunz’ by @papa_hnic on #SoundCloud? #np https://t.co/nRoGPnvpP1"},{"1":"Fluorite Necklace - Flower Pendant - Purple Green Gemstone Jewellery - Sterling Silver - Chunky Jewelry - Mod Flower - Multicolor https://t.co/nzFFZTo7IX via @Etsy"},{"1":"@oakobaresi77 Love a chunky man xx"},{"1":"Olive Branch Chunky Tapenade is a traditional recipe transformed into an exciting range of flavours  sourced from independent, artisan farmers around Greece. Use them to create effortless canapés or as a healthy and tasty ingredient for a quick &amp; simple dinner solution. https://t.co/uvBKQ7cI52"},{"1":"@K1Soulo Lool anything is better than having chunky juice 😭"},{"1":"Sphinx Signed Amber Glass Open Back Vintage Necklace - Mid Century modern - Chunky Angular Stones https://t.co/bmuXXMq1hf"},{"1":"Black &amp; White Bracelet - Pearl Gemstone Jewelry - Onyx Beaded Jewelery - Chunky - Sterling Silver - Fashion https://t.co/fazOh3dKPV via @Etsy"},{"1":"A good looking chunky boy 😍 https://t.co/jfZUXtoPbU"},{"1":"Chunky scares me to but I face my fears head on mouth and all 😂 https://t.co/glTSl1SqUs"},{"1":"Is this the same Dancing Party that Russ Abbot gatecrashed in his chunky jumper? \\n#Huaaaaaghhhh #xmcab"},{"1":"@Q13FOXKiggins What an adorable chunky monkey! 😍"},{"1":"Crochet Chunky Cowl tutorial https://t.co/RebP6188ba via @DIY Momma .Net"},{"1":"My baby breathes loud and hard bc she’s so chunky😂 I love it! It’s s’cute 😩😩💓💓💓💓💓"},{"1":"@emilytreveyxx My fav is your glowing I think this translates to getting well Chunky everywhere! 😂😂😂"},{"1":"my bf getting chunky and I love it.."},{"1":"Kit Kat Chunky is the Terry Crews of chocolate bars"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Chunky**. slang usage referring to violence not observed. not suitable.
+
+
+### 39) Term: **Chase**
+
+```r
+print_slang_tweets(39) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@Chase_Brody_ \"No.\""},{"1":"Chase your dreams and work hard every single day Free Thinkers"},{"1":"Just purchased my fidget spinner boards @CapnPetesPE !!  So excited!  What a great resource!"},{"1":"@DeanMarrYT @Birchletree @Laz3rC @Chase_Doggie @WigglytuffSSB @NathanRLouie @TanaIsMyWaifu @RiptideAC @JStringle @Aurum7HRN  https://t.co/GqVe5wbUHC"},{"1":".@WellsFargo @JPMorgan and @Chase: stop funding Trump’s heartless and inhumane detention machine that indefinitely detains immigrants and abuses them! https://t.co/m8lss9D47d https://t.co/RxO4KA8AQe"},{"1":"J1GOLD: [4:17] NOW PLAYING: Ouyang Fei Fei - Koi no Tsuiseki (Love Chase) (1972) ~ 13 listeners  #jpop #enka"},{"1":"@Chase_Retriever It’ll be way better than Green Lantern"},{"1":"Apple Pay Now Available at Nearly 16,000 Cardless Chase ATMs via @MacHashNews https://t.co/tp0XOPOWzS"},{"1":"When you hear the Mosquitos on WIFC make sure you text SPLASH to 39327 for your chance to win a pair of tickets to our Last Chance Splash Bash at Noah's Ark in Wisconsin Dells next Wednesday! You can also text ARK to 39327 to get a discount on tickets you purchase. ~Nikki"},{"1":"@JYSexton Watching yall chase your own tails like dogs as yall continue to hunt for Russian Ghosts is fun"},{"1":"China property: Authorities dashed hopes they're set to ease up on housing prices. Shenzhen imposed new 3yr min holding period. Local authorities also suspended home purchases by corps and orgs\\nCN CNHCYcredit Shcomp (-/=)"},{"1":"I am looking for a buyer on 2410 PINE CHASE CIR #SaintCloud #FL  #realestate https://t.co/ahRlzF0F1Q https://t.co/PrsbzUkWDI"},{"1":"hentai porn site naked girl iphone conners' adult adhd amber chase porn hotgirl porn tub teen fucked  https://t.co/lVTgDULDYl"},{"1":".@WellsFargo @JPMorgan and @Chase: stop funding Trump’s heartless and inhumane detention machine that indefinitely detains immigrants and abuses them! https://t.co/k64XPKua6V https://t.co/JY5ql8nBX2"},{"1":"Reading this article on a murder suicide in Astoria on Monday. Four ppl dead. Why does the article feel the need to say the guns were likely “purchased and carried legally.” Are the ppl any less dead??"},{"1":"Fuck the haters ,Ima chase a bag🤑"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Chase**. slang usage referring to violence not observed. not suitable.
+
+
+### 40) Term: **Cah**
+
+```r
+print_slang_tweets(40) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"I liked a @YouTube video https://t.co/aVHNljXcah Bis (Harlem Spartans) x Oboy (KuKu) - Money On My Mind [NEW] [AUDIO] | Slammer Media"},{"1":"Did you know #CardsAgainstHumanity (@CAH) conducts a scientifically rigorous monthly public opinion poll? The data is fascinating - check out https://t.co/xvKELGSFOj. The things you learn at @ICPSRSummer!  - AS #ICPSRtakeover"},{"1":"Cah ndut ngocok di warnet\\n#kontollokal #jakol #coli #warnet #straight #kontol #onani #intip #ngintip #jakol https://t.co/SODdXr7WyT"},{"1":"@ReyDeLosBullies Muchas graciaaas!! Debería de invitarme a jugar CAH a su casa jjj"},{"1":"- Im Ready To Be Marga Again With Healthy Lungs Cah Lol"},{"1":"@Cah_NTavares Te falo no pv mana ajsjdjd"},{"1":"@cah_casimiro Alinhamento po."},{"1":"@cahyo_tris Pindah grub waku wae..."},{"1":"@Cah_Slawi99 @tante_____ Ku pipisin jg"},{"1":"@cahcildis cah sensualizan...n, pera"},{"1":"Carl Icahn wants to block Cigna-Express Scripts merger https://t.co/8oEVch3Xog"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Cah**. correct slang usage (because) not observed. not suitable.
+
+### 41) Term: **Can**
+
+```r
+print_slang_tweets(41) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Meet Richard Browing, the founder of Gravity Industries. He has successfully engineered a working Iron Man-like jet-propelled suit. It can fly at 52 Km/hr and at a height of close to 4 Km https://t.co/ZHljd33Hbt"},{"1":"Pra vocês verem como a imprensa gringa também tá recheada de vermes insignificantes e jornalismo marrom.\\n\\nBando de urubus, buscando atenção com manchetes vazias e tendenciosas. Não é à toa que o jornalismo tradicional agoniza com a pulverização das plataformas de comunicação. https://t.co/GgzwWLe5iX"},{"1":"if u can drive over a dip without ur tit slapping u in the face, fuck u"},{"1":"@Pktsujju The Jodhpur case was never a rape case. Even ACP Ajay Pal Lamba has clarified this fact many times. We dont believe that the decision of a session court is ultimate. We have faith in God and we have even stronger faith that Pujya Bapuji can never do such crimes."},{"1":"@_alexgstone Meyler not good enough either in reality. Henriksen, Irvine, Batty all surpassed him much as I love him. Winston Churchill was a good leader, he can also move as well as Dawson. Abel is a real loss. The big loss. Best in the league. He wanted 100k wanted   week though 😂😳"},{"1":"Meet our Woman Crush Wednesday, ARCONA’s Senior Massage &amp; Body Treatment Specialist, Antonia—see how she gets the ARCONA glow all over &amp; how you can get 20% off any body or facial treatment at our studio during the month of August! ✨ https://t.co/BwYfyK1imu"},{"1":"@_itstrillavilla @_Golden__beauty Lowkeyyyyy i can ask my cousin came we have it at her house. It’s in romeoville dough &amp; mfckas can sleep on the floor lmfao her basement big af"},{"1":"Investigators hunt for clues after Mexican plane crashes in storm https://t.co/LpYLHYMFfI"},{"1":"I can't wait to get 1,000 views on one of my vids cause we are close to it and my mom will be buying me an mac"},{"1":"The waiter thinks that I can apparently manage such a big dish as the Moroccan lamb shank I have just ordered. Not quite sure what he’s trying to say there... 🤔 #DinnerForOne #OnTheRoadAgain #PoshHotel"},{"1":"@cbcfifth \\nThe CBC fifth estate here Canada don’t be bias Please aired from my story .let the Canadian people heard how the GOVERNMENT CANADA Justice function."},{"1":"@noel_fisher Hello that ending has me shook can we talk"},{"1":"I do this faithfully. And I loveee when they catch an attitude so I can check them https://t.co/ezCeDLHLdU"},{"1":"“We have to have a circle house so we can chase each other around.” I’ve found my soulmate ladies and gentlemen."},{"1":"I was planning my dramatic exit and how I finna screw my “ex boss” as much as I can and yell at him and tell him what I think then I see his ass and he gave me some cab money and acted like he wasn’t just about to shank me for being late"},{"1":"long nose ting with the 2 shells \\nyou can see the front bit bruck arff"},{"1":"Sonny got whacked at the Causeway again:\\n\\nIP 2.2 ER 7 ERA 5.56\\n\\nWill the Yanks try 2 cancel today’s game with a rainout? 🤣\\n\\nO’s up 7-1, bot of 4th;Good news on this #RedSox nonbaseball day\\n\\n&amp; I left the cannolis in the car with the dead body again"},{"1":"@rickierhymes @nomadHeadmaster @David_Mapheleba @LiamPaulCanning But did mourinho drop or slag him before the media for not performing well? We all saw his bad finishing last season and at the World Cup but no it’s all martial’s fault cut martial some slacks pls."},{"1":"guy.. you did it on #Spotlight the album.. omg reeky you are FUCKING TALENTED!!! mans can't wait fam https://t.co/7IwuOy7frI"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Can**. slang usage not observed. not suitable.
+
+
+### 42) Term: **Clip**
+
+```r
+print_slang_tweets(42) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Download as much as you want on our website for just $40!\\nGet all of our clip art packs or just a few, no matter what you will just pay $40!\\nHOW TO USE: Message me if interested, Once payment is received you will receive your discount code to download the sets you wish for 3 days https://t.co/NZVE5ZN7I8"},{"1":"movie clip bridget s naked photo naruto girls naked video hep b oral sex next door ebony indonisian xxx  https://t.co/029f5yEWH5"},{"1":"Slalom isn’t my best discipline but I try my hardest as always. My speed improves in each clip as you swipe right. I don’t like how I look but I’m not judged by how pretty my skiing… https://t.co/J34zu7U2YM"},{"1":"Yaro feat. Ninho - Bucci Night (Clip Officiel) https://t.co/tVdmUNKU7S via @YouTube"},{"1":"Clip full of hollow tips we don’t box niggas"},{"1":"Y'know, despite how bad these sunburns were (my left leg is incredibly stiff because of them) they seem to be healing at a decent clip already."},{"1":"This #clip is hot! Just sold! Weak for my latex ass (JOI) #Latex Get yours on #iWantClips! https://t.co/NpwvhhykTa https://t.co/g4SwUZiSlo"},{"1":"President-elect Donald Trump On Using Twitter - '60 Minutes' Interview Clip https://t.co/vCRPGW50oG via @YouTube 🌚 “I’m gonna do very restrained , if I use it at all.”😂😂😳😂😂🌚😂😂😂😳🌚😳🌚🌚😳😳😳😂😂😂😂😳😳😂😂😳😂 https://t.co/Ah7IDGQfWD"},{"1":"J'aime une vidéo @YouTube : \"Cheb Bilal - Vida Loca ( Clip Officiel)\" à l'adresse https://t.co/tZQmot9DNm."},{"1":"Adicionei um vídeo a uma playlist @YouTube https://t.co/ux8GdGHCLL Editar Clip Musical de Hip hop no Premiere"},{"1":"sex videos 1950's vintage porn chunky girls in spandex hd anal 2009 sex clips brianna stone porn japanese  https://t.co/4pV80xHAAb"},{"1":"@Flora_TRS もうまともなclip取れる気しないんです無理すわ😭"},{"1":"@Im_Naiyuki uploaded another clip https://t.co/mgskkeWr3K this time it’s Blue Exorcist Opening 2 on Osu."},{"1":"Jaden Smith Shoots Skateboard Stunts In New “Skate Kitchen” Clip https://t.co/Lq3FO6uFmD https://t.co/dtgcg0xzD8"},{"1":"@HugoPastoore je pense que @MaitreGIMS  a engagé @KaarisOfficiel1 en tant que marabout pour eliminer @booba  mais la puissance ne respecte que la puissance. Futur clip D.U.T.Y.F.R.E.E 😂  #parfumvie #orlyzoo #nimportequoi #adpvasemettrebien.#boobavskaaris https://t.co/7xBXA2K8Oy"},{"1":"Vintage Dachshund/Wiener Dog Necktie Clip https://t.co/RjvN3b4Qya via @Etsy"},{"1":"Learn everything you need to know to take your deck-building skills to the next level. In addition to this clip on installing rails perfectly, you can check out the entire series.\\n\\nLINK:… https://t.co/NLf9y3ijfw"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Clip**. one reference to violance observed but many false positives. not suitable.
+
+
+### 43) Term: **Crud**
+
+```r
+print_slang_tweets(43) %>% rmarkdown:::print.paged_df()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@Gragae2 @Kokomothegreat well crud we are gonna starve"},{"1":"@mdriddlen @JASlingerland Not a lot of people know this one but I gave @jtagmire’s con crud to @BDMontagnes"},{"1":"Dealing with a little case of con crud but getting ready for Long Island Retro Gaming com NEXT WEEK (oh gosh that’s close) and trying to catch up with housework while working on commissions. \\n\\nI CAN DO IT ALL! -*faints*"},{"1":"crud, I work today"},{"1":"@davidhogg111 this is disgusting vote out crud er i mean cruz"},{"1":"@NTSlive @mthrmrk it is Dj Crud now ??"},{"1":"@unknown_meuknow @GibsonGothMan @Wewillrocku66 @owner_swm @LuisLuiskiss1 @1carolinagirl @mtlkeith @DeannGoss @lobowolfen_n @BrianCacini @Edmon188 @nowayjeff @MamaRox69 @edguygz @lispaige @coldjentime @M6NSTER @Dex_SliceofLife @PlisskenSd @ScythianFate Now frikkin AC is changing sentences and only on Twitter no problem with text or email, well no more than normal AC crud."},{"1":"1日で出来る！DjangoでCRUDを作る\\nhttps://t.co/F9Zpn9KRTk"},{"1":"And today at work I came up with server CRUD for I2C commands.\\n\\nThe software engineer in me is proud as punch.\\n\\nThe hardware engineer wants to commit seppuku."},{"1":"@CalcioLee Brudda's chatting crud unless we're renewing Nelson's contract before he goes on loan. Even then, we'd just keep him if he renews"},{"1":"@joeclarkeMMA @Gavin_McInnes Oh crud.  Is that not the Irish flag? Lol.\\n\\nFuck it.  I'm American baby! 🇺🇸🇺🇸🇺🇸"},{"1":"@manorsteps @willhewont @kingchillout @NigelGreenwood6 Crud, I’ve got a mate with a Shogun SWB commercial, it’s done over 200k hard Miles towing diggers &amp; stuff, going off road &amp; it’s still on its first engine and gear box. Proper cars"},{"1":"Infact, theres no way a woman would be chatting this much crud about Martial being with his wife after child birth 🤔. Fully convinced this a male trying to lure people in with an avi of a white girl's crusty lips"},{"1":"@bluedrawin_ Holy crud that’s good. Go Georgia! Haha"},{"1":"@PressSec you are an ignorant girl who just parrots all the crud you heard your Daddy spew all your life. The only reason u got your position is nepotism &amp; your zeal to lie for people like your Daddy, much like fashionista Ivanka--daddylovers"},{"1":"Reducing REST to CRUD is crud leaving the rest out. https://t.co/J4CE2P6Uq3"},{"1":"When niggas say crud that shit be any kind of weed now"},{"1":"Why is tanner almost 27 and still uses the words crud and fudge ???"},{"1":"Drill is doing a Mazza this year this one's called Renting - KwayorClinch. it will only get bigger trust me #crud https://t.co/RXSvStCOtn"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+**Comments:** term used to query twitter api was **Crud**. slang usage observed but no related to crime. not suitable.
+
+
+## Rest is continued on the csv file. See [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv]
