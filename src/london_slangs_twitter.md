@@ -4,8 +4,11 @@ author: "Sefa Ozalp"
 date: "30/07/2018"
 output:
   html_document:
+    toc: true # table of content true
+    toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: true  ## if you want number sections at each table header
+    theme: united
     keep_md: yes
-  pdf_document: default
 ---
 
 
@@ -19,7 +22,7 @@ options(width=120)
 knitr::opts_chunk$set( warning = FALSE, message = FALSE)
 ```
 
-# Intro
+# TL/DR:
 
 A quick markdown file to search London gang slang on Twitter. 
 
@@ -41,11 +44,17 @@ A quick markdown file to search London gang slang on Twitter.
 2. https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
 
     
-# 1. Data Scraping
+**End Result:** 
+
+1. A list of London gang slang terms with tweets containing those terms and comments whether they are useful for this study or not https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv
+
+2. 
+
+# Gang slang from shinobilifeonline.com
 
 ##Srape keywords from a web page using Rvest
 
-Scaping data from: https://www.shinobilifeonline.com/index.php?topic=2973.0. Used selectorgadget to identify xpath. This code scrapes all ters in the web page and returns a list consisting of **120** slang terms.
+Scraping data from: https://www.shinobilifeonline.com/index.php?topic=2973.0. Used selectorgadget to identify xpath. This code scrapes all slang terms in the web page and returns a list consisting of **120** slang terms.
 
 
 ```r
@@ -77,7 +86,7 @@ slangs <- slangs %>%
 Using SEARCH API, I queried 50 tweets for each term in the slang list. Apparently, not every slang term returned 50 tweets (some are really obscure and uncommon terms/spellings). Ultimately, this query resulted in a dataframe consisting of 5604 rows.
 
 
-I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API everytime I knit the rmd. This is impractical as it (1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
+I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API every time I knit the rmd. This is impractical as it (1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
 
 
 
@@ -102,14 +111,14 @@ slang_tweets <- rtweet::read_twitter_csv("../data/slang_tweets.csv")
 ```
 
 
-# 2. Exploring Tweets Matching keywords from Slangs list
+## Exploring Tweets Matching keywords from Slangs list
 
-Below, I will define and use a function that (1)finds tweets (scraped previously) which match nth term from the slangs list, (2) randomly sample 20 tweets matching nth term, (3) print tweet text.
+Below, I will define and use a function that (1)finds tweets (scraped previously) which match nth term from the slang list, (2) randomly sample 20 tweets matching nth term, (3) print tweet text.
 
-Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments. 
+Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments. Since this is quite repetitive, I will do this for first 40 terms. See the complete list for all terms  [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv]
 
 
-*Note for the persons with a keen eye:* The reason for using double distinct in the chunk below is, some slang terms returned less than 20 results so the chunk was throwing an error when using `sample_n(20)`. Thus had to do `distinct`, sample 20 with replacement and then do `distinct` again (for cases where unique n<20). I could have tackled this more elegantly (by dropping first `distinct` and using `sample_n` with replacement and then `disctinct`after that) but since I was using cache=T the some chunks, I was in too deep and I opted to carry on with not so elegant code. 
+*Note for persons with a keen eye:* The reason for using double distinct in the chunk below is, some slang terms returned less than 20 results so the chunk was throwing an error when using `sample_n(20)`. Thus had to do `distinct`, sample 20 with replacement and then do `distinct` again (for cases where unique n<20). I could have tackled this more elegantly (by dropping first `distinct` and using `sample_n` with replacement and then `disctinct`after that) but since I was using cache=T the some chunks, I was in too deep and I opted to carry on with not so elegant code. 
 
 
 ```r
@@ -135,7 +144,7 @@ print_slang_tweets(1) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** Term used to query twitter api was **Jump Out Gang**. Tweets reference to a band called jump out gang. Not very useful for studying further.
+**Comments:** Term used to query twitter API was **Jump Out Gang**. Tweets reference to a band called jump out gang. Not very useful for studying further.
 
 
 ### 2) Term: **67**
@@ -150,7 +159,7 @@ print_slang_tweets(2) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **67**. As the term is an integer, tweets can refer to anything. Not very useful for studying further.
+**Comments:** term used to query twitter API was **67**. As the term is an integer, tweets can refer to anything. Not very useful for studying further.
 
 
 ### 3) Term: **86**
@@ -165,7 +174,7 @@ print_slang_tweets(3) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **86**. Similar to 67 above, as the term is an integer, tweets can refer to anything. Random topics observed. Not very useful for studying further.
+**Comments:** term used to query twitter API was **86**. Similar to 67 above, as the term is an integer, tweets can refer to anything. Random topics observed. Not very useful for studying further.
 
 
 ### 4) Term: **Harlem Spartans**
@@ -180,7 +189,7 @@ print_slang_tweets(4) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Harlem Spartans**. Observed refences to a UK band called Harlem Spartans. HS are apparently banned for references to violence an uk gang culture in their music. Some references to violence (see the 3rd tweet for instance). Maybe useful for studying further.
+**Comments:** term used to query twitter API was **Harlem Spartans**. Observed references to a UK band called Harlem Spartans. HS are apparently banned for references to violence an UK gang culture in their music. Some references to violence (see the 3rd tweet for instance). Maybe useful for studying further.
 
 ### 5) Term: **Ounto Nation**
 
@@ -194,7 +203,7 @@ print_slang_tweets(5) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Ounto Nation**. Returned only 3 tweets, which referce to youtube videos. Not much sentiment observed. Not very useful for studying further. 
+**Comments:** term used to query twitter API was **Ounto Nation**. Returned only 3 tweets, which reference to YouTube videos. Not much sentiment observed. Not very useful for studying further. 
 
 ### 6) Term: **Aggy**
 
@@ -208,7 +217,7 @@ print_slang_tweets(6) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Aggy**. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
+**Comments:** term used to query twitter API was **Aggy**. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
 
 
 ### 7) Term: **Aggro**
@@ -223,7 +232,7 @@ print_slang_tweets(7) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Aggro**. Very similar to aggy. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
+**Comments:** term used to query twitter API was **Aggro**. Very similar to aggy. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
 
 
 ### 8) Term: **Amm**
@@ -238,7 +247,7 @@ print_slang_tweets(8) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Amm**. Lots of foreign language tweets. not useful.
+**Comments:** term used to query twitter API was **Amm**. Lots of foreign language tweets. not useful.
 
 
 
@@ -254,7 +263,7 @@ print_slang_tweets(9) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Ahlie**. random topics observed. not suitable.
+**Comments:** term used to query twitter API was **Ahlie**. random topics observed. not suitable.
 
 
 ### 10) Term: **Allow it**
@@ -269,7 +278,7 @@ print_slang_tweets(10) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Allow it**. interestingly observed two instances of counter-speech but hard to discriminate normal use from slang use. not suitable.
+**Comments:** term used to query twitter API was **Allow it**. interestingly observed two instances of counter-speech but hard to discriminate normal use from slang use. not suitable.
 
 
 ### 11) Term: **Aired**
@@ -284,7 +293,7 @@ print_slang_tweets(11) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Aired**. Hard to discriminate whether slang or literal. Slang version not observed. not suitable.
+**Comments:** term used to query twitter API was **Aired**. Hard to discriminate whether slang or literal. Slang version not observed. not suitable.
 
 ### 12) Term: **Bare**
 
@@ -298,7 +307,7 @@ print_slang_tweets(12) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bare**. Hard to discriminate whether slang or literal. Rare to see slang used on Twitter. not suitable.
+**Comments:** term used to query twitter API was **Bare**. Hard to discriminate whether slang or literal. Rare to see slang used on Twitter. not suitable.
 
 ### 13) Term: **Bands**
 
@@ -312,7 +321,7 @@ print_slang_tweets(13) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bands**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bands**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 
 ### 14) Term: **Bando**
@@ -327,7 +336,7 @@ print_slang_tweets(14) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bando**. all tweets are in foreign language. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bando**. all tweets are in foreign language. Slang usage not observed. not suitable.
 
 
 ### 15) Term: **Bredrins**
@@ -342,7 +351,7 @@ print_slang_tweets(15) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bredrins**. some referral to gang and mandem culture. some unrelated tweets. Most tweets contain references to UK so better geolocation. may be useful.
+**Comments:** term used to query twitter API was **Bredrins**. some referral to gang and mandem culture. some unrelated tweets. Most tweets contain references to UK so better geolocation. may be useful.
 
 ### 16) Term: **Bells**
 
@@ -356,7 +365,7 @@ print_slang_tweets(16) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bells**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bells**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 ### 17) Term: **Bun**
 
@@ -370,7 +379,7 @@ print_slang_tweets(17) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bun**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bun**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 ### 18) Term: **Bruck**
 
@@ -384,7 +393,7 @@ print_slang_tweets(18) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bruck**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bruck**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 
 ### 19) Term: **Brukk**
@@ -399,7 +408,7 @@ print_slang_tweets(19) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Brukk**. Hard to discriminate whether slang or literal. Slang usage not observed. almost all tweets in foreign lang. not suitable.
+**Comments:** term used to query twitter API was **Brukk**. Hard to discriminate whether slang or literal. Slang usage not observed. almost all tweets in foreign lang. not suitable.
 
 ### 20) Term: **Body**
 
@@ -413,7 +422,7 @@ print_slang_tweets(20) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Body**. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Body**. Slang usage not observed. not suitable.
 
 
 ### 21) Term: **Bait**
@@ -428,7 +437,7 @@ print_slang_tweets(21) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bait**. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bait**. Slang usage not observed. not suitable.
 
 ### 22) Term: **Block**
 
@@ -442,7 +451,7 @@ print_slang_tweets(22) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Block**. Almost all tweets refer to 'blocking action'. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Block**. Almost all tweets refer to 'blocking action'. Slang usage not observed. not suitable.
 
 
 ### 23) Term: **Bird**
@@ -457,7 +466,7 @@ print_slang_tweets(23) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bird**. Slang usage not observed. Even slang meaning is mild. not suitable.
+**Comments:** term used to query twitter API was **Bird**. Slang usage not observed. Even slang meaning is mild. not suitable.
 
 
 ### 24) Term: **Batty**
@@ -472,7 +481,7 @@ print_slang_tweets(24) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Batty**. Slang usage observed but no reference to crime. not suitable.
+**Comments:** term used to query twitter API was **Batty**. Slang usage observed but no reference to crime. not suitable.
 
 
 ### 25) Term: **Bossman**
@@ -487,7 +496,7 @@ print_slang_tweets(25) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bossman**. Slang usage observed but slang usage carries a positive sentiment. many references to youtube music videos. not suitable.
+**Comments:** term used to query twitter API was **Bossman**. Slang usage observed but slang usage carries a positive sentiment. many references to YouTube music videos. not suitable.
 
 ### 26) Term: **Beef**
 
@@ -501,7 +510,7 @@ print_slang_tweets(26) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Beef**. Slang usage observed but adopted by a wider population so the sample does not include gang reference. also has has a non-slang meaning that is commonly used. not suitable. 
+**Comments:** term used to query twitter API was **Beef**. Slang usage observed but adopted by a wider population so the sample does not include gang reference. also has has a non-slang meaning that is commonly used. not suitable. 
 
 
 ### 27) Term: **Blanked**
@@ -516,7 +525,7 @@ print_slang_tweets(27) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Blanked**. Slang usage observed. No reference to crime. not suitable.
+**Comments:** term used to query twitter API was **Blanked**. Slang usage observed. No reference to crime. not suitable.
 
 ### 28) Term: **Beg **
 
@@ -530,7 +539,7 @@ print_slang_tweets(28) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Beg **. slang usage is using this term as a noun, rather than a verb. need to use NLP to distinguish. not suitable.
+**Comments:** term used to query twitter API was **Beg **. slang usage is using this term as a noun, rather than a verb. need to use NLP to distinguish. not suitable.
 
 
 ### 29) Term: **Bumbaclart**
@@ -545,7 +554,7 @@ print_slang_tweets(29) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bumbaclart**. Jamaican origin. slang usage observed. used to refer to negative things or persons. possibly many tweets from the UK. not many refences to crime.
+**Comments:** term used to query twitter API was **Bumbaclart**. Jamaican origin. slang usage observed. used to refer to negative things or persons. possibly many tweets from the UK. not many references to crime.
 
 
 ### 30) Term: **Bludclart**
@@ -560,7 +569,7 @@ print_slang_tweets(30) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bludclart**. slang usage observed. very informal spelling. used to refer to extremely negative things or persons. many tweets from the UK but not many refences to crime.
+**Comments:** term used to query twitter API was **Bludclart**. slang usage observed. very informal spelling. used to refer to extremely negative things or persons. many tweets from the UK but not many references to crime.
 
 
 ### 31) Term: **Bloodclart**
@@ -575,7 +584,7 @@ print_slang_tweets(31) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bloodclart**. slang usage observed. used to refer to extremely negative things or persons. many tweets from the UK, and some refences to crime or violence.
+**Comments:** term used to query twitter API was **Bloodclart**. slang usage observed. used to refer to extremely negative things or persons. many tweets from the UK, and some references to crime or violence.
 
 
 ### 32) Term: **Bally**
@@ -590,7 +599,7 @@ print_slang_tweets(32) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Bally**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Bally**. slang usage not observed. not suitable.
 
 
 ### 33) Term: **Ballie **
@@ -605,7 +614,7 @@ print_slang_tweets(33) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Ballie **. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Ballie **. slang usage not observed. not suitable.
 
 
 
@@ -621,7 +630,7 @@ print_slang_tweets(34) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Corn**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Corn**. slang usage not observed. not suitable.
 
 
 ### 35) Term: **Crash**
@@ -636,7 +645,7 @@ print_slang_tweets(35) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Crash**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Crash**. slang usage not observed. not suitable.
 
 
 
@@ -652,7 +661,7 @@ print_slang_tweets(36) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Creps**. slang usage observed but not related to crime. not suitable
+**Comments:** term used to query twitter API was **Creps**. slang usage observed but not related to crime. not suitable
 
 ### 37) Term: **Case **
 
@@ -666,7 +675,7 @@ print_slang_tweets(37) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Case **. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **Case **. slang usage not observed. not suitable.
 
 
 ### 38) Term: **Chunky**
@@ -681,7 +690,7 @@ print_slang_tweets(38) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Chunky**. slang usage referring to violence not observed. not suitable.
+**Comments:** term used to query twitter API was **Chunky**. slang usage referring to violence not observed. not suitable.
 
 
 ### 39) Term: **Chase**
@@ -696,66 +705,46 @@ print_slang_tweets(39) %>% rmarkdown:::print.paged_df()
   </script>
 </div>
 
-**Comments:** term used to query twitter api was **Chase**. slang usage referring to violence not observed. not suitable.
+**Comments:** term used to query twitter API was **Chase**. slang usage referring to violence not observed. not suitable.
+
+# 3. Gang slang from Ebony Reid's Doctoral Thesis (PDF)
+
+I am only using the glossary of London gang slangs but the full thesis can be found here [https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf]. Rather than scraping tweets using rtweet, I will do the twitter search manually as is gives more control overall. The end result will be in the csv file.
 
 
-### 40) Term: **Cah**
-
-```r
-print_slang_tweets(40) %>% rmarkdown:::print.paged_df()
-```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"I liked a @YouTube video https://t.co/aVHNljXcah Bis (Harlem Spartans) x Oboy (KuKu) - Money On My Mind [NEW] [AUDIO] | Slammer Media"},{"1":"Did you know #CardsAgainstHumanity (@CAH) conducts a scientifically rigorous monthly public opinion poll? The data is fascinating - check out https://t.co/xvKELGSFOj. The things you learn at @ICPSRSummer!  - AS #ICPSRtakeover"},{"1":"Cah ndut ngocok di warnet\\n#kontollokal #jakol #coli #warnet #straight #kontol #onani #intip #ngintip #jakol https://t.co/SODdXr7WyT"},{"1":"@ReyDeLosBullies Muchas graciaaas!! Debería de invitarme a jugar CAH a su casa jjj"},{"1":"- Im Ready To Be Marga Again With Healthy Lungs Cah Lol"},{"1":"@Cah_NTavares Te falo no pv mana ajsjdjd"},{"1":"@cah_casimiro Alinhamento po."},{"1":"@cahyo_tris Pindah grub waku wae..."},{"1":"@Cah_Slawi99 @tante_____ Ku pipisin jg"},{"1":"@cahcildis cah sensualizan...n, pera"},{"1":"Carl Icahn wants to block Cigna-Express Scripts merger https://t.co/8oEVch3Xog"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-
-**Comments:** term used to query twitter api was **Cah**. correct slang usage (because) not observed. not suitable.
-
-### 41) Term: **Can**
 
 ```r
-print_slang_tweets(41) %>% rmarkdown:::print.paged_df()
+glossary_text <- 'Ackee- refers to a former road man who has converted to Islam
+Baby mother- the mandem use the term to describe the mother of their child
+Bad up- to treat someone in a disrespectful manner. It also refers to being
+victimised or victimising others
+Bait- being too obvious
+Boy dem- the police
+Bruk- refers to having no money
+Bussing a skank- to dance
+Fuckery- the mandem often used this term to describe criminal activity or
+violence
+Garms- clothing
+Grind- refers to working hard in the illegal drug economy
+Gwarning with tings- doing well on road
+Head back lick off- shot in the head
+Hype- exaggerated/over the top behaviour
+Nuff- a lot
+Prick- dick head/idiot
+Stunting/Stunter- to show off, a person who shows off
+Take set on you- refers to being targeted and, potentially victimised by rivals
+from neighbouring estates
+Wasteman- useless, poor, unsuccessful
+Warring- to fight, ongoing conflict' #just copy paste from pdf
+
+glossary <- glossary_text %>% 
+    str_split(pattern = "\n") %>% #split rows
+    .[[1]] %>%  #select elements in the list
+    as.tibble()%>% #convert to a tibble
+    separate(value, into=c("slang", "meaning"), sep="-") %>% #separate text into two columns using -
+    filter(!is.na(meaning))#remove excess rows
+
+write_csv(glossary, "../data/ereid_glossary.csv")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Meet Richard Browing, the founder of Gravity Industries. He has successfully engineered a working Iron Man-like jet-propelled suit. It can fly at 52 Km/hr and at a height of close to 4 Km https://t.co/ZHljd33Hbt"},{"1":"Pra vocês verem como a imprensa gringa também tá recheada de vermes insignificantes e jornalismo marrom.\\n\\nBando de urubus, buscando atenção com manchetes vazias e tendenciosas. Não é à toa que o jornalismo tradicional agoniza com a pulverização das plataformas de comunicação. https://t.co/GgzwWLe5iX"},{"1":"if u can drive over a dip without ur tit slapping u in the face, fuck u"},{"1":"@Pktsujju The Jodhpur case was never a rape case. Even ACP Ajay Pal Lamba has clarified this fact many times. We dont believe that the decision of a session court is ultimate. We have faith in God and we have even stronger faith that Pujya Bapuji can never do such crimes."},{"1":"@_alexgstone Meyler not good enough either in reality. Henriksen, Irvine, Batty all surpassed him much as I love him. Winston Churchill was a good leader, he can also move as well as Dawson. Abel is a real loss. The big loss. Best in the league. He wanted 100k wanted   week though 😂😳"},{"1":"Meet our Woman Crush Wednesday, ARCONA’s Senior Massage &amp; Body Treatment Specialist, Antonia—see how she gets the ARCONA glow all over &amp; how you can get 20% off any body or facial treatment at our studio during the month of August! ✨ https://t.co/BwYfyK1imu"},{"1":"@_itstrillavilla @_Golden__beauty Lowkeyyyyy i can ask my cousin came we have it at her house. It’s in romeoville dough &amp; mfckas can sleep on the floor lmfao her basement big af"},{"1":"Investigators hunt for clues after Mexican plane crashes in storm https://t.co/LpYLHYMFfI"},{"1":"I can't wait to get 1,000 views on one of my vids cause we are close to it and my mom will be buying me an mac"},{"1":"The waiter thinks that I can apparently manage such a big dish as the Moroccan lamb shank I have just ordered. Not quite sure what he’s trying to say there... 🤔 #DinnerForOne #OnTheRoadAgain #PoshHotel"},{"1":"@cbcfifth \\nThe CBC fifth estate here Canada don’t be bias Please aired from my story .let the Canadian people heard how the GOVERNMENT CANADA Justice function."},{"1":"@noel_fisher Hello that ending has me shook can we talk"},{"1":"I do this faithfully. And I loveee when they catch an attitude so I can check them https://t.co/ezCeDLHLdU"},{"1":"“We have to have a circle house so we can chase each other around.” I’ve found my soulmate ladies and gentlemen."},{"1":"I was planning my dramatic exit and how I finna screw my “ex boss” as much as I can and yell at him and tell him what I think then I see his ass and he gave me some cab money and acted like he wasn’t just about to shank me for being late"},{"1":"long nose ting with the 2 shells \\nyou can see the front bit bruck arff"},{"1":"Sonny got whacked at the Causeway again:\\n\\nIP 2.2 ER 7 ERA 5.56\\n\\nWill the Yanks try 2 cancel today’s game with a rainout? 🤣\\n\\nO’s up 7-1, bot of 4th;Good news on this #RedSox nonbaseball day\\n\\n&amp; I left the cannolis in the car with the dead body again"},{"1":"@rickierhymes @nomadHeadmaster @David_Mapheleba @LiamPaulCanning But did mourinho drop or slag him before the media for not performing well? We all saw his bad finishing last season and at the World Cup but no it’s all martial’s fault cut martial some slacks pls."},{"1":"guy.. you did it on #Spotlight the album.. omg reeky you are FUCKING TALENTED!!! mans can't wait fam https://t.co/7IwuOy7frI"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
-**Comments:** term used to query twitter api was **Can**. slang usage not observed. not suitable.
-
-
-### 42) Term: **Clip**
-
-```r
-print_slang_tweets(42) %>% rmarkdown:::print.paged_df()
-```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Download as much as you want on our website for just $40!\\nGet all of our clip art packs or just a few, no matter what you will just pay $40!\\nHOW TO USE: Message me if interested, Once payment is received you will receive your discount code to download the sets you wish for 3 days https://t.co/NZVE5ZN7I8"},{"1":"movie clip bridget s naked photo naruto girls naked video hep b oral sex next door ebony indonisian xxx  https://t.co/029f5yEWH5"},{"1":"Slalom isn’t my best discipline but I try my hardest as always. My speed improves in each clip as you swipe right. I don’t like how I look but I’m not judged by how pretty my skiing… https://t.co/J34zu7U2YM"},{"1":"Yaro feat. Ninho - Bucci Night (Clip Officiel) https://t.co/tVdmUNKU7S via @YouTube"},{"1":"Clip full of hollow tips we don’t box niggas"},{"1":"Y'know, despite how bad these sunburns were (my left leg is incredibly stiff because of them) they seem to be healing at a decent clip already."},{"1":"This #clip is hot! Just sold! Weak for my latex ass (JOI) #Latex Get yours on #iWantClips! https://t.co/NpwvhhykTa https://t.co/g4SwUZiSlo"},{"1":"President-elect Donald Trump On Using Twitter - '60 Minutes' Interview Clip https://t.co/vCRPGW50oG via @YouTube 🌚 “I’m gonna do very restrained , if I use it at all.”😂😂😳😂😂🌚😂😂😂😳🌚😳🌚🌚😳😳😳😂😂😂😂😳😳😂😂😳😂 https://t.co/Ah7IDGQfWD"},{"1":"J'aime une vidéo @YouTube : \"Cheb Bilal - Vida Loca ( Clip Officiel)\" à l'adresse https://t.co/tZQmot9DNm."},{"1":"Adicionei um vídeo a uma playlist @YouTube https://t.co/ux8GdGHCLL Editar Clip Musical de Hip hop no Premiere"},{"1":"sex videos 1950's vintage porn chunky girls in spandex hd anal 2009 sex clips brianna stone porn japanese  https://t.co/4pV80xHAAb"},{"1":"@Flora_TRS もうまともなclip取れる気しないんです無理すわ😭"},{"1":"@Im_Naiyuki uploaded another clip https://t.co/mgskkeWr3K this time it’s Blue Exorcist Opening 2 on Osu."},{"1":"Jaden Smith Shoots Skateboard Stunts In New “Skate Kitchen” Clip https://t.co/Lq3FO6uFmD https://t.co/dtgcg0xzD8"},{"1":"@HugoPastoore je pense que @MaitreGIMS  a engagé @KaarisOfficiel1 en tant que marabout pour eliminer @booba  mais la puissance ne respecte que la puissance. Futur clip D.U.T.Y.F.R.E.E 😂  #parfumvie #orlyzoo #nimportequoi #adpvasemettrebien.#boobavskaaris https://t.co/7xBXA2K8Oy"},{"1":"Vintage Dachshund/Wiener Dog Necktie Clip https://t.co/RjvN3b4Qya via @Etsy"},{"1":"Learn everything you need to know to take your deck-building skills to the next level. In addition to this clip on installing rails perfectly, you can check out the entire series.\\n\\nLINK:… https://t.co/NLf9y3ijfw"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-
-**Comments:** term used to query twitter api was **Clip**. one reference to violance observed but many false positives. not suitable.
-
-
-### 43) Term: **Crud**
-
-```r
-print_slang_tweets(43) %>% rmarkdown:::print.paged_df()
-```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"@Gragae2 @Kokomothegreat well crud we are gonna starve"},{"1":"@mdriddlen @JASlingerland Not a lot of people know this one but I gave @jtagmire’s con crud to @BDMontagnes"},{"1":"Dealing with a little case of con crud but getting ready for Long Island Retro Gaming com NEXT WEEK (oh gosh that’s close) and trying to catch up with housework while working on commissions. \\n\\nI CAN DO IT ALL! -*faints*"},{"1":"crud, I work today"},{"1":"@davidhogg111 this is disgusting vote out crud er i mean cruz"},{"1":"@NTSlive @mthrmrk it is Dj Crud now ??"},{"1":"@unknown_meuknow @GibsonGothMan @Wewillrocku66 @owner_swm @LuisLuiskiss1 @1carolinagirl @mtlkeith @DeannGoss @lobowolfen_n @BrianCacini @Edmon188 @nowayjeff @MamaRox69 @edguygz @lispaige @coldjentime @M6NSTER @Dex_SliceofLife @PlisskenSd @ScythianFate Now frikkin AC is changing sentences and only on Twitter no problem with text or email, well no more than normal AC crud."},{"1":"1日で出来る！DjangoでCRUDを作る\\nhttps://t.co/F9Zpn9KRTk"},{"1":"And today at work I came up with server CRUD for I2C commands.\\n\\nThe software engineer in me is proud as punch.\\n\\nThe hardware engineer wants to commit seppuku."},{"1":"@CalcioLee Brudda's chatting crud unless we're renewing Nelson's contract before he goes on loan. Even then, we'd just keep him if he renews"},{"1":"@joeclarkeMMA @Gavin_McInnes Oh crud.  Is that not the Irish flag? Lol.\\n\\nFuck it.  I'm American baby! 🇺🇸🇺🇸🇺🇸"},{"1":"@manorsteps @willhewont @kingchillout @NigelGreenwood6 Crud, I’ve got a mate with a Shogun SWB commercial, it’s done over 200k hard Miles towing diggers &amp; stuff, going off road &amp; it’s still on its first engine and gear box. Proper cars"},{"1":"Infact, theres no way a woman would be chatting this much crud about Martial being with his wife after child birth 🤔. Fully convinced this a male trying to lure people in with an avi of a white girl's crusty lips"},{"1":"@bluedrawin_ Holy crud that’s good. Go Georgia! Haha"},{"1":"@PressSec you are an ignorant girl who just parrots all the crud you heard your Daddy spew all your life. The only reason u got your position is nepotism &amp; your zeal to lie for people like your Daddy, much like fashionista Ivanka--daddylovers"},{"1":"Reducing REST to CRUD is crud leaving the rest out. https://t.co/J4CE2P6Uq3"},{"1":"When niggas say crud that shit be any kind of weed now"},{"1":"Why is tanner almost 27 and still uses the words crud and fudge ???"},{"1":"Drill is doing a Mazza this year this one's called Renting - KwayorClinch. it will only get bigger trust me #crud https://t.co/RXSvStCOtn"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-
-**Comments:** term used to query twitter api was **Crud**. slang usage observed but no related to crime. not suitable.
-
-
-## Rest is continued on the csv file. See [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv]

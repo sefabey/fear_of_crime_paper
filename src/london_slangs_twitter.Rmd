@@ -4,8 +4,11 @@ author: "Sefa Ozalp"
 date: "30/07/2018"
 output:
   html_document:
+    toc: true # table of content true
+    toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: true  ## if you want number sections at each table header
+    theme: united
     keep_md: yes
-  pdf_document: default
 ---
 
 ```{r setup, message=FALSE}
@@ -19,7 +22,7 @@ knitr::opts_chunk$set( warning = FALSE, message = FALSE)
 
 ```
 
-# Intro
+# TL/DR:
 
 A quick markdown file to search London gang slang on Twitter. 
 
@@ -41,11 +44,17 @@ A quick markdown file to search London gang slang on Twitter.
 2. https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf
 
     
-# 1. Data Scraping
+**End Result:** 
+
+1. A list of London gang slang terms with tweets containing those terms and comments whether they are useful for this study or not https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv
+
+2. 
+
+# Gang slang from shinobilifeonline.com
 
 ##Srape keywords from a web page using Rvest
 
-Scaping data from: https://www.shinobilifeonline.com/index.php?topic=2973.0. Used selectorgadget to identify xpath. This code scrapes all ters in the web page and returns a list consisting of **120** slang terms.
+Scraping data from: https://www.shinobilifeonline.com/index.php?topic=2973.0. Used selectorgadget to identify xpath. This code scrapes all slang terms in the web page and returns a list consisting of **120** slang terms.
 
 ```{r}
 html01 <- "https://www.shinobilifeonline.com/index.php?topic=2973.0"
@@ -76,7 +85,7 @@ slangs <- slangs %>%
 Using SEARCH API, I queried 50 tweets for each term in the slang list. Apparently, not every slang term returned 50 tweets (some are really obscure and uncommon terms/spellings). Ultimately, this query resulted in a dataframe consisting of 5604 rows.
 
 
-I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API everytime I knit the rmd. This is impractical as it (1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
+I am using below chunk for ~~memoising and/or caching purposes~~ future reference only. I wrote query results to a csv file and I will be working with that (otherwise I need to query twitter API every time I knit the rmd. This is impractical as it (1) returns different results each time, (2) twitter rate limits are pain). Therefore, not evaluating below chunk at all. 
 
 
 ```{r, cache=TRUE, eval=F}
@@ -100,14 +109,14 @@ slang_tweets <- rtweet::read_twitter_csv("../data/slang_tweets.csv")
 ```
 
 
-# 2. Exploring Tweets Matching keywords from Slangs list
+## Exploring Tweets Matching keywords from Slangs list
 
-Below, I will define and use a function that (1)finds tweets (scraped previously) which match nth term from the slangs list, (2) randomly sample 20 tweets matching nth term, (3) print tweet text.
+Below, I will define and use a function that (1)finds tweets (scraped previously) which match nth term from the slang list, (2) randomly sample 20 tweets matching nth term, (3) print tweet text.
 
-Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments. 
+Then, I will read these tweets and try to get a sense of what they refer to. I will print the tweets first and then add my comments. Since this is quite repetitive, I will do this for first 40 terms. See the complete list for all terms  [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv]
 
 
-*Note for the persons with a keen eye:* The reason for using double distinct in the chunk below is, some slang terms returned less than 20 results so the chunk was throwing an error when using `sample_n(20)`. Thus had to do `distinct`, sample 20 with replacement and then do `distinct` again (for cases where unique n<20). I could have tackled this more elegantly (by dropping first `distinct` and using `sample_n` with replacement and then `disctinct`after that) but since I was using cache=T the some chunks, I was in too deep and I opted to carry on with not so elegant code. 
+*Note for persons with a keen eye:* The reason for using double distinct in the chunk below is, some slang terms returned less than 20 results so the chunk was throwing an error when using `sample_n(20)`. Thus had to do `distinct`, sample 20 with replacement and then do `distinct` again (for cases where unique n<20). I could have tackled this more elegantly (by dropping first `distinct` and using `sample_n` with replacement and then `disctinct`after that) but since I was using cache=T the some chunks, I was in too deep and I opted to carry on with not so elegant code. 
 
 ```{r}
 
@@ -126,7 +135,7 @@ print_slang_tweets <- function(n) {
 print_slang_tweets(1) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** Term used to query twitter api was **`r slangs$slang_term[1]`**. Tweets reference to a band called jump out gang. Not very useful for studying further.
+**Comments:** Term used to query twitter API was **`r slangs$slang_term[1]`**. Tweets reference to a band called jump out gang. Not very useful for studying further.
 
 
 ### 2) Term: **`r slangs$slang_term[2]`**
@@ -134,7 +143,7 @@ print_slang_tweets(1) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(2) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[2]`**. As the term is an integer, tweets can refer to anything. Not very useful for studying further.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[2]`**. As the term is an integer, tweets can refer to anything. Not very useful for studying further.
 
 
 ### 3) Term: **`r slangs$slang_term[3]`**
@@ -142,7 +151,7 @@ print_slang_tweets(2) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(3) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[3]`**. Similar to 67 above, as the term is an integer, tweets can refer to anything. Random topics observed. Not very useful for studying further.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[3]`**. Similar to 67 above, as the term is an integer, tweets can refer to anything. Random topics observed. Not very useful for studying further.
 
 
 ### 4) Term: **`r slangs$slang_term[4]`**
@@ -150,21 +159,21 @@ print_slang_tweets(3) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(4) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[4]`**. Observed refences to a UK band called Harlem Spartans. HS are apparently banned for references to violence an uk gang culture in their music. Some references to violence (see the 3rd tweet for instance). Maybe useful for studying further.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[4]`**. Observed references to a UK band called Harlem Spartans. HS are apparently banned for references to violence an UK gang culture in their music. Some references to violence (see the 3rd tweet for instance). Maybe useful for studying further.
 
 ### 5) Term: **`r slangs$slang_term[5]`**
 ```{r, cache=F}
 print_slang_tweets(5) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[5]`**. Returned only 3 tweets, which referce to youtube videos. Not much sentiment observed. Not very useful for studying further. 
+**Comments:** term used to query twitter API was **`r slangs$slang_term[5]`**. Returned only 3 tweets, which reference to YouTube videos. Not much sentiment observed. Not very useful for studying further. 
 
 ### 6) Term: **`r slangs$slang_term[6]`**
 ```{r, cache=T}
 print_slang_tweets(6) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[6]`**. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[6]`**. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
 
 
 ### 7) Term: **`r slangs$slang_term[7]`**
@@ -172,7 +181,7 @@ print_slang_tweets(6) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(7) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[7]`**. Very similar to aggy. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[7]`**. Very similar to aggy. No mention of crime but used to express negative sentiments. Maybe useful for detecting emotions but not references to crime.
 
 
 ### 8) Term: **`r slangs$slang_term[8]`**
@@ -180,7 +189,7 @@ print_slang_tweets(7) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(8) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[8]`**. Lots of foreign language tweets. not useful.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[8]`**. Lots of foreign language tweets. not useful.
 
 
 
@@ -189,7 +198,7 @@ print_slang_tweets(8) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(9) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[9]`**. random topics observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[9]`**. random topics observed. not suitable.
 
 
 ### 10) Term: **`r slangs$slang_term[10]`**
@@ -197,7 +206,7 @@ print_slang_tweets(9) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(10) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[10]`**. interestingly observed two instances of counter-speech but hard to discriminate normal use from slang use. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[10]`**. interestingly observed two instances of counter-speech but hard to discriminate normal use from slang use. not suitable.
 
 
 ### 11) Term: **`r slangs$slang_term[11]`**
@@ -205,21 +214,21 @@ print_slang_tweets(10) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(11) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[11]`**. Hard to discriminate whether slang or literal. Slang version not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[11]`**. Hard to discriminate whether slang or literal. Slang version not observed. not suitable.
 
 ### 12) Term: **`r slangs$slang_term[12]`**
 ```{r, cache=T}
 print_slang_tweets(12) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[12]`**. Hard to discriminate whether slang or literal. Rare to see slang used on Twitter. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[12]`**. Hard to discriminate whether slang or literal. Rare to see slang used on Twitter. not suitable.
 
 ### 13) Term: **`r slangs$slang_term[13]`**
 ```{r, cache=T}
 print_slang_tweets(13) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[13]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[13]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 
 ### 14) Term: **`r slangs$slang_term[14]`**
@@ -227,7 +236,7 @@ print_slang_tweets(13) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(14) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[14]`**. all tweets are in foreign language. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[14]`**. all tweets are in foreign language. Slang usage not observed. not suitable.
 
 
 ### 15) Term: **`r slangs$slang_term[15]`**
@@ -235,28 +244,28 @@ print_slang_tweets(14) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(15) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[15]`**. some referral to gang and mandem culture. some unrelated tweets. Most tweets contain references to UK so better geolocation. may be useful.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[15]`**. some referral to gang and mandem culture. some unrelated tweets. Most tweets contain references to UK so better geolocation. may be useful.
 
 ### 16) Term: **`r slangs$slang_term[16]`**
 ```{r, cache=T}
 print_slang_tweets(16) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[16]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[16]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 ### 17) Term: **`r slangs$slang_term[17]`**
 ```{r, cache=T}
 print_slang_tweets(17) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[17]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[17]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 ### 18) Term: **`r slangs$slang_term[18]`**
 ```{r, cache=T}
 print_slang_tweets(18) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[18]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[18]`**. Hard to discriminate whether slang or literal. Slang usage not observed. not suitable.
 
 
 ### 19) Term: **`r slangs$slang_term[19]`**
@@ -264,14 +273,14 @@ print_slang_tweets(18) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(19) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[19]`**. Hard to discriminate whether slang or literal. Slang usage not observed. almost all tweets in foreign lang. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[19]`**. Hard to discriminate whether slang or literal. Slang usage not observed. almost all tweets in foreign lang. not suitable.
 
 ### 20) Term: **`r slangs$slang_term[20]`**
 ```{r, cache=T}
 print_slang_tweets(20) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[20]`**. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[20]`**. Slang usage not observed. not suitable.
 
 
 ### 21) Term: **`r slangs$slang_term[21]`**
@@ -279,14 +288,14 @@ print_slang_tweets(20) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(21) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[21]`**. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[21]`**. Slang usage not observed. not suitable.
 
 ### 22) Term: **`r slangs$slang_term[22]`**
 ```{r, cache=T}
 print_slang_tweets(22) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[22]`**. Almost all tweets refer to 'blocking action'. Slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[22]`**. Almost all tweets refer to 'blocking action'. Slang usage not observed. not suitable.
 
 
 ### 23) Term: **`r slangs$slang_term[23]`**
@@ -294,7 +303,7 @@ print_slang_tweets(22) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(23) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[23]`**. Slang usage not observed. Even slang meaning is mild. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[23]`**. Slang usage not observed. Even slang meaning is mild. not suitable.
 
 
 ### 24) Term: **`r slangs$slang_term[24]`**
@@ -302,7 +311,7 @@ print_slang_tweets(23) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(24) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[24]`**. Slang usage observed but no reference to crime. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[24]`**. Slang usage observed but no reference to crime. not suitable.
 
 
 ### 25) Term: **`r slangs$slang_term[25]`**
@@ -310,14 +319,14 @@ print_slang_tweets(24) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(25) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[25]`**. Slang usage observed but slang usage carries a positive sentiment. many references to youtube music videos. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[25]`**. Slang usage observed but slang usage carries a positive sentiment. many references to YouTube music videos. not suitable.
 
 ### 26) Term: **`r slangs$slang_term[26]`**
 ```{r, cache=T}
 print_slang_tweets(26) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[26]`**. Slang usage observed but adopted by a wider population so the sample does not include gang reference. also has has a non-slang meaning that is commonly used. not suitable. 
+**Comments:** term used to query twitter API was **`r slangs$slang_term[26]`**. Slang usage observed but adopted by a wider population so the sample does not include gang reference. also has has a non-slang meaning that is commonly used. not suitable. 
 
 
 ### 27) Term: **`r slangs$slang_term[27]`**
@@ -325,14 +334,14 @@ print_slang_tweets(26) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(27) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[27]`**. Slang usage observed. No reference to crime. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[27]`**. Slang usage observed. No reference to crime. not suitable.
 
 ### 28) Term: **`r slangs$slang_term[28]`**
 ```{r, cache=T}
 print_slang_tweets(28) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[28]`**. slang usage is using this term as a noun, rather than a verb. need to use NLP to distinguish. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[28]`**. slang usage is using this term as a noun, rather than a verb. need to use NLP to distinguish. not suitable.
 
 
 ### 29) Term: **`r slangs$slang_term[29]`**
@@ -340,7 +349,7 @@ print_slang_tweets(28) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(29) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[29]`**. Jamaican origin. slang usage observed. used to refer to negative things or persons. possibly many tweets from the UK. not many refences to crime.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[29]`**. Jamaican origin. slang usage observed. used to refer to negative things or persons. possibly many tweets from the UK. not many references to crime.
 
 
 ### 30) Term: **`r slangs$slang_term[30]`**
@@ -348,7 +357,7 @@ print_slang_tweets(29) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(30) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[30]`**. slang usage observed. very informal spelling. used to refer to extremely negative things or persons. many tweets from the UK but not many refences to crime.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[30]`**. slang usage observed. very informal spelling. used to refer to extremely negative things or persons. many tweets from the UK but not many references to crime.
 
 
 ### 31) Term: **`r slangs$slang_term[31]`**
@@ -356,7 +365,7 @@ print_slang_tweets(30) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(31) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[31]`**. slang usage observed. used to refer to extremely negative things or persons. many tweets from the UK, and some refences to crime or violence.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[31]`**. slang usage observed. used to refer to extremely negative things or persons. many tweets from the UK, and some references to crime or violence.
 
 
 ### 32) Term: **`r slangs$slang_term[32]`**
@@ -364,7 +373,7 @@ print_slang_tweets(31) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(32) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[32]`**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[32]`**. slang usage not observed. not suitable.
 
 
 ### 33) Term: **`r slangs$slang_term[33]`**
@@ -372,7 +381,7 @@ print_slang_tweets(32) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(33) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[33]`**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[33]`**. slang usage not observed. not suitable.
 
 
 
@@ -381,7 +390,7 @@ print_slang_tweets(33) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(34) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[34]`**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[34]`**. slang usage not observed. not suitable.
 
 
 ### 35) Term: **`r slangs$slang_term[35]`**
@@ -389,7 +398,7 @@ print_slang_tweets(34) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(35) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[35]`**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[35]`**. slang usage not observed. not suitable.
 
 
 
@@ -398,14 +407,14 @@ print_slang_tweets(35) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(36) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[36]`**. slang usage observed but not related to crime. not suitable
+**Comments:** term used to query twitter API was **`r slangs$slang_term[36]`**. slang usage observed but not related to crime. not suitable
 
 ### 37) Term: **`r slangs$slang_term[37]`**
 ```{r, cache=T}
 print_slang_tweets(37) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[37]`**. slang usage not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[37]`**. slang usage not observed. not suitable.
 
 
 ### 38) Term: **`r slangs$slang_term[38]`**
@@ -413,7 +422,7 @@ print_slang_tweets(37) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(38) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[38]`**. slang usage referring to violence not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[38]`**. slang usage referring to violence not observed. not suitable.
 
 
 ### 39) Term: **`r slangs$slang_term[39]`**
@@ -421,38 +430,45 @@ print_slang_tweets(38) %>% rmarkdown:::print.paged_df()
 print_slang_tweets(39) %>% rmarkdown:::print.paged_df()
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[39]`**. slang usage referring to violence not observed. not suitable.
+**Comments:** term used to query twitter API was **`r slangs$slang_term[39]`**. slang usage referring to violence not observed. not suitable.
+
+# 3. Gang slang from Ebony Reid's Doctoral Thesis (PDF)
+
+I am only using the glossary of London gang slangs but the full thesis can be found here [https://bura.brunel.ac.uk/bitstream/2438/14817/1/FulltextThesis.pdf]. Rather than scraping tweets using rtweet, I will do the twitter search manually as is gives more control overall. The end result will be in the csv file.
 
 
-### 40) Term: **`r slangs$slang_term[40]`**
-```{r, cache=T}
-print_slang_tweets(40) %>% rmarkdown:::print.paged_df()
+```{r}
+glossary_text <- 'Ackee- refers to a former road man who has converted to Islam
+Baby mother- the mandem use the term to describe the mother of their child
+Bad up- to treat someone in a disrespectful manner. It also refers to being
+victimised or victimising others
+Bait- being too obvious
+Boy dem- the police
+Bruk- refers to having no money
+Bussing a skank- to dance
+Fuckery- the mandem often used this term to describe criminal activity or
+violence
+Garms- clothing
+Grind- refers to working hard in the illegal drug economy
+Gwarning with tings- doing well on road
+Head back lick off- shot in the head
+Hype- exaggerated/over the top behaviour
+Nuff- a lot
+Prick- dick head/idiot
+Stunting/Stunter- to show off, a person who shows off
+Take set on you- refers to being targeted and, potentially victimised by rivals
+from neighbouring estates
+Wasteman- useless, poor, unsuccessful
+Warring- to fight, ongoing conflict' #just copy paste from pdf
+
+glossary <- glossary_text %>% 
+    str_split(pattern = "\n") %>% #split rows
+    .[[1]] %>%  #select elements in the list
+    as.tibble()%>% #convert to a tibble
+    separate(value, into=c("slang", "meaning"), sep="-") %>% #separate text into two columns using -
+    filter(!is.na(meaning))#remove excess rows
+
+write_csv(glossary, "../data/ereid_glossary.csv")
 ```
 
-**Comments:** term used to query twitter api was **`r slangs$slang_term[40]`**. correct slang usage (because) not observed. not suitable.
 
-### 41) Term: **`r slangs$slang_term[41]`**
-```{r, cache=T}
-print_slang_tweets(41) %>% rmarkdown:::print.paged_df()
-```
-
-**Comments:** term used to query twitter api was **`r slangs$slang_term[41]`**. slang usage not observed. not suitable.
-
-
-### 42) Term: **`r slangs$slang_term[42]`**
-```{r, cache=T}
-print_slang_tweets(42) %>% rmarkdown:::print.paged_df()
-```
-
-**Comments:** term used to query twitter api was **`r slangs$slang_term[42]`**. one reference to violance observed but many false positives. not suitable.
-
-
-### 43) Term: **`r slangs$slang_term[43]`**
-```{r, cache=T}
-print_slang_tweets(43) %>% rmarkdown:::print.paged_df()
-```
-
-**Comments:** term used to query twitter api was **`r slangs$slang_term[43]`**. slang usage observed but no related to crime. not suitable.
-
-
-## Rest is continued on the csv file. See [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv]
