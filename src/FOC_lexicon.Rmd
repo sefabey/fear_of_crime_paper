@@ -6,6 +6,9 @@ output:
       html_document:
         keep_md: true
         toc: true # table of content true
+        toc_float:
+            collapsed: false
+            smooth_scroll: false
         toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
         number_sections: true  ## if you want number sections at each table header
         theme: united
