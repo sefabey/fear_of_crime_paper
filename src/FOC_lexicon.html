@@ -235,26 +235,19 @@ div.tocify {
 
 
 <pre class="r"><code>knitr::opts_chunk$set(warning = F)</code></pre>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(rhymer)
+<pre class="r"><code>library(tidyverse)
+library(rhymer)
 # install.packages('rhymer')</code></pre>
 <div id="the-lexicon-paragraph" class="section level1">
-<h1><span class="header-section-number">1</span> The Lexicon Paragraph</h1>
-<p>We compiled a list of 44 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv</a>]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we gathered a lexicon consisting of 2538 terms. We also identified 139 slang terms that are used by London gangs and inspected the usage of these terms on Twitter. (see this for methodology [<a href="http://rpubs.com/sefaozalp/gang_slangs" class="uri">http://rpubs.com/sefaozalp/gang_slangs</a>]). We found that only 16 out of 139 gang slang terms were useful to identify tweets referring to crime and criminal activity. After adding these terms, we collated a lexicon consisting of 2554 terms that could be useful to identify tweets referring to crime, disorder or criminal activty on Twitter (find this file online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv</a>]).</p>
-<p>This lexicon was used to filter the 20m tweets in the dataset… (amir)</p>
+<h1>The Lexicon Paragraph</h1>
+<p>We compiled a list of 44 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv</a>]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple constraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that ‘means like’ -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as <a href="query:coppers" class="uri">query:coppers</a>, Datamuse result:atomic number 29), we gathered a lexicon consisting of 2538 terms. We also identified 139 slang terms that are used by London gangs and inspected the usage of these terms on Twitter. (see this for methodology [<a href="http://rpubs.com/sefaozalp/gang_slangs" class="uri">http://rpubs.com/sefaozalp/gang_slangs</a>]). We found that only 16 out of 139 gang slang terms were useful to identify tweets referring to crime and criminal activity. After adding these terms, we collated a lexicon consisting of 2554 terms that could be useful to identify tweets referring to crime, disorder or criminal activity on Twitter (find this file online [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv</a>]).</p>
+<p>This lexicon was used to filter the 20m tweets in the dataset… (this vit to be added once Amir or Mo should filters the dataset using the lexicon)</p>
 </div>
 <div id="steps-to-create-the-lexicon" class="section level1">
-<h1><span class="header-section-number">2</span> Steps to Create the Lexicon</h1>
+<h1>1. Steps to Create the Lexicon</h1>
 <div id="seed-list" class="section level2">
-<h2><span class="header-section-number">2.1</span> Seed list</h2>
+<h2>1.1. Seed list</h2>
+<p>Seed list was formed by heuristically selecting words referring to crime and fear. Not ideal but as these are seed terms, the lexicon should converge towards the right direction.</p>
 <pre class="r"><code>seed_list &lt;- read_csv(&quot;../data/FOC_seed_words.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -300,7 +293,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 
 # </code></pre>
 <p>Not memoising above because no need as wrote to csv file once and using that.</p>
-<p>Below removing words to remove identified manually. Again wrote once and commented oit write function.</p>
+<p>Below removing words to remove identified manually. Again wrote once and commented out the write function.</p>
 <pre class="r"><code>lexicon_filtered &lt;- read_csv(&quot;../data/FOC_lexicon_001_manual.csv&quot;) %&gt;% 
     filter(remove==0) # rows to be removed was labelled as 1, rest was 0</code></pre>
 <pre><code>## Parsed with column specification:
@@ -334,14 +327,14 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 </div>
 </div>
 <div id="take-2" class="section level1">
-<h1><span class="header-section-number">3</span> Take 2</h1>
+<h1>Take 2</h1>
 <p>New comments from the PI, need to do the following.</p>
 <ol style="list-style-type: decimal">
 <li>Remove fear related words from the seed list and lexicon</li>
 <li>Revisit the final version of the lexicon and remove irrelevant words (such as drugs ~ prescription, charlatan)</li>
 </ol>
 <div id="removing-fear-related-words-from-the-seed-list-and-then-from-the-lexicon." class="section level3">
-<h3><span class="header-section-number">3.0.1</span> 2.1. Removing fear related words from the seed list and then from the lexicon.</h3>
+<h3>2.1. Removing fear related words from the seed list and then from the lexicon.</h3>
 <pre class="r"><code>read_csv(&quot;../data/FOC_seed_words.csv&quot;) %&gt;% 
     filter(context %in% c(&quot;fear&quot;)) # print fear related words</code></pre>
 <pre><code>## Parsed with column specification:
@@ -392,7 +385,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 <pre class="r"><code># write_csv(lexicon_2, &quot;../data/FOC_lexicon_002.csv&quot;)</code></pre>
 </div>
 <div id="revisit-and-remove-irrelevant-words" class="section level2">
-<h2><span class="header-section-number">3.1</span> Revisit and remove irrelevant words</h2>
+<h2>Revisit and remove irrelevant words</h2>
 <p>This is going to be done manually and outside R.</p>
 <p>Removing manually identified words</p>
 <pre class="r"><code>lexicon_filtered_02 &lt;- read_csv(&quot;../data/FOC_lexicon_002_manual.csv&quot;) %&gt;% 
@@ -425,7 +418,7 @@ crime_fear_lexicon &lt;- seed_list %&gt;%
 ## 10     1 assault    snipe          79399 syn   n     &lt;NA&gt;  &lt;NA&gt;       0
 ## # ... with 2,528 more rows</code></pre>
 <pre class="r"><code>write_csv(lexicon_filtered_02, &quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)</code></pre>
-<p>As words in English can take many forms, suffixes and prefixes, I’ll add lemmas and stems of words in seperate columns.</p>
+<p>As words in English can take many forms, suffixes and prefixes, I’ll add lemmas and stems of words in separate columns.</p>
 <pre class="r"><code>lexicon_filtered_02 &lt;- lexicon_filtered_02 %&gt;% 
     mutate(lemmas=textstem::lemmatize_strings(word)) %&gt;% 
     mutate(stems= textstem::stem_strings(word)) %&gt;% 
@@ -450,9 +443,9 @@ lexicon_filtered_02</code></pre>
 </div>
 </div>
 <div id="final-version-of-the-lexicon" class="section level1">
-<h1><span class="header-section-number">4</span> Final Version of the Lexicon</h1>
+<h1>Final Version of the Lexicon</h1>
 <div id="merging-with-london-slangs" class="section level2">
-<h2><span class="header-section-number">4.1</span> Merging with London Slangs</h2>
+<h2>Merging with London Slangs</h2>
 <p>After the lexicon was created, I have moved on to explore the London based gang slangs and whether they would be useful to include in the lexicon for the purposes of this study. The methods used to explore the use of London gang slang terms on Twitter are detailed here [<a href="http://rpubs.com/sefaozalp/gang_slangs" class="uri">http://rpubs.com/sefaozalp/gang_slangs</a>]. In summary, I have explored the use of 139 London gang slang terms on Twitter and found out that only a fraction of these terms were vaguely referred to crime or criminal activity. Find the results of the exploration here [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/slangs_from_shinobi.csv</a>] and here [<a href="https://github.com/sefabey/fear_of_crime_paper/blob/master/data/ereid_glossary.csv" class="uri">https://github.com/sefabey/fear_of_crime_paper/blob/master/data/ereid_glossary.csv</a>].</p>
 <p>Below, I will merge the London gang slang terms which were identified to have referred to crime or criminal activity with the lexicon.</p>
 <pre class="r"><code>lexicon_filtered_02 &lt;- read_csv(&quot;../data/FOC_lexicon_002_manual_edited.csv&quot;)

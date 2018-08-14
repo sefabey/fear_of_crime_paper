@@ -10,7 +10,7 @@ output:
             collapsed: false
             smooth_scroll: false
         toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
-        number_sections: true  ## if you want number sections at each table header
+        number_sections: false  ## if you want number sections at each table header
         theme: united
 ---
 
@@ -23,38 +23,21 @@ knitr::opts_chunk$set(warning = F)
 
 ```r
 library(tidyverse)
-```
-
-```
-## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0
-```
-
-```
-## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(rhymer)
 # install.packages('rhymer')
 ```
 
 # The Lexicon Paragraph
-We compiled a list of 44 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple contraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that 'means like' -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as query:coppers, Datamuse result:atomic number 29), we gathered a lexicon consisting of 2538 terms. We also identified 139 slang terms that are used by London gangs and inspected the usage of these terms on Twitter. (see this for methodology [http://rpubs.com/sefaozalp/gang_slangs]). We found that only 16 out of 139 gang slang terms were useful to identify tweets referring to crime and criminal activity. After adding these terms, we collated a lexicon consisting of 2554 terms that could be useful to identify tweets referring to crime, disorder or criminal activty on Twitter  (find this file online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv]). 
+We compiled a list of 44 seeding words which includes words used when expressing fear of crime, different crime types and British slangs referring to police and criminal activity (find this list online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_seed_words_002.csv]). The seed list was used to create the lexicon by querying the Datamuse API -a word-finding engine which allows for querying rhyming words, similar spellings and semantically similar or contextually related words using multiple constraints such as synonyms, perfect and approximate rhymes, homophones, frequent followers, direct holonyms. Using the rhymer package (Landesberg 2017) in R, we queried Datamuse API for the first 100 words that 'means like' -i.e. words or sequence of words that are conceptually, semantically and lexically related to- the words in the seed list. After removing duplicates and manually removing clearly out of context results (such as query:coppers, Datamuse result:atomic number 29), we gathered a lexicon consisting of 2538 terms. We also identified 139 slang terms that are used by London gangs and inspected the usage of these terms on Twitter. (see this for methodology [http://rpubs.com/sefaozalp/gang_slangs]). We found that only 16 out of 139 gang slang terms were useful to identify tweets referring to crime and criminal activity. After adding these terms, we collated a lexicon consisting of 2554 terms that could be useful to identify tweets referring to crime, disorder or criminal activity on Twitter  (find this file online [https://github.com/sefabey/fear_of_crime_paper/blob/master/data/FOC_lexicon_003_final.csv]). 
 
-This lexicon was used to filter the 20m tweets in the dataset... (amir)
+This lexicon was used to filter the 20m tweets in the dataset... (this vit to be added once Amir or Mo should filters the dataset using the lexicon)
 
-# Steps to Create the Lexicon
+# 1. Steps to Create the Lexicon
 
-## Seed list
+## 1.1. Seed list
+
+Seed list was formed by heuristically selecting words referring to crime and fear. Not ideal but as these are seed terms, the lexicon should converge towards the right direction.
+
 
 ```r
 seed_list <- read_csv("../data/FOC_seed_words.csv")
@@ -118,7 +101,7 @@ crime_fear_lexicon <- seed_list %>%
 Not memoising above because no need as wrote to csv file once and using that.
 
 
-Below removing words to remove identified manually. Again wrote once and commented oit write function.
+Below removing words to remove identified manually. Again wrote once and commented out the write function.
 
 ```r
 lexicon_filtered <- read_csv("../data/FOC_lexicon_001_manual.csv") %>% 
@@ -304,7 +287,7 @@ write_csv(lexicon_filtered_02, "../data/FOC_lexicon_002_manual_edited.csv")
 ```
 
 
-As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words in seperate columns. 
+As words in English can take many forms, suffixes and prefixes, I'll add lemmas and stems of words in separate columns. 
 
 
 ```r
